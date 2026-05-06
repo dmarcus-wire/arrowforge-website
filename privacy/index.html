@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy — ArrowForge</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --brand:   #2D6A4F;
+      --bg:      #F9FAFB;
+      --surface: #FFFFFF;
+      --text:    #111827;
+      --muted:   #6B7280;
+      --border:  #E5E7EB;
+    }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+    nav {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 0 24px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--brand);
+      letter-spacing: -0.5px;
+      text-decoration: none;
+    }
+    .nav-back {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--muted);
+      text-decoration: none;
+    }
+    .nav-back:hover { color: var(--brand); }
+
+    .content {
+      max-width: 680px;
+      margin: 60px auto 100px;
+      padding: 0 24px;
+    }
+    h1 {
+      font-size: 32px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      margin-bottom: 8px;
+    }
+    .effective {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 40px;
+    }
+    h2 {
+      font-size: 18px;
+      font-weight: 700;
+      margin: 36px 0 10px;
+    }
+    p {
+      font-size: 15px;
+      color: #374151;
+      line-height: 1.7;
+      margin-bottom: 14px;
+    }
+    ul {
+      margin: 10px 0 14px 20px;
+    }
+    ul li {
+      font-size: 15px;
+      color: #374151;
+      line-height: 1.7;
+      margin-bottom: 6px;
+    }
+    a { color: var(--brand); }
+    .contact-box {
+      margin-top: 40px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px 24px;
+    }
+    .contact-box p { margin: 0; }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="/" class="nav-logo">ArrowForge</a>
+    <a href="/" class="nav-back">← Back</a>
+  </nav>
+
+  <div class="content">
+    <h1>Privacy Policy</h1>
+    <p class="effective">Effective date: May 6, 2026</p>
+
+    <p>ArrowForge ("we", "our", or "us") is developed and operated by Frontier Forge LLC. This policy describes how we handle information when you use the ArrowForge iOS application.</p>
+
+    <h2>Information we collect</h2>
+    <p>ArrowForge is designed to work primarily on-device. We do not require account creation or login.</p>
+    <ul>
+      <li><strong>Build data</strong> — your bow, arrow, and archer setup details (draw weight, arrow weight, spine, goal date, etc.) are stored locally on your device using AsyncStorage. This data never leaves your device except as described below.</li>
+      <li><strong>Location data</strong> — if you use the location search feature, your approximate location may be sent to <a href="https://nominatim.openstreetmap.org" target="_blank">Nominatim (OpenStreetMap)</a> to resolve a place name, and to the <a href="https://open-elevation.com" target="_blank">Open-Elevation API</a> to look up elevation. These are one-time lookups; we do not store or transmit your location independently.</li>
+    </ul>
+
+    <h2>Information we do not collect</h2>
+    <ul>
+      <li>We do not collect your name, email address, or any personal identifiers.</li>
+      <li>We do not use analytics or crash-reporting SDKs that transmit data to us.</li>
+      <li>We do not serve advertising or share data with advertisers.</li>
+      <li>We do not sell your data to any third party.</li>
+    </ul>
+
+    <h2>Third-party services</h2>
+    <p>When you search for a location by name or tap "Use my location," ArrowForge makes requests to:</p>
+    <ul>
+      <li><strong>Nominatim / OpenStreetMap</strong> — for geocoding (place name → coordinates). Subject to the <a href="https://osmfoundation.org/wiki/Privacy_Policy" target="_blank">OSM Foundation Privacy Policy</a>.</li>
+      <li><strong>Open-Elevation</strong> — for elevation lookup (coordinates → metres above sea level). Requests include only the latitude and longitude of the selected location.</li>
+    </ul>
+    <p>No other third-party network requests are made by the app.</p>
+
+    <h2>Data storage</h2>
+    <p>All build data is stored locally on your device. Uninstalling the app removes all locally stored data. We have no server-side copy of your data.</p>
+
+    <h2>Children's privacy</h2>
+    <p>ArrowForge is not directed at children under 13. We do not knowingly collect information from children.</p>
+
+    <h2>Changes to this policy</h2>
+    <p>We may update this policy as the app evolves (for example, if we add cloud sync or account features). We will update the effective date above and, where appropriate, notify users within the app.</p>
+
+    <div class="contact-box">
+      <h2 style="margin-top: 0;">Contact</h2>
+      <p>Questions about this privacy policy? Email us at <a href="mailto:arrowforgeapp@tuta.io">arrowforgeapp@tuta.io</a></p>
+    </div>
+  </div>
+
+</body>
+</html>

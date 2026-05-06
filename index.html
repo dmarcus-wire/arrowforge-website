@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ArrowForge — Arrow Builds for Your Hunt Day</title>
+  <meta name="description" content="Arrow builds and ballistics tuned to your goal date and destination elevation. Built for bowhunters and competitive archers." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --brand:      #2D6A4F;
+      --brand-light:#52B788;
+      --brand-dark: #1B4332;
+      --bg:         #F9FAFB;
+      --surface:    #FFFFFF;
+      --text:       #111827;
+      --muted:      #6B7280;
+      --border:     #E5E7EB;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    /* ── Nav ── */
+    nav {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 0 24px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--brand);
+      letter-spacing: -0.5px;
+    }
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--muted);
+      text-decoration: none;
+    }
+    .nav-links a:hover { color: var(--brand); }
+
+    /* ── Hero ── */
+    .hero {
+      max-width: 680px;
+      margin: 80px auto 0;
+      padding: 0 24px;
+      text-align: center;
+    }
+    .hero-eyebrow {
+      display: inline-block;
+      background: #D1FAE5;
+      color: var(--brand-dark);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 20px;
+    }
+    .hero h1 {
+      font-size: clamp(32px, 6vw, 52px);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -1px;
+      color: var(--text);
+      margin-bottom: 20px;
+    }
+    .hero h1 span { color: var(--brand); }
+    .hero p {
+      font-size: 18px;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 36px;
+    }
+
+    .cta-group {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--brand);
+      color: #fff;
+      font-size: 16px;
+      font-weight: 700;
+      padding: 14px 28px;
+      border-radius: 12px;
+      text-decoration: none;
+      transition: background 0.15s;
+    }
+    .btn-primary:hover { background: var(--brand-dark); }
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 600;
+      padding: 14px 20px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      background: var(--surface);
+      transition: border-color 0.15s;
+    }
+    .btn-secondary:hover { border-color: var(--brand); color: var(--brand); }
+
+    /* ── Features ── */
+    .features {
+      max-width: 900px;
+      margin: 80px auto 0;
+      padding: 0 24px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+    .feature-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+    }
+    .feature-icon {
+      font-size: 28px;
+      margin-bottom: 12px;
+    }
+    .feature-card h3 {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+    .feature-card p {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* ── Footer ── */
+    footer {
+      margin-top: 100px;
+      padding: 32px 24px;
+      border-top: 1px solid var(--border);
+      text-align: center;
+    }
+    footer p {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+    footer a {
+      color: var(--brand);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    footer a:hover { text-decoration: underline; }
+    .footer-links {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      margin-top: 12px;
+    }
+    .footer-links a {
+      font-size: 13px;
+      color: var(--muted);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .footer-links a:hover { color: var(--brand); }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <span class="nav-logo">ArrowForge</span>
+    <ul class="nav-links">
+      <li><a href="mailto:arrowforgeapp@tuta.io">Support</a></li>
+      <li><a href="/privacy/">Privacy</a></li>
+    </ul>
+  </nav>
+
+  <section class="hero">
+    <span class="hero-eyebrow">Now on iOS</span>
+    <h1>Arrow builds tuned to <span>your hunt day</span></h1>
+    <p>Ballistics and build scoring calibrated to your goal date and destination elevation — not just your draw weight.</p>
+    <div class="cta-group">
+      <!-- Replace href with your App Store link once live -->
+      <a href="#" class="btn-primary">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+        Download on the App Store
+      </a>
+      <a href="mailto:arrowforgeapp@tuta.io" class="btn-secondary">Contact us</a>
+    </div>
+  </section>
+
+  <section class="features">
+    <div class="feature-card">
+      <div class="feature-icon">🎯</div>
+      <h3>Goal countdown + coaching</h3>
+      <p>Set your hunt opener or competition date. ArrowForge counts down and tells you what to focus on — plenty of time, final stretch, or game week.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">⛰️</div>
+      <h3>Training → Destination correction</h3>
+      <p>Practice at sea level, hunt at 9,000 ft. ArrowForge accounts for the air density shift so your numbers reflect where you actually shoot.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">📐</div>
+      <h3>Build Match Score</h3>
+      <p>A weighted readiness score tuned to your application — lethality matters more for hunters, trajectory and tuning for competitors.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🔢</div>
+      <h3>Transparent math</h3>
+      <p>Every number shows the formula behind it. Tap any result to see exactly how it was calculated — no black boxes.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🗂️</div>
+      <h3>Multiple builds</h3>
+      <p>Save and compare setups side by side. Switch between your hunting rig, target setup, and practice arrows in seconds.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">📊</div>
+      <h3>Progressive ballistics</h3>
+      <p>Starts useful with just draw weight and arrow weight. Gets more accurate as you add diameter, FOC, and advanced data.</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>Built for bowhunters and competitive archers by <strong>Frontier Forge LLC</strong></p>
+    <p><a href="mailto:arrowforgeapp@tuta.io">arrowforgeapp@tuta.io</a></p>
+    <div class="footer-links">
+      <a href="/privacy/">Privacy Policy</a>
+      <a href="mailto:arrowforgeapp@tuta.io">Support</a>
+    </div>
+    <p style="margin-top: 16px; font-size: 12px;">© 2026 Frontier Forge LLC. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
