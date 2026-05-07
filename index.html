@@ -38,11 +38,10 @@
       align-items: center;
       justify-content: space-between;
     }
-    .nav-logo {
-      font-size: 20px;
-      font-weight: 800;
-      color: var(--brand);
-      letter-spacing: -0.5px;
+    .nav-logo img {
+      height: 34px;
+      width: auto;
+      display: block;
     }
     .nav-links {
       display: flex;
@@ -246,7 +245,9 @@
 <body>
 
   <nav>
-    <span class="nav-logo">ArrowForge</span>
+    <a href="/" class="nav-logo">
+      <img src="/logo.png" alt="ArrowForge" />
+    </a>
     <ul class="nav-links">
       <li><a href="mailto:arrowforgeapp@tuta.io">Support</a></li>
       <li><a href="/privacy/">Privacy</a></li>
