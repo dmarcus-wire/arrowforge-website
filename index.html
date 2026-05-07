@@ -158,6 +158,58 @@
       line-height: 1.6;
     }
 
+    /* ── Screenshots ── */
+    .screenshots-section {
+      margin-top: 80px;
+    }
+    .screenshots-label {
+      text-align: center;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 24px;
+    }
+    .screenshots-track {
+      display: flex;
+      gap: 16px;
+      overflow-x: auto;
+      padding: 0 24px 20px;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    .screenshots-track::-webkit-scrollbar { display: none; }
+    .screenshot-frame {
+      flex: 0 0 auto;
+      width: 220px;
+      scroll-snap-align: start;
+      border-radius: 32px;
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.14);
+      background: #000;
+    }
+    .screenshot-frame img {
+      width: 100%;
+      display: block;
+    }
+    .screenshot-caption {
+      text-align: center;
+      font-size: 11px;
+      color: var(--muted);
+      font-weight: 600;
+      margin-top: 8px;
+      padding: 0 4px;
+    }
+    .screenshot-item {
+      flex: 0 0 auto;
+      width: 220px;
+      scroll-snap-align: start;
+      display: flex;
+      flex-direction: column;
+    }
+
     /* ── Footer ── */
     footer {
       margin-top: 100px;
@@ -245,6 +297,78 @@
       <div class="feature-icon">📊</div>
       <h3>Progressive ballistics</h3>
       <p>Starts useful with just draw weight and arrow weight. Gets more accurate as you add diameter, FOC, and advanced data.</p>
+    </div>
+  </section>
+
+  <section class="screenshots-section">
+    <p class="screenshots-label">See it in action</p>
+    <div class="screenshots-track">
+      <div class="screenshot-item">
+        <div class="screenshot-frame">
+          <img src="screenshots/archer-details.png" alt="Archer Details input screen" loading="lazy" />
+        </div>
+        <p class="screenshot-caption">Archer Details</p>
+      </div>
+      <div class="screenshot-item">
+        <div class="screenshot-frame">
+          <img src="screenshots/bow-details.png" alt="Bow Details input screen" loading="lazy" />
+        </div>
+        <p class="screenshot-caption">Bow Details</p>
+      </div>
+      <div class="screenshot-item">
+        <div class="screenshot-frame">
+          <img src="screenshots/arrow-details.png" alt="Arrow Details input screen" loading="lazy" />
+        </div>
+        <p class="screenshot-caption">Arrow Details</p>
+      </div>
+      <div class="screenshot-item">
+        <div class="screenshot-frame">
+          <img src="screenshots/builds.png" alt="My Builds screen" loading="lazy" />
+        </div>
+        <p class="screenshot-caption">Manage Builds</p>
+      </div>
+      <div class="screenshot-item">
+        <div class="screenshot-frame">
+          <img src="screenshots/goal-location.png" alt="Goal and Location results" loading="lazy" />
+        </div>
+        <p class="screenshot-caption">Goal Countdown</p>
+      </div>
+      <div class="screenshot-item">
+        <div class="screenshot-frame">
+          <img src="screenshots/build-score.png" alt="Build Match Score" loading="lazy" />
+        </div>
+        <p class="screenshot-caption">Build Match Score</p>
+      </div>
+      <div class="screenshot-item">
+        <div class="screenshot-frame">
+          <img src="screenshots/arrow-perf.png" alt="Arrow Performance gauges" loading="lazy" />
+        </div>
+        <p class="screenshot-caption">Arrow Performance</p>
+      </div>
+      <div class="screenshot-item">
+        <div class="screenshot-frame">
+          <img src="screenshots/game.png" alt="Game Effectiveness" loading="lazy" />
+        </div>
+        <p class="screenshot-caption">Game Effectiveness</p>
+      </div>
+      <div class="screenshot-item">
+        <div class="screenshot-frame">
+          <img src="screenshots/range.png" alt="Performance by Range table" loading="lazy" />
+        </div>
+        <p class="screenshot-caption">Performance by Range</p>
+      </div>
+      <div class="screenshot-item">
+        <div class="screenshot-frame">
+          <img src="screenshots/trajectory.png" alt="Trajectory visualization" loading="lazy" />
+        </div>
+        <p class="screenshot-caption">Trajectory</p>
+      </div>
+      <div class="screenshot-item">
+        <div class="screenshot-frame">
+          <img src="screenshots/compare.png" alt="Compare Builds" loading="lazy" />
+        </div>
+        <p class="screenshot-caption">Compare Builds</p>
+      </div>
     </div>
   </section>
 
