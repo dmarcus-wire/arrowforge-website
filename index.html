@@ -38,10 +38,23 @@
       align-items: center;
       justify-content: space-between;
     }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
     .nav-logo img {
-      height: 34px;
-      width: auto;
+      height: 36px;
+      width: 36px;
       display: block;
+      border-radius: 8px;
+    }
+    .nav-logo-text {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--text);
+      letter-spacing: -0.4px;
     }
     .nav-links {
       display: flex;
@@ -62,6 +75,14 @@
       margin: 80px auto 0;
       padding: 0 24px;
       text-align: center;
+    }
+    .hero-icon {
+      width: 88px;
+      height: 88px;
+      border-radius: 20px;
+      margin: 0 auto 20px;
+      display: block;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.10);
     }
     .hero-eyebrow {
       display: inline-block;
@@ -246,7 +267,8 @@
 
   <nav>
     <a href="/" class="nav-logo">
-      <img src="/logo.png" alt="ArrowForge" />
+      <img src="/icon.png" alt="ArrowForge icon" />
+      <span class="nav-logo-text">ArrowForge</span>
     </a>
     <ul class="nav-links">
       <li><a href="mailto:arrowforgeapp@tuta.io">Support</a></li>
@@ -255,6 +277,7 @@
   </nav>
 
   <section class="hero">
+    <img src="/icon.png" alt="ArrowForge" class="hero-icon" />
     <span class="hero-eyebrow">Now on iOS</span>
     <h1>Arrow builds tuned to <span>your hunt day</span></h1>
     <p>Ballistics and build scoring calibrated to your goal date and destination elevation — not just your draw weight.</p>

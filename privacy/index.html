@@ -30,10 +30,23 @@
       align-items: center;
       justify-content: space-between;
     }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
     .nav-logo img {
-      height: 34px;
-      width: auto;
+      height: 36px;
+      width: 36px;
       display: block;
+      border-radius: 8px;
+    }
+    .nav-logo-text {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--text);
+      letter-spacing: -0.4px;
     }
     .nav-back {
       font-size: 14px;
@@ -94,7 +107,8 @@
 
   <nav>
     <a href="/" class="nav-logo">
-      <img src="/logo.png" alt="ArrowForge" />
+      <img src="/icon.png" alt="ArrowForge icon" />
+      <span class="nav-logo-text">ArrowForge</span>
     </a>
     <a href="/" class="nav-back">← Back</a>
   </nav>
