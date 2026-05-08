@@ -301,37 +301,49 @@
     .modal-prev,
     .modal-next {
       position: absolute;
-      top: 18px;
       border: none;
-      background: rgba(15,23,42,0.7);
+      background: rgba(15,23,42,0.85);
       color: #F8FAFC;
-      width: 42px;
-      height: 42px;
+      width: 56px;
+      height: 56px;
       border-radius: 50%;
       display: inline-flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      transition: background 150ms ease;
+      transition: background 150ms ease, transform 150ms ease, box-shadow 150ms ease;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.22);
+      font-size: 24px;
+      text-shadow: 0 2px 6px rgba(0,0,0,0.25);
     }
     .modal-close:hover,
     .modal-prev:hover,
     .modal-next:hover {
-      background: rgba(15,23,42,0.9);
+      background: rgba(15,23,42,1);
+      transform: scale(1.05);
     }
     .modal-close {
       right: 18px;
+      background: rgba(239,68,68,0.95);
+      width: 52px;
+      height: 52px;
+      font-size: 26px;
+    }
+    .modal-close:hover {
+      background: rgba(239,68,68,1);
     }
     .modal-prev,
     .modal-next {
       top: 50%;
       transform: translateY(-50%);
-      width: 48px;
-      height: 48px;
+      width: 64px;
+      height: 64px;
       border-radius: 999px;
+      font-size: 28px;
+      background: rgba(15,23,42,0.85);
     }
-    .modal-prev { left: 10px; }
-    .modal-next { right: 10px; }
+    .modal-prev { left: 12px; }
+    .modal-next { right: 12px; }
     .modal-controls {
       position: absolute;
       inset: 0;
