@@ -478,7 +478,7 @@
       flex-wrap: wrap;
     }
     .zone-free {
-      flex: 3;
+      flex: 4;
       background: #F0FDF4;
       border: 1px solid #BBF7D0;
     }
@@ -526,7 +526,7 @@
       height: 30px;
     }
     .return-leg {
-      width: 9%;
+      width: 7%;
       height: 100%;
       border-bottom: 2px solid var(--brand-light);
     }
@@ -546,7 +546,7 @@
     .return-leg-right {
       border-right: 2px solid var(--brand-light);
       border-radius: 0 0 8px 0;
-      width: 29%; /* end under node 4, not node 5 */
+      width: 43%; /* end under Improve Manual node, before Pro divider */
     }
     .return-mid {
       flex: 1;
@@ -565,6 +565,7 @@
       white-space: nowrap;
     }
     .flow-return-mobile { display: none; }
+    .mob-layout { display: none; }
     .badge-soon {
       display: inline-block;
       background: #D1FAE5;
@@ -578,29 +579,60 @@
       vertical-align: middle;
     }
     @media (max-width: 620px) {
-      .flow-row { flex-direction: column; align-items: stretch; }
-      .flow-arr { flex: 0 0 20px; transform: rotate(90deg); }
-      .flow-zones  { flex-direction: column; gap: 6px; margin-bottom: 12px; }
-      .zone-free, .zone-pro { flex: none; }
-      .zone-spacer { display: none; }
-      .flow-return { display: none; }
-      .flow-pro-divider {
-        flex: 0 0 auto;
-        flex-direction: row;
-        align-items: center;
+      /* hide the desktop horizontal flow; show the mobile zone layout instead */
+      .flow-diagram { display: none; }
+      .mob-layout {
+        display: flex;
+        flex-direction: column;
         gap: 8px;
-        padding: 4px 0;
       }
-      .flow-pro-divider::before,
-      .flow-pro-divider::after {
-        content: '';
-        flex: 1;
-        height: 1.5px;
-        background: var(--brand-light);
-        display: block;
+      .mob-section {
+        display: flex;
+        gap: 10px;
+        align-items: stretch;
       }
-      .pro-divider-arr { display: none; }
-      .flow-return-mobile {
+      .mob-bar {
+        width: 36px;
+        flex-shrink: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 8px 0;
+        border-radius: 8px;
+      }
+      .mob-bar-free { background: #F0FDF4; border: 1px solid #BBF7D0; }
+      .mob-bar-pro  { background: #FFFBEB; border: 1px solid #FCD34D; }
+      .mob-bar-label {
+        font-size: 8px;
+        font-weight: 800;
+        letter-spacing: 0.8px;
+        text-transform: uppercase;
+        writing-mode: vertical-lr;
+        transform: rotate(180deg);
+        white-space: nowrap;
+      }
+      .mob-bar-free .mob-bar-label { color: var(--brand-dark); }
+      .mob-bar-pro  .mob-bar-label { color: #92400E; }
+      .mob-steps { flex: 1; display: flex; flex-direction: column; }
+      .mob-node {
+        background: var(--surface);
+        border: 1.5px solid var(--border);
+        border-radius: 12px;
+        padding: 14px 12px;
+        text-align: center;
+      }
+      .mob-node-icon { font-size: 22px; margin-bottom: 6px; }
+      .mob-node-title { font-size: 13px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+      .mob-node-sub { font-size: 11px; color: var(--muted); line-height: 1.4; }
+      .mob-arr {
+        text-align: center;
+        padding: 2px 0;
+        font-size: 16px;
+        font-weight: 700;
+        color: var(--brand-light);
+      }
+      .mob-return {
         display: flex;
         align-items: center;
         padding: 4px 8px 4px 12px;
@@ -850,17 +882,23 @@
           <div class="flow-node-sub">Scores, ballistics &amp; trajectory</div>
           <span class="node-conn node-conn-offline">offline</span>
         </div>
+        <div class="flow-arr">→</div>
+        <div class="flow-node">
+          <div class="flow-node-icon">💡</div>
+          <div class="flow-node-title">Improve Your Setup</div>
+          <div class="flow-node-sub">Experiment before you spend — manual changes</div>
+          <span class="node-conn node-conn-offline">offline</span>
+        </div>
         <div class="flow-pro-divider">
           <span class="pro-badge">Pro</span>
           <span class="pro-divider-arr">→</span>
         </div>
         <div class="flow-node">
-          <div class="flow-node-icon">💡</div>
-          <div class="flow-node-title">Improve Your Setup</div>
-          <div class="flow-node-sub">Experiment before you spend - manual or <span class="badge-soon">AI soon</span></div>
+          <div class="flow-node-icon">🤖</div>
+          <div class="flow-node-title">AI Suggestions</div>
+          <div class="flow-node-sub">Smart improvement guidance <span class="badge-soon">coming soon</span></div>
           <span class="node-conn node-conn-online">cloud</span>
         </div>
-        <div class="flow-return-mobile">↩ refine your build or inputs</div>
         <div class="flow-arr">→</div>
         <div class="flow-node">
           <div class="flow-node-icon">🛒</div>
@@ -874,6 +912,64 @@
         <div class="return-leg return-leg-left"></div>
         <div class="return-mid"><span>↩ refine your build or inputs</span></div>
         <div class="return-leg return-leg-right"></div>
+      </div>
+
+    </div>
+
+    <!-- mobile-only zone sidebar layout -->
+    <div class="mob-layout">
+
+      <div class="mob-section">
+        <div class="mob-bar mob-bar-free"><span class="mob-bar-label">Free</span></div>
+        <div class="mob-steps">
+          <div class="mob-node">
+            <div class="mob-node-icon">🏗️</div>
+            <div class="mob-node-title">Create a Build</div>
+            <div class="mob-node-sub">Name it, set your goal &amp; date</div>
+            <span class="node-conn node-conn-offline">offline</span>
+          </div>
+          <div class="mob-arr">↓</div>
+          <div class="mob-node">
+            <div class="mob-node-icon">⚙️</div>
+            <div class="mob-node-title">Input Details</div>
+            <div class="mob-node-sub">Basic or advanced specs</div>
+            <span class="node-conn node-conn-offline">offline</span>
+          </div>
+          <div class="mob-arr">↓</div>
+          <div class="mob-node">
+            <div class="mob-node-icon">📊</div>
+            <div class="mob-node-title">Understand Performance</div>
+            <div class="mob-node-sub">Scores, ballistics &amp; trajectory</div>
+            <span class="node-conn node-conn-offline">offline</span>
+          </div>
+          <div class="mob-arr">↓</div>
+          <div class="mob-node">
+            <div class="mob-node-icon">💡</div>
+            <div class="mob-node-title">Improve Your Setup</div>
+            <div class="mob-node-sub">Experiment before you spend — manual changes</div>
+            <span class="node-conn node-conn-offline">offline</span>
+          </div>
+          <div class="mob-return">↩ refine your build or inputs</div>
+        </div>
+      </div>
+
+      <div class="mob-section">
+        <div class="mob-bar mob-bar-pro"><span class="mob-bar-label">Pro</span></div>
+        <div class="mob-steps">
+          <div class="mob-node">
+            <div class="mob-node-icon">🤖</div>
+            <div class="mob-node-title">AI Suggestions</div>
+            <div class="mob-node-sub">Let AI guide your improvements <span class="badge-soon">coming soon</span></div>
+            <span class="node-conn node-conn-online">cloud</span>
+          </div>
+          <div class="mob-arr">↓</div>
+          <div class="mob-node">
+            <div class="mob-node-icon">🛒</div>
+            <div class="mob-node-title">Share Your List</div>
+            <div class="mob-node-sub">Send your shopping list to your local bow shop</div>
+            <span class="node-conn node-conn-online">cloud</span>
+          </div>
+        </div>
       </div>
 
     </div>
