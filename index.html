@@ -352,6 +352,237 @@
       pointer-events: auto;
     }
 
+    /* ── How It Works ── */
+    .how-it-works {
+      max-width: 960px;
+      margin: 80px auto 0;
+      padding: 0 24px;
+      text-align: center;
+    }
+    .how-label {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+    .how-title {
+      font-size: clamp(22px, 4vw, 32px);
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      color: var(--text);
+      margin-bottom: 36px;
+    }
+    .flow-row {
+      display: flex;
+      align-items: stretch;
+    }
+    .flow-node {
+      flex: 1;
+      min-width: 0;
+      background: var(--surface);
+      border: 1.5px solid var(--border);
+      border-radius: 12px;
+      padding: 18px 10px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .flow-node-icon { font-size: 24px; margin-bottom: 8px; }
+    .flow-node-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+    .flow-node-sub {
+      font-size: 11px;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+    .flow-arr {
+      flex: 0 0 28px;
+      text-align: center;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--brand-light);
+      align-self: center;
+    }
+    .flow-pro-divider {
+      flex: 0 0 52px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      align-self: center;
+    }
+    .pro-badge {
+      background: var(--brand);
+      color: #fff;
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+      padding: 2px 8px;
+      border-radius: 20px;
+      white-space: nowrap;
+    }
+    .pro-divider-arr {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--brand);
+    }
+    /* — Zone bar — */
+    .flow-zones {
+      display: flex;
+      align-items: stretch;
+      margin-bottom: 10px;
+    }
+    .flow-zone {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 12px;
+      border-radius: 8px;
+      flex-wrap: wrap;
+    }
+    .zone-free {
+      flex: 3;
+      background: #F0FDF4;
+      border: 1px solid #BBF7D0;
+    }
+    .zone-spacer {
+      flex: 0 0 52px; /* matches pro-divider width */
+    }
+    .zone-pro {
+      flex: 2;
+      background: #FFFBEB;
+      border: 1px solid #FCD34D;
+    }
+    .zone-pill {
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+      padding: 2px 8px;
+      border-radius: 20px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .zone-pill-free { background: var(--brand); color: #fff; }
+    .zone-pill-pro  { background: #B45309; color: #fff; }
+    .zone-desc {
+      font-size: 10px;
+      font-weight: 500;
+      line-height: 1.3;
+    }
+    .zone-free .zone-desc { color: var(--brand-dark); }
+    .zone-pro  .zone-desc { color: #92400E; }
+    /* — Node connectivity badge — */
+    .node-conn {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 600;
+      margin-top: 6px;
+      padding: 1px 7px;
+      border-radius: 10px;
+    }
+    .node-conn-offline { background: #F3F4F6; color: #6B7280; }
+    .node-conn-online  { background: #DBEAFE; color: #1D4ED8; }
+    .flow-return {
+      display: flex;
+      align-items: flex-end;
+      height: 30px;
+    }
+    .return-leg {
+      width: 9%;
+      height: 100%;
+      border-bottom: 2px solid var(--brand-light);
+    }
+    .return-leg-left {
+      border-left: 2px solid var(--brand-light);
+      border-radius: 0 0 0 8px;
+      position: relative;
+    }
+    .return-leg-left::before {
+      content: '▲';
+      position: absolute;
+      top: -11px;
+      left: -7px;
+      font-size: 9px;
+      color: var(--brand-light);
+    }
+    .return-leg-right {
+      border-right: 2px solid var(--brand-light);
+      border-radius: 0 0 8px 0;
+      width: 29%; /* end under node 4, not node 5 */
+    }
+    .return-mid {
+      flex: 1;
+      border-bottom: 2px solid var(--brand-light);
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      padding-bottom: 5px;
+    }
+    .return-mid span {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--brand);
+      background: var(--bg);
+      padding: 0 8px;
+      white-space: nowrap;
+    }
+    .flow-return-mobile { display: none; }
+    .badge-soon {
+      display: inline-block;
+      background: #D1FAE5;
+      color: var(--brand-dark);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      padding: 2px 7px;
+      border-radius: 20px;
+      vertical-align: middle;
+    }
+    @media (max-width: 620px) {
+      .flow-row { flex-direction: column; align-items: stretch; }
+      .flow-arr { flex: 0 0 20px; transform: rotate(90deg); }
+      .flow-zones  { display: none; }
+      .flow-return { display: none; }
+      .flow-pro-divider {
+        flex: 0 0 auto;
+        flex-direction: row;
+        align-items: center;
+        gap: 8px;
+        padding: 4px 0;
+      }
+      .flow-pro-divider::before,
+      .flow-pro-divider::after {
+        content: '';
+        flex: 1;
+        height: 1.5px;
+        background: var(--brand-light);
+        display: block;
+      }
+      .pro-divider-arr { display: none; }
+      .flow-return-mobile {
+        display: flex;
+        align-items: center;
+        padding: 4px 8px 4px 12px;
+        font-size: 11px;
+        font-weight: 600;
+        color: var(--brand);
+        border-left: 2px solid var(--brand-light);
+        margin: 2px 0 2px 20px;
+      }
+    }
+
     /* ── Footer ── */
     footer {
       margin-top: 100px;
@@ -549,6 +780,75 @@
         <p class="screenshot-caption">Dark Mode</p>
       </div>
     </div>
+  </section>
+
+  <section class="how-it-works">
+    <p class="how-label">How It Works</p>
+    <h2 class="how-title">A simple loop from build to better</h2>
+
+    <div class="flow-diagram">
+
+      <div class="flow-zones">
+        <div class="flow-zone zone-free">
+          <span class="zone-pill zone-pill-free">Free</span>
+          <span class="zone-desc">No account needed · works offline</span>
+        </div>
+        <div class="zone-spacer"></div>
+        <div class="flow-zone zone-pro">
+          <span class="zone-pill zone-pill-pro">Pro</span>
+          <span class="zone-desc">Account required</span>
+        </div>
+      </div>
+
+      <div class="flow-row">
+        <div class="flow-node">
+          <div class="flow-node-icon">🏗️</div>
+          <div class="flow-node-title">Create Builds</div>
+          <div class="flow-node-sub">Name it</div>
+          <span class="node-conn node-conn-offline">offline</span>
+        </div>
+        <div class="flow-arr">→</div>
+        <div class="flow-node">
+          <div class="flow-node-icon">⚙️</div>
+          <div class="flow-node-title">Input Details</div>
+          <div class="flow-node-sub">Basic or advanced specs</div>
+          <span class="node-conn node-conn-offline">offline</span>
+        </div>
+        <div class="flow-arr">→</div>
+        <div class="flow-node">
+          <div class="flow-node-icon">📊</div>
+          <div class="flow-node-title">Understand Performance</div>
+          <div class="flow-node-sub">Scores, ballistics &amp; trajectory</div>
+          <span class="node-conn node-conn-offline">offline</span>
+        </div>
+        <div class="flow-pro-divider">
+          <span class="pro-badge">Pro</span>
+          <span class="pro-divider-arr">→</span>
+        </div>
+        <div class="flow-node">
+          <div class="flow-node-icon">💡</div>
+          <div class="flow-node-title">Improve Your Setup</div>
+          <div class="flow-node-sub">Experiment before you spend - manual or <span class="badge-soon">AI soon</span></div>
+          <span class="node-conn node-conn-online">cloud</span>
+        </div>
+        <div class="flow-return-mobile">↩ refine your build or inputs</div>
+        <div class="flow-arr">→</div>
+        <div class="flow-node">
+          <div class="flow-node-icon">🛒</div>
+          <div class="flow-node-title">Share Your List</div>
+          <div class="flow-node-sub">Share your parts list with your bow shop/tech</div>
+          <span class="node-conn node-conn-online">cloud</span>
+        </div>
+      </div>
+
+      <div class="flow-return">
+        <div class="return-leg return-leg-left"></div>
+        <div class="return-mid"><span>↩ refine your build or inputs</span></div>
+        <div class="return-leg return-leg-right"></div>
+      </div>
+
+    </div>
+
   </section>
 
   <section class="features">
