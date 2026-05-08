@@ -659,6 +659,7 @@
     let pointerActive = false;
 
     modalWrapper.addEventListener('pointerdown', (event) => {
+      if (event.target.closest('button')) return;
       pointerActive = true;
       pointerStartX = event.clientX;
       pointerStartY = event.clientY;
