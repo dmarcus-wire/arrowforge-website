@@ -152,30 +152,57 @@
       max-width: 900px;
       margin: 80px auto 0;
       padding: 0 24px;
+    }
+    .features-label {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 24px;
+      text-align: center;
+    }
+    .features-list {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0 48px;
     }
-    .feature-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 24px;
+    .feature-item {
+      display: flex;
+      gap: 14px;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--border);
     }
-    .feature-icon {
-      font-size: 28px;
-      margin-bottom: 12px;
+    .features-list .feature-item:nth-last-child(-n+2) { border-bottom: none; }
+    .feature-check {
+      flex-shrink: 0;
+      width: 20px;
+      height: 20px;
+      background: var(--brand);
+      border-radius: 50%;
+      color: #fff;
+      font-size: 11px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 2px;
     }
-    .feature-card h3 {
-      font-size: 16px;
+    .feature-item h3 {
+      font-size: 14px;
       font-weight: 700;
       color: var(--text);
-      margin-bottom: 8px;
+      margin-bottom: 4px;
     }
-    .feature-card p {
-      font-size: 14px;
+    .feature-item p {
+      font-size: 13px;
       color: var(--muted);
       line-height: 1.6;
+    }
+    @media (max-width: 600px) {
+      .features-list { grid-template-columns: 1fr; }
+      .features-list .feature-item:nth-last-child(-n+2) { border-bottom: 1px solid var(--border); }
+      .features-list .feature-item:last-child { border-bottom: none; }
     }
 
     /* ── Screenshots ── */
@@ -852,35 +879,50 @@
   </section>
 
   <section class="features">
-    <div class="feature-card">
-      <div class="feature-icon">🎯</div>
-      <h3>Goal countdown + coaching</h3>
-      <p>Set your hunt opener or competition date. ArrowForge counts down and tells you what to focus on — plenty of time, final stretch, or game week.</p>
-    </div>
-    <div class="feature-card">
-      <div class="feature-icon">⛰️</div>
-      <h3>Training → Destination correction</h3>
-      <p>Practice at sea level, hunt at 9,000 ft. ArrowForge accounts for the air density shift so your numbers reflect where you actually shoot.</p>
-    </div>
-    <div class="feature-card">
-      <div class="feature-icon">📐</div>
-      <h3>Build Match Score</h3>
-      <p>A weighted readiness score tuned to your application — lethality matters more for hunters, trajectory and tuning for competitors.</p>
-    </div>
-    <div class="feature-card">
-      <div class="feature-icon">🔢</div>
-      <h3>Transparent math</h3>
-      <p>Every number shows the formula behind it. Tap any result to see exactly how it was calculated — no black boxes.</p>
-    </div>
-    <div class="feature-card">
-      <div class="feature-icon">🗂️</div>
-      <h3>Multiple builds</h3>
-      <p>Save and compare setups side by side. Switch between your hunting rig, target setup, and practice arrows in seconds.</p>
-    </div>
-    <div class="feature-card">
-      <div class="feature-icon">📊</div>
-      <h3>Progressive ballistics</h3>
-      <p>Starts useful with just draw weight and arrow weight. Gets more accurate as you add diameter, FOC, and advanced data.</p>
+    <p class="features-label">What's inside</p>
+    <div class="features-list">
+      <div class="feature-item">
+        <div class="feature-check">✓</div>
+        <div>
+          <h3>Goal countdown + coaching</h3>
+          <p>Set your hunt opener or competition date. ArrowForge counts down and tells you what to focus on — plenty of time, final stretch, or game week.</p>
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-check">✓</div>
+        <div>
+          <h3>Training → Destination correction</h3>
+          <p>Practice at sea level, hunt at 9,000 ft. ArrowForge accounts for the air density shift so your numbers reflect where you actually shoot.</p>
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-check">✓</div>
+        <div>
+          <h3>Build Match Score</h3>
+          <p>A weighted readiness score tuned to your application — lethality matters more for hunters, trajectory and tuning for competitors.</p>
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-check">✓</div>
+        <div>
+          <h3>Transparent math</h3>
+          <p>Every number shows the formula behind it. Tap any result to see exactly how it was calculated — no black boxes.</p>
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-check">✓</div>
+        <div>
+          <h3>Multiple builds</h3>
+          <p>Save and compare setups side by side. Switch between your hunting rig, target setup, and practice arrows in seconds.</p>
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-check">✓</div>
+        <div>
+          <h3>Progressive ballistics</h3>
+          <p>Starts useful with just draw weight and arrow weight. Gets more accurate as you add diameter, FOC, and advanced data.</p>
+        </div>
+      </div>
     </div>
   </section>
 
