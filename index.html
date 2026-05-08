@@ -180,7 +180,7 @@
 
     /* ── Screenshots ── */
     .screenshots-section {
-      margin-top: 80px;
+      margin-top: 56px;
     }
     .screenshots-label {
       text-align: center;
@@ -198,6 +198,7 @@
       padding: 0 24px 20px;
       scroll-snap-type: x mandatory;
       -webkit-overflow-scrolling: touch;
+      touch-action: pan-x;
       scrollbar-width: none;
     }
     .screenshots-track::-webkit-scrollbar { display: none; }
@@ -209,6 +210,16 @@
       overflow: hidden;
       box-shadow: 0 8px 32px rgba(0,0,0,0.14);
       background: #000;
+    }
+    .modal-image-wrapper {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background: #111827;
+      border-radius: 24px;
+      touch-action: none;
     }
     .screenshot-frame img {
       width: 100%;
@@ -389,6 +400,144 @@
     </div>
   </section>
 
+  <section class="screenshots-section">
+    <p class="screenshots-label">See it in action</p>
+    <div class="screenshots-track">
+      <div class="screenshot-item">
+        <div class="screenshot-frame">
+          <img src="screenshots/v2-arrowforge-archerdetails.png" alt="Archer Details input screen" loading="lazy" />
+        </div>
+        <p class="screenshot-caption">Archer Details</p>
+      </div>
+      <div class="screenshot-item">
+        <div class="screenshot-frame">
+          <img src="screenshots/v2-arrowforge-bowdetails.png" alt="Bow Details input screen" loading="lazy" />
+        </div>
+        <p class="screenshot-caption">Bow Details</p>
+      </div>
+      <div class="screenshot-item">
+        <div class="screenshot-frame">
+          <img src="screenshots/v2-arrowforge-arrowdetails.png" alt="Arrow Details input screen" loading="lazy" />
+        </div>
+        <p class="screenshot-caption">Arrow Details</p>
+      </div>
+      <div class="screenshot-item">
+        <div class="screenshot-frame">
+          <img src="screenshots/v2-arrowforge-sightdetails.png" alt="Sight Details input screen" loading="lazy" />
+        </div>
+        <p class="screenshot-caption">Sight Details</p>
+      </div>
+      <div class="screenshot-item">
+        <div class="screenshot-frame">
+          <img src="screenshots/v2-arrowforge-newbuild.png" alt="My Builds screen" loading="lazy" />
+        </div>
+        <p class="screenshot-caption">Manage Builds</p>
+      </div>
+      <div class="screenshot-item">
+        <div class="screenshot-frame">
+          <img src="screenshots/v2-arrowforge-buildmenu-options.png" alt="Build menu options screen" loading="lazy" />
+        </div>
+        <p class="screenshot-caption">Build Menu Options</p>
+      </div>
+      <div class="screenshot-item">
+        <div class="screenshot-frame">
+          <img src="screenshots/v2-arrowforge-twoarrows.png" alt="Multiple builds" loading="lazy" />
+        </div>
+        <p class="screenshot-caption">Compare Builds</p>
+      </div>
+      <div class="screenshot-item">
+        <div class="screenshot-frame">
+          <img src="screenshots/v2-arrowforge-comparebuilds.png" alt="Compare Builds side by side" loading="lazy" />
+        </div>
+        <p class="screenshot-caption">Side-by-Side Compare</p>
+      </div>
+      <div class="screenshot-item">
+        <div class="screenshot-frame">
+          <img src="screenshots/v2-arrowforge-goallocation.png" alt="Goal and Location results" loading="lazy" />
+        </div>
+        <p class="screenshot-caption">Goal Countdown</p>
+      </div>
+      <div class="screenshot-item">
+        <div class="screenshot-frame">
+          <img src="screenshots/v2-arrowforge-buildmatch.png" alt="Build Match Score" loading="lazy" />
+        </div>
+        <p class="screenshot-caption">Build Match Score</p>
+      </div>
+      <div class="screenshot-item">
+        <div class="screenshot-frame">
+          <img src="screenshots/v2-arrowforge-reviewinputs.png" alt="Review inputs screen" loading="lazy" />
+        </div>
+        <p class="screenshot-caption">Review Inputs</p>
+      </div>
+      <div class="screenshot-item">
+        <div class="screenshot-frame">
+          <img src="screenshots/v2-arrowforge-reviewinputs-share.png" alt="Review inputs and share screen" loading="lazy" />
+        </div>
+        <p class="screenshot-caption">Review Inputs & Share</p>
+      </div>
+      <div class="screenshot-item">
+        <div class="screenshot-frame">
+          <img src="screenshots/v2-arrowforge-arrowperformance.png" alt="Arrow Performance gauges" loading="lazy" />
+        </div>
+        <p class="screenshot-caption">Arrow Performance</p>
+      </div>
+      <div class="screenshot-item">
+        <div class="screenshot-frame">
+          <img src="screenshots/v2-arrowforge-spine.png" alt="Spine and Stiffness" loading="lazy" />
+        </div>
+        <p class="screenshot-caption">Spine Check</p>
+      </div>
+      <div class="screenshot-item">
+        <div class="screenshot-frame">
+          <img src="screenshots/v2-arrowforge-gameeffect.png" alt="Game Effectiveness" loading="lazy" />
+        </div>
+        <p class="screenshot-caption">Game Effectiveness</p>
+      </div>
+      <div class="screenshot-item">
+        <div class="screenshot-frame">
+          <img src="screenshots/v2-arrowforge-performance.png" alt="Performance by Range table" loading="lazy" />
+        </div>
+        <p class="screenshot-caption">Performance by Range</p>
+      </div>
+      <div class="screenshot-item">
+        <div class="screenshot-frame">
+          <img src="screenshots/v2-arrowforge-impact.png" alt="Launch and Impact" loading="lazy" />
+        </div>
+        <p class="screenshot-caption">Launch &amp; Impact</p>
+      </div>
+      <div class="screenshot-item">
+        <div class="screenshot-frame">
+          <img src="screenshots/v2-arrowforge-sightpins.png" alt="Sight Pins" loading="lazy" />
+        </div>
+        <p class="screenshot-caption">Sight Pins</p>
+      </div>
+      <div class="screenshot-item">
+        <div class="screenshot-frame">
+          <img src="screenshots/v2-arrowforge-trajectory.png" alt="Trajectory visualization" loading="lazy" />
+        </div>
+        <p class="screenshot-caption">Trajectory</p>
+      </div>
+      <div class="screenshot-item">
+        <div class="screenshot-frame">
+          <img src="screenshots/v2-arrowforge-shoppinglist-share.png" alt="Shopping list and share screen" loading="lazy" />
+        </div>
+        <p class="screenshot-caption">Shopping List & Share</p>
+      </div>
+      <div class="screenshot-item">
+        <div class="screenshot-frame">
+          <img src="screenshots/v2-arrowforge-profile.png" alt="Profile and preferences" loading="lazy" />
+        </div>
+        <p class="screenshot-caption">Profile</p>
+      </div>
+      <div class="screenshot-item">
+        <div class="screenshot-frame">
+          <img src="screenshots/v2-arrowforge-profile-darkmode.png" alt="Dark mode" loading="lazy" />
+        </div>
+        <p class="screenshot-caption">Dark Mode</p>
+      </div>
+    </div>
+  </section>
+
   <section class="features">
     <div class="feature-card">
       <div class="feature-icon">🎯</div>
@@ -421,22 +570,6 @@
       <p>Starts useful with just draw weight and arrow weight. Gets more accurate as you add diameter, FOC, and advanced data.</p>
     </div>
   </section>
-
-  <section class="screenshots-section">
-    <p class="screenshots-label">See it in action</p>
-    <div class="screenshots-track">
-      <div class="screenshot-item">
-        <div class="screenshot-frame">
-          <img src="screenshots/v2-arrowforge-archerdetails.png" alt="Archer Details input screen" loading="lazy" />
-        </div>
-        <p class="screenshot-caption">Archer Details</p>
-      </div>
-      <div class="screenshot-item">
-        <div class="screenshot-frame">
-          <img src="screenshots/v2-arrowforge-bowdetails.png" alt="Bow Details input screen" loading="lazy" />
-        </div>
-        <p class="screenshot-caption">Bow Details</p>
-      </div>
       <div class="screenshot-item">
         <div class="screenshot-frame">
           <img src="screenshots/v2-arrowforge-arrowdetails.png" alt="Arrow Details input screen" loading="lazy" />
@@ -638,6 +771,38 @@
       if (event.target === modal) {
         closeModal();
       }
+    });
+
+    const modalWrapper = modal.querySelector('.modal-image-wrapper');
+    let pointerStartX = null;
+    let pointerStartY = null;
+    let pointerActive = false;
+
+    modalWrapper.addEventListener('pointerdown', (event) => {
+      pointerActive = true;
+      pointerStartX = event.clientX;
+      pointerStartY = event.clientY;
+      modalWrapper.setPointerCapture(event.pointerId);
+    });
+
+    modalWrapper.addEventListener('pointerup', (event) => {
+      if (!pointerActive || pointerStartX === null) return;
+      const dx = event.clientX - pointerStartX;
+      const dy = event.clientY - pointerStartY;
+      pointerActive = false;
+      pointerStartX = null;
+      pointerStartY = null;
+
+      if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) {
+        if (dx > 0) showPrevious();
+        else showNext();
+      }
+    });
+
+    modalWrapper.addEventListener('pointercancel', () => {
+      pointerActive = false;
+      pointerStartX = null;
+      pointerStartY = null;
     });
 
     document.addEventListener('keydown', (event) => {
