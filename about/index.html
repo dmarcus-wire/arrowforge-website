@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About — ArrowForge</title>
+  <meta name="description" content="The story behind ArrowForge — a tool built by a bowhunter after a hard lesson in the Colorado backcountry." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --brand:   #2D6A4F;
+      --bg:      #F9FAFB;
+      --surface: #FFFFFF;
+      --text:    #111827;
+      --muted:   #6B7280;
+      --border:  #E5E7EB;
+      --accent-bg: #ECFDF5;
+      --accent-border: #A7F3D0;
+    }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+    nav {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 0 24px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+    .nav-logo img {
+      height: 36px;
+      width: 36px;
+      display: block;
+      border-radius: 8px;
+    }
+    .nav-logo-text {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--text);
+      letter-spacing: -0.4px;
+    }
+    .nav-back {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--muted);
+      text-decoration: none;
+    }
+    .nav-back:hover { color: var(--brand); }
+
+    .content {
+      max-width: 720px;
+      margin: 60px auto 100px;
+      padding: 0 24px;
+    }
+    .eyebrow {
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color: var(--brand);
+      margin-bottom: 12px;
+    }
+    h1 {
+      font-size: 38px;
+      font-weight: 800;
+      letter-spacing: -0.6px;
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+    .subtitle {
+      font-size: 17px;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 36px;
+    }
+    .portrait {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+      margin: 0 0 40px;
+      padding: 24px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+    }
+    .portrait img {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid var(--accent-bg);
+      box-shadow: 0 2px 12px rgba(17, 24, 39, 0.08);
+    }
+    .portrait .name {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text);
+    }
+    .portrait .role {
+      font-size: 14px;
+      color: var(--muted);
+    }
+    h2 {
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: -0.3px;
+      margin: 40px 0 12px;
+    }
+    p {
+      font-size: 16px;
+      color: #374151;
+      line-height: 1.75;
+      margin-bottom: 16px;
+    }
+    blockquote {
+      margin: 28px 0;
+      padding: 18px 22px;
+      border-left: 4px solid var(--brand);
+      background: var(--accent-bg);
+      border-radius: 0 10px 10px 0;
+    }
+    blockquote p {
+      margin: 0;
+      font-size: 16px;
+      font-style: italic;
+      color: #064E3B;
+    }
+    a { color: var(--brand); font-weight: 600; }
+    a:hover { text-decoration: underline; }
+    .cta-row {
+      margin-top: 44px;
+      padding: 24px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      text-align: center;
+    }
+    .cta-row p {
+      margin: 0 0 14px;
+      font-size: 15px;
+      color: var(--muted);
+    }
+    .cta-buttons {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-block;
+      padding: 12px 22px;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 700;
+      text-decoration: none;
+      letter-spacing: 0.2px;
+    }
+    .btn-primary {
+      background: var(--brand);
+      color: #fff;
+    }
+    .btn-primary:hover { background: #245741; text-decoration: none; }
+    .btn-secondary {
+      background: var(--surface);
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+    .btn-secondary:hover { border-color: var(--brand); color: var(--brand); text-decoration: none; }
+
+    footer {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      padding: 30px 24px;
+      text-align: center;
+    }
+    footer p {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+    footer a { color: var(--brand); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+    .footer-links {
+      margin-top: 10px;
+      display: flex;
+      gap: 18px;
+      justify-content: center;
+    }
+    .footer-links a {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--muted);
+    }
+    .footer-links a:hover { color: var(--brand); }
+
+    @media (max-width: 600px) {
+      h1 { font-size: 30px; }
+      .portrait img { width: 130px; height: 130px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="/" class="nav-logo">
+      <img src="/icon.png" alt="ArrowForge icon" />
+      <span class="nav-logo-text">ArrowForge</span>
+    </a>
+    <a href="/" class="nav-back">← Back</a>
+  </nav>
+
+  <div class="content">
+    <p class="eyebrow">About</p>
+    <h1>Built from a hard lesson in the backcountry.</h1>
+    <p class="subtitle">ArrowForge wasn't designed in a boardroom. It was reverse-engineered on a whiteboard after a long, quiet drive home from Colorado — trying to figure out why the math didn't math.</p>
+
+    <div class="portrait">
+      <img src="/about-photo.jpg" alt="Founder of ArrowForge in the Colorado backcountry" />
+      <div class="name">David Marcus</div>
+      <div class="role">Founder · Frontier Forge LLC</div>
+    </div>
+
+    <h2>September 2025. Colorado.</h2>
+    <p>I'd been training for five seasons. Five seasons of tag soup — no meat in the freezer. I'd put in the reps, dialed my form, and pushed my accuracy out to 100 yards. I had a complete setup — bow, arrow, release — that I'd purchased from a well-known bow shop in the Denver area. I trusted that what they put in my hands was enough to make a clean kill.</p>
+
+    <p>Three miles in from the truck, the moment finally came. I crested a hill a mile from my planned base camp and a 5x5 bull was drinking water below me. I crept in as close as I could without being noticed. I drew. I picked my spot. I sent the arrow.</p>
+
+    <p>Hit. He bolted. And something felt off.</p>
+
+    <p>I waited the full time before tracking. I got to the jump site, found the tracks — but no blood, and no arrow. Six hours of grid-searching later, no elk.</p>
+
+    <h2>The next morning.</h2>
+    <p>I got up and went back out. Another 5x5 stepped into range — but the closest I could get him was 70 yards, and the doubt from the day before was sitting heavy in my chest. I let him walk. I spent the rest of the day trying to recover the first bull. Nothing.</p>
+
+    <p>Wounding an animal is the thing every ethical hunter dreads. I beat myself up the whole drive home.</p>
+
+    <h2>Then I ran the math.</h2>
+    <p>Back at the kitchen table, I started checking numbers. Spine. FOC. Kinetic energy. Momentum. Arrow weight against draw weight, broadhead profile against penetration. The math didn't math. The setup I'd been sold — the one I'd trusted for five years — wasn't matched to the game I was hunting or the shot conditions I was taking.</p>
+
+    <p>A whiteboard turned into a spreadsheet. The spreadsheet turned into deeper math: ballistics, trajectory, sight tape calculations, environmental adjustments for elevation and temperature. I overhauled my entire setup from release to bow to arrows. I measured everything. I learned from every solid resource I could find.</p>
+
+    <p>And somewhere in the middle of all that, I realized: I have a background in tech. If running these numbers helped <em>me</em> rebuild my confidence, it could help someone else avoid the same morning I had.</p>
+
+    <h2>That's why ArrowForge exists.</h2>
+    <p>ArrowForge is the tool I wish I'd had before that September. It does the math I had to teach myself — spine matching, FOC, kinetic energy, momentum, trajectory, sight pin calibration, environmental adjustments — and shows you whether your setup is actually matched to the game and the distances you're hunting.</p>
+
+    <p>It runs entirely on your device. No tracking, no ads, no selling your data. The core app is free because I built it for a community I'm part of, not to monetize it.</p>
+
+    <blockquote>
+      <p>If ArrowForge helps one archer step into their pursuit with more confidence, or helps one bow technician recommend better-matched gear, or just gives someone a new angle to reconsider their setup — it's worth it. I hope it helps you.</p>
+    </blockquote>
+
+    <div class="cta-row">
+      <p>ArrowForge is open about how the math works. The mobile app is on the App Store, and the source repo is public.</p>
+      <div class="cta-buttons">
+        <a class="btn btn-primary" href="/">See the app</a>
+        <a class="btn btn-secondary" href="https://github.com/dmarcus-wire/arrowforge-app" target="_blank" rel="noopener">GitHub repo</a>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>Built for bowhunters and competitive archers by <strong>Frontier Forge LLC</strong></p>
+    <p><a id="email-footer-addr"></a></p>
+    <div class="footer-links">
+      <a href="/">Home</a>
+      <a href="/privacy/">Privacy Policy</a>
+      <a id="email-footer-support">Support</a>
+    </div>
+    <p style="margin-top: 16px; font-size: 12px;">© 2026 Frontier Forge LLC. All rights reserved.</p>
+  </footer>
+
+  <script>
+    (function() {
+      var u = atob('YXJyb3dmb3JnZWFwcA==');
+      var d = atob('dHV0YS5pbw==');
+      var m = 'mailto:' + u + '@' + d;
+      ['email-footer-support'].forEach(function(id) {
+        var el = document.getElementById(id);
+        if (el) el.href = m;
+      });
+      var fa = document.getElementById('email-footer-addr');
+      if (fa) { fa.href = m; fa.textContent = u + '@' + d; }
+    })();
+  </script>
+</body>
+</html>
