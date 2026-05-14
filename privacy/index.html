@@ -171,7 +171,7 @@
 
   <div class="content">
     <h1>Privacy Policy</h1>
-    <p class="effective">Effective date: May 7, 2026 &nbsp;·&nbsp; Frontier Forge LLC</p>
+    <p class="effective">Effective date: May 14, 2026 &nbsp;·&nbsp; Frontier Forge LLC</p>
 
     <p>ArrowForge ("we", "our", or "us") is developed and operated by Frontier Forge LLC. This Privacy Policy explains what information we collect, how we use it, who we share it with, and what choices you have — including how to delete your account and data.</p>
 
@@ -222,6 +222,20 @@
     </ul>
     <p>We receive only what Apple sends. Apple's identity token is verified server-side; we do not receive your Apple ID password or any payment information. Apple's data practices are governed by the <a href="https://www.apple.com/legal/privacy/" target="_blank">Apple Privacy Policy</a>.</p>
 
+    <h3>When you use Pro AI features</h3>
+    <p>If you have a Pro subscription and run one of the AI assistants (bow autofill, arrow autofill, arrow recommender, sanity check, launch &amp; impact insight, build score insight, or build plan), a subset of your build data is sent to our Supabase Edge Function, which forwards it to <strong>Anthropic's Claude API</strong> for processing.</p>
+    <p>The payload typically includes the field values relevant to the request — bow specs, arrow specs, archer pursuit / farthest distance, computed ballistics (KE, momentum, drop, FOC, spine) and your current Live Settings (range, wind). For the Build Plan synth, it also includes the cached outputs of the other AI features. The payload does <strong>not</strong> include your email address, account identifier, payment information, or device identifiers.</p>
+    <p>Each AI surface caches its response on your device against a hash of the payload it sent — pressing the AI button again with the same inputs returns the cached response without making a new network call. This is intentional, both for cost and to limit how often your build data is transmitted.</p>
+
+    <h3>When you submit feedback</h3>
+    <p>If you tap Profile → Send Feedback, the app sends a row to our database containing:</p>
+    <ul>
+      <li>The message you wrote, the category you chose (bug / idea / praise / other), the app version, and the device platform (iOS or Android)</li>
+      <li>Your email address (so we can reply) and your account identifier</li>
+      <li>By default, a snapshot of the build you currently have open — this is the same data described under "Build data" above, including any training / destination location names you have set. You can opt out of attaching the build snapshot before sending; the toggle is on the feedback sheet itself</li>
+    </ul>
+    <p>Feedback rows are visible only to the developer through Supabase's service-role admin tools. They are not shared with third parties and are not used to train any model.</p>
+
     <h3>What we never collect</h3>
     <ul>
       <li>Precise or continuous GPS location</li>
@@ -240,7 +254,9 @@
       <li>Resolve training and destination location searches (geocoding + elevation)</li>
       <li>Authenticate your account and keep your session secure</li>
       <li>Sync and restore your build data across devices when you are signed in</li>
-      <li>Send essential transactional emails (password reset, account confirmation)</li>
+      <li>Generate AI-assisted recommendations when you trigger a Pro AI feature</li>
+      <li>Triage feedback you send us through the in-app feedback sheet</li>
+      <li>Send essential transactional emails (password reset, account confirmation, replies to feedback)</li>
       <li>Respond to support requests you send to us</li>
       <li>Manage your account tier and, in future, subscription status</li>
     </ul>
@@ -261,6 +277,10 @@
 
     <h3>Apple (Sign in with Apple)</h3>
     <p>If you use Sign in with Apple, Apple authenticates your identity and passes a verified credential to our server. Apple may share your name and email address per your iOS privacy settings. We do not share any ArrowForge data back to Apple beyond standard App Store analytics that Apple collects from all apps. Governed by the <a href="https://www.apple.com/legal/privacy/" target="_blank">Apple Privacy Policy</a>.</p>
+
+    <h3>Anthropic (Claude API)</h3>
+    <p>Anthropic powers all Pro AI features. When you trigger one of the assistants, our Supabase Edge Function forwards the request payload (the relevant subset of your build data — see Section 1 for what is included) to Anthropic's Claude API, which returns a response. Our Anthropic API key is held server-side only; it never ships in the app and the device never talks to Anthropic directly.</p>
+    <p>Per Anthropic's commercial API terms, customer inputs and outputs are not used to train Anthropic's models by default. Anthropic processes data in the United States; their handling is governed by the <a href="https://www.anthropic.com/legal/privacy" target="_blank">Anthropic Privacy Policy</a> and the <a href="https://www.anthropic.com/legal/commercial-terms" target="_blank">Anthropic Commercial Terms</a>.</p>
 
     <h3>No other third-party network requests are made by the app.</h3>
     <p>All ballistics calculations run entirely on-device. No usage analytics, crash reporters, ad networks, or social SDKs are embedded in ArrowForge.</p>
@@ -289,6 +309,8 @@
       <li><strong>Local build data</strong> — stored on your device until you delete it or uninstall the app</li>
       <li><strong>Account and cloud build data</strong> — retained until you delete your account</li>
       <li><strong>Authentication logs</strong> — Supabase retains sign-in logs for a limited period per their security practices</li>
+      <li><strong>In-app feedback rows</strong> — retained for up to 2 years to support triage and product improvement, then deleted. Feedback rows are also removed when you delete your account</li>
+      <li><strong>AI requests</strong> — once Anthropic returns a response, the app caches it on your device against the input hash; Anthropic retains the request for a short period for abuse monitoring per their policy. Cached responses are wiped when you delete your account or uninstall the app</li>
       <li><strong>Support emails</strong> — retained for up to 2 years to assist with ongoing issues, then deleted</li>
     </ul>
 
@@ -303,6 +325,7 @@
     <ul>
       <li>Your email address and authentication credentials from Supabase</li>
       <li>All build data synced to the cloud</li>
+      <li>All in-app feedback rows you have submitted</li>
       <li>Your account preferences and subscription record</li>
     </ul>
     <p>Deletion does not remove data stored locally on your device. To remove local data, delete the app from your device.</p>
