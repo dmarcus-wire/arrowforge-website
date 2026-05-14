@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terms of Service — ArrowForge</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --brand:   #2D6A4F;
+      --bg:      #F9FAFB;
+      --surface: #FFFFFF;
+      --text:    #111827;
+      --muted:   #6B7280;
+      --border:  #E5E7EB;
+      --warn-bg: #FFFBEB;
+      --warn-border: #FCD34D;
+      --safety-bg: #FEF2F2;
+      --safety-border: #FCA5A5;
+    }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+    nav {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 0 24px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+    .nav-logo img {
+      height: 36px;
+      width: 36px;
+      display: block;
+      border-radius: 8px;
+    }
+    .nav-logo-text {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--text);
+      letter-spacing: -0.4px;
+    }
+    .nav-back {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--muted);
+      text-decoration: none;
+    }
+    .nav-back:hover { color: var(--brand); }
+
+    .content {
+      max-width: 680px;
+      margin: 60px auto 100px;
+      padding: 0 24px;
+    }
+    h1 {
+      font-size: 32px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      margin-bottom: 8px;
+    }
+    .effective {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 40px;
+    }
+    h2 {
+      font-size: 18px;
+      font-weight: 700;
+      margin: 36px 0 10px;
+    }
+    h3 {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text);
+      margin: 20px 0 6px;
+    }
+    p {
+      font-size: 15px;
+      color: #374151;
+      line-height: 1.7;
+      margin-bottom: 14px;
+    }
+    ul {
+      margin: 10px 0 14px 20px;
+    }
+    ul li {
+      font-size: 15px;
+      color: #374151;
+      line-height: 1.7;
+      margin-bottom: 6px;
+    }
+    a { color: var(--brand); }
+    .contact-box {
+      margin-top: 40px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px 24px;
+    }
+    .contact-box p { margin: 0; }
+    .callout {
+      background: var(--warn-bg);
+      border: 1px solid var(--warn-border);
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin: 24px 0;
+    }
+    .callout p {
+      margin: 0;
+      font-size: 14px;
+      color: #92400E;
+    }
+    .callout strong { color: #78350F; }
+    .safety {
+      background: var(--safety-bg);
+      border: 1px solid var(--safety-border);
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin: 24px 0;
+    }
+    .safety p {
+      margin: 0 0 8px;
+      font-size: 14px;
+      color: #991B1B;
+    }
+    .safety p:last-child { margin-bottom: 0; }
+    .safety strong { color: #7F1D1D; }
+    .toc {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin-bottom: 40px;
+    }
+    .toc p {
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+    .toc ol {
+      margin: 0 0 0 18px;
+    }
+    .toc ol li {
+      font-size: 14px;
+      color: #374151;
+      line-height: 1.8;
+      margin-bottom: 0;
+    }
+    .toc ol li a {
+      color: var(--brand);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .toc ol li a:hover { text-decoration: underline; }
+    .divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 48px 0 0;
+    }
+    .draft-banner {
+      background: #FEF3C7;
+      border: 1px solid #F59E0B;
+      border-radius: 8px;
+      padding: 12px 16px;
+      margin-bottom: 24px;
+      font-size: 13px;
+      color: #78350F;
+    }
+    .draft-banner strong { color: #78350F; }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="/" class="nav-logo">
+      <img src="/icon.png" alt="ArrowForge icon" />
+      <span class="nav-logo-text">ArrowForge</span>
+    </a>
+    <a href="/" class="nav-back">← Back</a>
+  </nav>
+
+  <div class="content">
+    <h1>Terms of Service</h1>
+    <p class="effective">Effective date: May 14, 2026 &nbsp;·&nbsp; Frontier Forge LLC</p>
+
+    <div class="draft-banner">
+      <strong>Note:</strong> This document is being reviewed by counsel. The version on this page may be updated before the App Store launch. Material changes will be noted on the effective date.
+    </div>
+
+    <p>These Terms of Service ("Terms") govern your access to and use of the ArrowForge mobile application and any related services (collectively, the "Service") provided by Frontier Forge LLC ("ArrowForge", "we", "us", or "our"). By installing, accessing, or using the Service, you agree to be bound by these Terms.</p>
+
+    <p>If you do not agree to these Terms, do not install or use the Service.</p>
+
+    <div class="toc">
+      <p>Contents</p>
+      <ol>
+        <li><a href="#about">About the Service</a></li>
+        <li><a href="#eligibility">Eligibility</a></li>
+        <li><a href="#accounts">Accounts and security</a></li>
+        <li><a href="#acceptable-use">Acceptable use</a></li>
+        <li><a href="#safety-disclaimer">Safety disclaimer — critical</a></li>
+        <li><a href="#subscriptions">Subscriptions and billing</a></li>
+        <li><a href="#intellectual-property">Intellectual property</a></li>
+        <li><a href="#third-party">Third-party services and content</a></li>
+        <li><a href="#user-content">Your data and content</a></li>
+        <li><a href="#termination">Termination</a></li>
+        <li><a href="#disclaimer">Disclaimer of warranties</a></li>
+        <li><a href="#liability">Limitation of liability</a></li>
+        <li><a href="#indemnification">Indemnification</a></li>
+        <li><a href="#governing-law">Governing law and disputes</a></li>
+        <li><a href="#changes">Changes to these Terms</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ol>
+    </div>
+
+    <!-- 1 -->
+    <h2 id="about">1. About the Service</h2>
+    <p>ArrowForge is a planning and reference tool for archers and bowhunters. It helps you organise bow and arrow specifications, perform ballistics calculations, compare setups, and (with an optional Pro subscription) access AI-assisted recommendations. The Service runs primarily on your device. Optional account features sync your data to our cloud database.</p>
+    <p>ArrowForge is a <strong>reference and sanity-check tool</strong>, not a substitute for professional equipment setup, tuning, or training. See Section 5 for the full safety disclaimer.</p>
+
+    <!-- 2 -->
+    <h2 id="eligibility">2. Eligibility</h2>
+    <p>You must be at least 13 years old to use the Service. If you are under 18, you must have permission from a parent or legal guardian, and they must read and agree to these Terms on your behalf. You may not use the Service if you are barred from doing so under applicable law.</p>
+    <p>By using the Service you represent that the information you provide is accurate and that you have authority to enter into these Terms.</p>
+
+    <!-- 3 -->
+    <h2 id="accounts">3. Accounts and security</h2>
+    <p>Most of the Service works without an account. An optional account, created with an email address and password or via Sign in with Apple, unlocks cloud sync and Pro features.</p>
+    <p>You are responsible for:</p>
+    <ul>
+      <li>Keeping your password and account credentials secure</li>
+      <li>All activity that occurs under your account</li>
+      <li>Notifying us promptly if you suspect unauthorised access</li>
+    </ul>
+    <p>We may suspend or terminate accounts that violate these Terms or that we reasonably believe are being misused.</p>
+
+    <!-- 4 -->
+    <h2 id="acceptable-use">4. Acceptable use</h2>
+    <p>You agree not to:</p>
+    <ul>
+      <li>Use the Service in any unlawful manner or for any unlawful purpose</li>
+      <li>Reverse engineer, decompile, disassemble, or attempt to derive the source code of the Service, except to the extent that applicable law expressly permits despite this limitation</li>
+      <li>Scrape, harvest, or otherwise extract data from the Service in bulk, including via automated agents or scripts</li>
+      <li>Attempt to gain unauthorised access to any part of the Service, the accounts of other users, or our servers, networks, or supporting infrastructure</li>
+      <li>Probe, scan, or test the vulnerability of any system or network, or breach any security or authentication measures</li>
+      <li>Interfere with or disrupt the Service, including by introducing viruses, malware, or other harmful code</li>
+      <li>Use the Service to send unsolicited communications or to abuse, harass, or harm other users</li>
+      <li>Misrepresent your identity, impersonate any person or entity, or falsely state your affiliation with any person or entity</li>
+      <li>Use the Service to develop a competing product or to train a machine-learning model</li>
+      <li>Resell, sublicense, or otherwise commercially exploit access to the Service without our written permission</li>
+      <li>Bypass, attempt to bypass, or share credentials that bypass any Pro subscription paywall or other access control</li>
+    </ul>
+    <p>Violation of these rules may result in suspension or termination of your account and, where the violation causes us material harm, civil action under applicable law.</p>
+
+    <!-- 5 -->
+    <h2 id="safety-disclaimer">5. Safety disclaimer — critical</h2>
+
+    <div class="safety">
+      <p><strong>Archery and bowhunting equipment can cause serious injury or death if used improperly. ArrowForge is a planning tool, not a substitute for qualified hands-on equipment setup, tuning, or instruction.</strong></p>
+      <p>Every recommendation, calculation, score, and AI insight produced by the Service is a <strong>sanity check</strong> — a starting point intended to spark conversation with a qualified bow tech, coach, or experienced bowhunter. The numbers are derived from generalised models and from inputs you provide; they cannot account for the specifics of your equipment, the condition of individual components, your form, or local conditions.</p>
+      <p>The Service is particularly explicit about spine selection: an under-spined arrow at heavy draw weight can shatter on release and cause serious injury. <strong>Always verify your arrow spine against the manufacturer's published chart and have a qualified bow tech inspect your setup before shooting</strong>, especially when changing draw weight, draw length, arrow length, point weight, or shaft brand.</p>
+    </div>
+
+    <p>You agree that you are solely responsible for:</p>
+    <ul>
+      <li>Verifying any specification, calculation, or recommendation produced by the Service with the manufacturer of your equipment and with a qualified bow technician</li>
+      <li>Following all applicable safety guidance from your equipment manufacturers and from your local archery range, hunting unit, or governing body</li>
+      <li>Practising at your actual capable range, not your theoretical maximum range, and abiding by all applicable hunting regulations and ethical standards</li>
+      <li>Inspecting your bow, arrows, and accessories before every shot for damage, wear, or improper assembly</li>
+    </ul>
+
+    <p>To the maximum extent permitted by applicable law, ArrowForge accepts no responsibility for personal injury, equipment damage, or harm to wildlife resulting from your use of, or reliance on, the Service.</p>
+
+    <!-- 6 -->
+    <h2 id="subscriptions">6. Subscriptions and billing</h2>
+    <p>Some features (including AI assistants such as bow autofill, arrow recommender, sanity check, and build plan synth) are available only with a Pro subscription. Subscriptions are sold through the Apple App Store and are governed by Apple's standard subscription terms.</p>
+    <p>By purchasing a subscription, you authorise Apple to charge the payment method on file and to renew the subscription automatically until you cancel. Renewal price, billing period, and management are handled through your Apple ID account.</p>
+    <p>To cancel, manage, or request a refund, use the subscription management tools in your Apple ID account settings or contact Apple Support. ArrowForge does not process payments and cannot issue refunds directly.</p>
+    <p>Promotional codes for Pro access (where available) are non-transferable, may be limited in number, and may expire. We may revoke promotional access if a code is used in violation of these Terms.</p>
+
+    <!-- 7 -->
+    <h2 id="intellectual-property">7. Intellectual property</h2>
+    <p>The Service, including all software, text, graphics, ballistics models, user-interface designs, and trademarks (collectively, the "ArrowForge Materials"), is owned by Frontier Forge LLC and is protected by copyright, trademark, and other intellectual property laws.</p>
+    <p>Subject to your compliance with these Terms, we grant you a personal, limited, non-exclusive, non-transferable, revocable licence to install and use the Service on devices you own or control, for your personal, non-commercial use.</p>
+    <p>You may not copy, modify, distribute, sell, lease, or create derivative works of the ArrowForge Materials except as expressly permitted by these Terms or by applicable law.</p>
+
+    <!-- 8 -->
+    <h2 id="third-party">8. Third-party services and content</h2>
+    <p>The Service uses third-party services including (without limitation) Supabase for authentication and cloud storage, Nominatim and Open-Elevation for location and elevation lookups, Anthropic for AI features, and the Apple App Store for distribution and billing. Your use of these services is governed by their respective terms. We are not responsible for the practices of third parties.</p>
+    <p>Manufacturer names, model names, and product specifications referenced inside the Service belong to their respective owners. References are for compatibility and identification purposes only and do not imply endorsement.</p>
+
+    <!-- 9 -->
+    <h2 id="user-content">9. Your data and content</h2>
+    <p>You retain ownership of the build data, notes, locations, and other content you enter into the Service ("Your Content"). By syncing Your Content to our cloud database, you grant us a limited licence to store, process, and display it to you across your devices, and to provide the features you have requested (such as AI Pro features that operate on the build data you submit).</p>
+    <p>We do not sell Your Content, do not use it for advertising, and do not use it to train machine-learning models. Our handling of Your Content is described in detail in the <a href="/privacy/">Privacy Policy</a>.</p>
+    <p>You may export or delete Your Content at any time. Deleting your account removes all server-side copies of Your Content within 30 days; local copies on your device are removed when you uninstall the Service.</p>
+
+    <!-- 10 -->
+    <h2 id="termination">10. Termination</h2>
+    <p>You may stop using the Service at any time. You may delete your account by emailing <a href="mailto:arrowforgeapp@tuta.io">arrowforgeapp@tuta.io</a> with the subject line "Delete my account."</p>
+    <p>We may suspend or terminate your access to the Service, with or without notice, if we reasonably believe you have violated these Terms, are misusing the Service, or are placing the security or integrity of the Service or other users at risk.</p>
+    <p>Sections that by their nature should survive termination (including Acceptable Use, Safety Disclaimer, Intellectual Property, Disclaimer of Warranties, Limitation of Liability, Indemnification, and Governing Law) will continue to apply after termination.</p>
+
+    <!-- 11 -->
+    <h2 id="disclaimer">11. Disclaimer of warranties</h2>
+    <p>To the maximum extent permitted by applicable law, the Service is provided <strong>"as is"</strong> and <strong>"as available"</strong> without warranties of any kind, whether express, implied, statutory, or otherwise. We expressly disclaim all warranties of merchantability, fitness for a particular purpose, non-infringement, and any warranties arising out of course of dealing or usage of trade.</p>
+    <p>We do not warrant that the Service will be uninterrupted, error-free, secure, or free from viruses or other harmful components. We do not warrant the accuracy, completeness, or reliability of any ballistics calculation, score, AI recommendation, or other output of the Service.</p>
+
+    <!-- 12 -->
+    <h2 id="liability">12. Limitation of liability</h2>
+    <p>To the maximum extent permitted by applicable law, in no event will Frontier Forge LLC or its officers, directors, employees, contractors, or affiliates be liable for any indirect, incidental, special, consequential, punitive, or exemplary damages (including damages for personal injury, loss of equipment, loss of profits, loss of data, or loss of goodwill) arising out of or relating to your use of, or inability to use, the Service, even if we have been advised of the possibility of such damages.</p>
+    <p>To the maximum extent permitted by applicable law, our total aggregate liability arising out of or relating to the Service or these Terms will not exceed the greater of <strong>fifty United States dollars (US$50)</strong> or the amount you paid us for Pro subscriptions in the twelve months immediately preceding the claim.</p>
+    <p>Some jurisdictions do not allow the exclusion or limitation of certain warranties or damages, so some of the limitations above may not apply to you. In those jurisdictions, our liability is limited to the maximum extent permitted by law.</p>
+
+    <!-- 13 -->
+    <h2 id="indemnification">13. Indemnification</h2>
+    <p>To the extent permitted by applicable law, you agree to indemnify and hold harmless Frontier Forge LLC and its officers, directors, employees, contractors, and affiliates from and against any claims, liabilities, damages, losses, costs, and expenses (including reasonable legal fees) arising out of or relating to: (a) your use of the Service; (b) your violation of these Terms; (c) your violation of any third-party right; or (d) your violation of any applicable law, including safety, hunting, or firearms regulation in your jurisdiction.</p>
+
+    <!-- 14 -->
+    <h2 id="governing-law">14. Governing law and disputes</h2>
+    <p>These Terms are governed by the laws of the State of Colorado, United States, without regard to its conflict-of-laws rules. You agree that any dispute arising out of or relating to these Terms or the Service will be brought in the state or federal courts located in Denver County, Colorado, and you consent to the exclusive jurisdiction of those courts.</p>
+    <p>If any provision of these Terms is held to be unenforceable, the remaining provisions will continue in full force and effect.</p>
+
+    <!-- 15 -->
+    <h2 id="changes">15. Changes to these Terms</h2>
+    <p>We may update these Terms from time to time as the Service evolves. When we make material changes, we will update the effective date at the top of this page and, where appropriate, notify signed-in users within the app. Continued use of the Service after the changes take effect constitutes acceptance of the updated Terms.</p>
+    <p>If you do not agree to the updated Terms, your only remedy is to stop using the Service and, if you wish, to request deletion of your account as described in Section 10.</p>
+
+    <hr class="divider" />
+
+    <!-- 16 -->
+    <div class="contact-box">
+      <h2 id="contact" style="margin-top: 0;">16. Contact</h2>
+      <p>Questions about these Terms or about the Service — email us at <a href="mailto:arrowforgeapp@tuta.io">arrowforgeapp@tuta.io</a>. We aim to respond within 5 business days.</p>
+      <p style="margin-top: 10px; font-size: 14px; color: #6B7280;">Frontier Forge LLC &nbsp;·&nbsp; arrowforgeapp@tuta.io</p>
+    </div>
+  </div>
+
+</body>
+</html>
