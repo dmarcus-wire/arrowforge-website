@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reset password — ArrowForge</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --brand:   #2D6A4F;
+      --bg:      #F9FAFB;
+      --surface: #FFFFFF;
+      --text:    #111827;
+      --muted:   #6B7280;
+      --border:  #E5E7EB;
+    }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    nav {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 0 24px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+    .nav-logo img {
+      width: 32px;
+      height: 32px;
+      border-radius: 6px;
+    }
+    .nav-logo-text {
+      font-weight: 800;
+      letter-spacing: 0.4px;
+      color: var(--text);
+      font-size: 18px;
+    }
+    .nav-back {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+    }
+    .nav-back:hover { color: var(--text); }
+    main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 24px;
+    }
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      max-width: 460px;
+      width: 100%;
+      padding: 36px 32px;
+      text-align: center;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+    }
+    .icon-wrap {
+      width: 64px;
+      height: 64px;
+      margin: 0 auto 20px;
+      border-radius: 16px;
+      background: rgba(45, 106, 79, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+    }
+    h1 {
+      font-size: 24px;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+    p {
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 16px;
+      font-size: 15px;
+    }
+    p strong { color: var(--text); }
+    .instructions {
+      text-align: left;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px 20px;
+      margin-top: 24px;
+      font-size: 14px;
+    }
+    .instructions ol {
+      padding-left: 20px;
+      color: var(--text);
+    }
+    .instructions li {
+      margin-bottom: 6px;
+      line-height: 1.5;
+    }
+    .footer-note {
+      margin-top: 24px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .footer-note a {
+      color: var(--brand);
+      font-weight: 600;
+      text-decoration: none;
+    }
+    .footer-note a:hover { text-decoration: underline; }
+    footer {
+      text-align: center;
+      padding: 24px;
+      color: var(--muted);
+      font-size: 13px;
+      border-top: 1px solid var(--border);
+      background: var(--surface);
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="/" class="nav-logo">
+      <img src="/icon.png" alt="ArrowForge icon" />
+      <span class="nav-logo-text">ArrowForge</span>
+    </a>
+    <a href="/" class="nav-back">← Back</a>
+  </nav>
+
+  <main>
+    <div class="card">
+      <div class="icon-wrap">🔐</div>
+      <h1>Reset your password</h1>
+      <p>This link is meant to be opened on the <strong>iPhone where you installed ArrowForge</strong>. Tapping it on your phone will open the app directly and let you set a new password.</p>
+
+      <div class="instructions">
+        <ol>
+          <li>Open this email on your iPhone.</li>
+          <li>Tap the password-reset link again — it should now open the ArrowForge app.</li>
+          <li>If iOS asks where to open the link, choose <strong>ArrowForge</strong>.</li>
+          <li>Enter your new password.</li>
+        </ol>
+      </div>
+
+      <p class="footer-note">Need a fresh reset link? Open ArrowForge → Sign in → <em>Forgot password?</em> and request a new email. Links expire after a short window.</p>
+
+      <p class="footer-note">Trouble? Email <a href="mailto:arrowforgeapp@tuta.io">arrowforgeapp@tuta.io</a> and we'll help.</p>
+    </div>
+  </main>
+
+  <footer>
+    Frontier Forge LLC &nbsp;·&nbsp; <a href="/" style="color: var(--muted);">arrowforge.app</a>
+  </footer>
+
+</body>
+</html>

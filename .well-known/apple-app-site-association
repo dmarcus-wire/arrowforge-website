@@ -1,7 +1,7 @@
 {
   "applinks": {
     "details": [{
-      "appID": "TEAMID.com.dmarcus.arrowforge",
+      "appID": "56GV3BZDL5.com.dmarcus.arrowforge",
       "paths": ["/reset-password", "/reset-password/*"]
     }]
   }
