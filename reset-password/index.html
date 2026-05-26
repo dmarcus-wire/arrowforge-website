@@ -146,7 +146,7 @@
   </nav>
 
   <main>
-    <div class="card">
+    <div class="card" id="default-card">
       <div class="icon-wrap">🔐</div>
       <h1>Reset your password</h1>
       <p>This link is meant to be opened on the <strong>iPhone where you installed ArrowForge</strong>. Tapping it on your phone will open the app directly and let you set a new password.</p>
@@ -164,7 +164,44 @@
 
       <p class="footer-note">Trouble? Email <a href="mailto:arrowforgeapp@tuta.io">arrowforgeapp@tuta.io</a> and we'll help.</p>
     </div>
+
+    <div class="card" id="expired-card" style="display:none;">
+      <div class="icon-wrap">⏰</div>
+      <h1>This link expired</h1>
+      <p>Password reset links are <strong>single-use</strong> and expire after a short window. Request a fresh one from the app:</p>
+
+      <div class="instructions">
+        <ol>
+          <li>Open <strong>ArrowForge</strong> on your iPhone.</li>
+          <li>Tap <strong>Sign in</strong>.</li>
+          <li>Tap <strong>Forgot password?</strong></li>
+          <li>Enter your email and check for a new email — tap that link on your iPhone within 60 minutes.</li>
+        </ol>
+      </div>
+
+      <p class="footer-note">Tip: Tap the link in Mail as soon as the email arrives — preview pre-fetching by iOS Mail can consume the token before you tap.</p>
+
+      <p class="footer-note">Trouble? Email <a href="mailto:arrowforgeapp@tuta.io">arrowforgeapp@tuta.io</a> and we'll help.</p>
+    </div>
   </main>
+
+  <script>
+    // Detect Supabase error params and swap to the expired-link card.
+    // Older "Confirmation URL" emails redirect to /reset-password?error=...
+    // when their token expires — show a friendly explainer instead of the
+    // generic "open on your phone" message.
+    (function () {
+      var params = new URLSearchParams(window.location.search);
+      var hash = window.location.hash.startsWith('#')
+        ? new URLSearchParams(window.location.hash.slice(1))
+        : new URLSearchParams();
+      var hasError = params.get('error') || hash.get('error');
+      if (hasError) {
+        document.getElementById('default-card').style.display = 'none';
+        document.getElementById('expired-card').style.display = 'block';
+      }
+    })();
+  </script>
 
   <footer>
     Frontier Forge LLC &nbsp;·&nbsp; <a href="/" style="color: var(--muted);">arrowforge.app</a>
