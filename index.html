@@ -277,6 +277,67 @@
       transition: transform 200ms ease;
     }
 
+    /* ── Feature Rows ── */
+    .feature-rows {
+      margin-top: 64px;
+    }
+    .feature-row {
+      margin-bottom: 52px;
+    }
+    .feature-row-header {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 24px 18px;
+    }
+    .row-badge {
+      display: inline-flex;
+      align-items: center;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 20px;
+      margin-bottom: 8px;
+    }
+    .badge-free {
+      background: #D1FAE5;
+      color: var(--brand-dark);
+    }
+    .badge-ballistics {
+      background: #DBEAFE;
+      color: #1D4ED8;
+    }
+    .badge-pro {
+      background: #FFFBEB;
+      color: #92400E;
+    }
+    .row-title {
+      font-size: clamp(18px, 3vw, 22px);
+      font-weight: 800;
+      color: var(--text);
+      letter-spacing: -0.3px;
+      margin-bottom: 4px;
+    }
+    .row-sub {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+    .track-wrapper {
+      position: relative;
+    }
+    .track-fade {
+      position: absolute;
+      right: 0;
+      top: 0;
+      bottom: 20px;
+      width: 72px;
+      background: linear-gradient(to right, transparent, var(--bg));
+      pointer-events: none;
+      z-index: 1;
+    }
+
     .modal-backdrop {
       position: fixed;
       inset: 0;
@@ -707,142 +768,150 @@
     </div>
   </section>
 
-  <section class="screenshots-section">
-    <p class="screenshots-label">See it in action</p>
-    <div class="screenshots-track">
-      <div class="screenshot-item">
-        <div class="screenshot-frame">
-          <img src="screenshots/v2-arrowforge-archerdetails.png" alt="Archer Details input screen" loading="lazy" />
-        </div>
-        <p class="screenshot-caption">Archer Details</p>
+  <section class="feature-rows">
+
+    <!-- ── Archer Input Tiles ── -->
+    <div class="feature-row">
+      <div class="feature-row-header">
+        <span class="row-badge badge-free">Free · Offline</span>
+        <h2 class="row-title">Archer Input Tiles</h2>
+        <p class="row-sub">Everything about your setup — archer, bow, arrow, and sight — all in one place.</p>
       </div>
-      <div class="screenshot-item">
-        <div class="screenshot-frame">
-          <img src="screenshots/v2-arrowforge-bowdetails.png" alt="Bow Details input screen" loading="lazy" />
+      <div class="track-wrapper">
+        <div class="screenshots-track" id="inputs-track">
+          <div class="screenshot-item">
+            <div class="screenshot-frame"><img src="screenshots/v3/00-my-builds.png" alt="My Builds screen" loading="lazy" /></div>
+            <p class="screenshot-caption">My Builds</p>
+          </div>
+          <div class="screenshot-item">
+            <div class="screenshot-frame"><img src="screenshots/v3/01-archer-details.png" alt="Archer Details" loading="lazy" /></div>
+            <p class="screenshot-caption">Archer Details</p>
+          </div>
+          <div class="screenshot-item">
+            <div class="screenshot-frame"><img src="screenshots/v3/02-bow-details.png" alt="Bow Details" loading="lazy" /></div>
+            <p class="screenshot-caption">Bow Details</p>
+          </div>
+          <div class="screenshot-item">
+            <div class="screenshot-frame"><img src="screenshots/v3/03-arrow-details.png" alt="Arrow Details" loading="lazy" /></div>
+            <p class="screenshot-caption">Arrow Details</p>
+          </div>
+          <div class="screenshot-item">
+            <div class="screenshot-frame"><img src="screenshots/v3/04-sight-details.png" alt="Sight Details" loading="lazy" /></div>
+            <p class="screenshot-caption">Sight Details</p>
+          </div>
+          <div class="screenshot-item">
+            <div class="screenshot-frame"><img src="screenshots/v3/05-review-inputs.png" alt="Review Inputs" loading="lazy" /></div>
+            <p class="screenshot-caption">Review Inputs</p>
+          </div>
+          <div class="screenshot-item">
+            <div class="screenshot-frame"><img src="screenshots/v3/15-profile.png" alt="Profile and preferences" loading="lazy" /></div>
+            <p class="screenshot-caption">Profile</p>
+          </div>
         </div>
-        <p class="screenshot-caption">Bow Details</p>
-      </div>
-      <div class="screenshot-item">
-        <div class="screenshot-frame">
-          <img src="screenshots/v2-arrowforge-arrowdetails.png" alt="Arrow Details input screen" loading="lazy" />
-        </div>
-        <p class="screenshot-caption">Arrow Details</p>
-      </div>
-      <div class="screenshot-item">
-        <div class="screenshot-frame">
-          <img src="screenshots/v2-arrowforge-sightdetails.png" alt="Sight Details input screen" loading="lazy" />
-        </div>
-        <p class="screenshot-caption">Sight Details</p>
-      </div>
-      <div class="screenshot-item">
-        <div class="screenshot-frame">
-          <img src="screenshots/v2-arrowforge-newbuild.png" alt="My Builds screen" loading="lazy" />
-        </div>
-        <p class="screenshot-caption">Manage Builds</p>
-      </div>
-      <div class="screenshot-item">
-        <div class="screenshot-frame">
-          <img src="screenshots/v2-arrowforge-buildmenu-options.png" alt="Build menu options screen" loading="lazy" />
-        </div>
-        <p class="screenshot-caption">Build Menu Options</p>
-      </div>
-      <div class="screenshot-item">
-        <div class="screenshot-frame">
-          <img src="screenshots/v2-arrowforge-twoarrows.png" alt="Multiple builds" loading="lazy" />
-        </div>
-        <p class="screenshot-caption">Compare Builds</p>
-      </div>
-      <div class="screenshot-item">
-        <div class="screenshot-frame">
-          <img src="screenshots/v2-arrowforge-comparebuilds.png" alt="Compare Builds side by side" loading="lazy" />
-        </div>
-        <p class="screenshot-caption">Side-by-Side Compare</p>
-      </div>
-      <div class="screenshot-item">
-        <div class="screenshot-frame">
-          <img src="screenshots/v2-arrowforge-goallocation.png" alt="Goal and Location results" loading="lazy" />
-        </div>
-        <p class="screenshot-caption">Goal Countdown</p>
-      </div>
-      <div class="screenshot-item">
-        <div class="screenshot-frame">
-          <img src="screenshots/v2-arrowforge-buildmatch.png" alt="Build Match Score" loading="lazy" />
-        </div>
-        <p class="screenshot-caption">Build Match Score</p>
-      </div>
-      <div class="screenshot-item">
-        <div class="screenshot-frame">
-          <img src="screenshots/v2-arrowforge-reviewinputs.png" alt="Review inputs screen" loading="lazy" />
-        </div>
-        <p class="screenshot-caption">Review Inputs</p>
-      </div>
-      <div class="screenshot-item">
-        <div class="screenshot-frame">
-          <img src="screenshots/v2-arrowforge-reviewinputs-share.png" alt="Review inputs and share screen" loading="lazy" />
-        </div>
-        <p class="screenshot-caption">Review Inputs & Share</p>
-      </div>
-      <div class="screenshot-item">
-        <div class="screenshot-frame">
-          <img src="screenshots/v2-arrowforge-arrowperformance.png" alt="Arrow Performance gauges" loading="lazy" />
-        </div>
-        <p class="screenshot-caption">Arrow Performance</p>
-      </div>
-      <div class="screenshot-item">
-        <div class="screenshot-frame">
-          <img src="screenshots/v2-arrowforge-spine.png" alt="Spine and Stiffness" loading="lazy" />
-        </div>
-        <p class="screenshot-caption">Spine Check</p>
-      </div>
-      <div class="screenshot-item">
-        <div class="screenshot-frame">
-          <img src="screenshots/v2-arrowforge-gameeffect.png" alt="Game Effectiveness" loading="lazy" />
-        </div>
-        <p class="screenshot-caption">Game Effectiveness</p>
-      </div>
-      <div class="screenshot-item">
-        <div class="screenshot-frame">
-          <img src="screenshots/v2-arrowforge-performance.png" alt="Performance by Range table" loading="lazy" />
-        </div>
-        <p class="screenshot-caption">Performance by Range</p>
-      </div>
-      <div class="screenshot-item">
-        <div class="screenshot-frame">
-          <img src="screenshots/v2-arrowforge-impact.png" alt="Launch and Impact" loading="lazy" />
-        </div>
-        <p class="screenshot-caption">Launch &amp; Impact</p>
-      </div>
-      <div class="screenshot-item">
-        <div class="screenshot-frame">
-          <img src="screenshots/v2-arrowforge-sightpins.png" alt="Sight Pins" loading="lazy" />
-        </div>
-        <p class="screenshot-caption">Sight Pins</p>
-      </div>
-      <div class="screenshot-item">
-        <div class="screenshot-frame">
-          <img src="screenshots/v2-arrowforge-trajectory.png" alt="Trajectory visualization" loading="lazy" />
-        </div>
-        <p class="screenshot-caption">Trajectory</p>
-      </div>
-      <div class="screenshot-item">
-        <div class="screenshot-frame">
-          <img src="screenshots/v2-arrowforge-shoppinglist-share.png" alt="Shopping list and share screen" loading="lazy" />
-        </div>
-        <p class="screenshot-caption">Shopping List & Share</p>
-      </div>
-      <div class="screenshot-item">
-        <div class="screenshot-frame">
-          <img src="screenshots/v2-arrowforge-profile.png" alt="Profile and preferences" loading="lazy" />
-        </div>
-        <p class="screenshot-caption">Profile</p>
-      </div>
-      <div class="screenshot-item">
-        <div class="screenshot-frame">
-          <img src="screenshots/v2-arrowforge-profile-darkmode.png" alt="Dark mode" loading="lazy" />
-        </div>
-        <p class="screenshot-caption">Dark Mode</p>
+        <div class="track-fade"></div>
       </div>
     </div>
+
+    <!-- ── Ballistics Tiles ── -->
+    <div class="feature-row">
+      <div class="feature-row-header">
+        <span class="row-badge badge-ballistics">Free · Offline</span>
+        <h2 class="row-title">Ballistics Tiles</h2>
+        <p class="row-sub">Scores, trajectories, and real-world performance dialed to your goal date and location.</p>
+      </div>
+      <div class="track-wrapper">
+        <div class="screenshots-track" id="ballistics-track">
+          <div class="screenshot-item">
+            <div class="screenshot-frame"><img src="screenshots/v3/06-goal-location.png" alt="Goal and Location" loading="lazy" /></div>
+            <p class="screenshot-caption">Goal &amp; Location</p>
+          </div>
+          <div class="screenshot-item">
+            <div class="screenshot-frame"><img src="screenshots/v3/07-build-score.png" alt="Build Score" loading="lazy" /></div>
+            <p class="screenshot-caption">Build Score</p>
+          </div>
+          <div class="screenshot-item">
+            <div class="screenshot-frame"><img src="screenshots/v3/08-arrow-perf.png" alt="Arrow Performance" loading="lazy" /></div>
+            <p class="screenshot-caption">Arrow Performance</p>
+          </div>
+          <div class="screenshot-item">
+            <div class="screenshot-frame"><img src="screenshots/v3/09-launch-impact.png" alt="Launch and Impact" loading="lazy" /></div>
+            <p class="screenshot-caption">Launch &amp; Impact</p>
+          </div>
+          <div class="screenshot-item">
+            <div class="screenshot-frame"><img src="screenshots/v3/10-max-range.png" alt="Max Range" loading="lazy" /></div>
+            <p class="screenshot-caption">Max Range</p>
+          </div>
+          <div class="screenshot-item">
+            <div class="screenshot-frame"><img src="screenshots/v3/11-sight-pin.png" alt="Sight Pins" loading="lazy" /></div>
+            <p class="screenshot-caption">Sight Pins</p>
+          </div>
+          <div class="screenshot-item">
+            <div class="screenshot-frame"><img src="screenshots/v3/12-trajectory.png" alt="Trajectory" loading="lazy" /></div>
+            <p class="screenshot-caption">Trajectory</p>
+          </div>
+          <div class="screenshot-item">
+            <div class="screenshot-frame"><img src="screenshots/v3/13-ballistics-review.png" alt="Ballistics Review" loading="lazy" /></div>
+            <p class="screenshot-caption">Ballistics Review</p>
+          </div>
+          <div class="screenshot-item">
+            <div class="screenshot-frame"><img src="screenshots/v3/14.compare.png" alt="Compare Builds" loading="lazy" /></div>
+            <p class="screenshot-caption">Compare Builds</p>
+          </div>
+          <div class="screenshot-item">
+            <div class="screenshot-frame"><img src="screenshots/v3/16-live-settings.png" alt="Live Settings" loading="lazy" /></div>
+            <p class="screenshot-caption">Live Settings</p>
+          </div>
+        </div>
+        <div class="track-fade"></div>
+      </div>
+    </div>
+
+    <!-- ── Pro AI Insights ── -->
+    <div class="feature-row">
+      <div class="feature-row-header">
+        <span class="row-badge badge-pro">Pro · Cloud</span>
+        <h2 class="row-title">Pro AI Insights</h2>
+        <p class="row-sub">AI-powered analysis and build recommendations — smarter tuning without the guesswork.</p>
+      </div>
+      <div class="track-wrapper">
+        <div class="screenshots-track" id="ai-track">
+          <div class="screenshot-item">
+            <div class="screenshot-frame"><img src="screenshots/v3/17-AI.png" alt="AI Overview" loading="lazy" /></div>
+            <p class="screenshot-caption">AI Overview</p>
+          </div>
+          <div class="screenshot-item">
+            <div class="screenshot-frame"><img src="screenshots/v3/18-AI-arrows.png" alt="AI Arrow Selection" loading="lazy" /></div>
+            <p class="screenshot-caption">AI Arrow Selection</p>
+          </div>
+          <div class="screenshot-item">
+            <div class="screenshot-frame"><img src="screenshots/v3/19-ai-shaft-designer.png" alt="Shaft Designer" loading="lazy" /></div>
+            <p class="screenshot-caption">Shaft Designer</p>
+          </div>
+          <div class="screenshot-item">
+            <div class="screenshot-frame"><img src="screenshots/v3/20-ai-build-score-insight.png" alt="Build Score Insight" loading="lazy" /></div>
+            <p class="screenshot-caption">Build Score Insight</p>
+          </div>
+          <div class="screenshot-item">
+            <div class="screenshot-frame"><img src="screenshots/v3/21-ai-arrow-tune-sanity.png" alt="Arrow Tune Sanity Check" loading="lazy" /></div>
+            <p class="screenshot-caption">Tune Sanity Check</p>
+          </div>
+          <div class="screenshot-item">
+            <div class="screenshot-frame"><img src="screenshots/v3/22-ai-lethality.png" alt="Lethality Analysis" loading="lazy" /></div>
+            <p class="screenshot-caption">Lethality Analysis</p>
+          </div>
+          <div class="screenshot-item">
+            <div class="screenshot-frame"><img src="screenshots/v3/23-ai-traj.png" alt="AI Trajectory Analysis" loading="lazy" /></div>
+            <p class="screenshot-caption">Trajectory AI</p>
+          </div>
+          <div class="screenshot-item">
+            <div class="screenshot-frame"><img src="screenshots/v3/24-ai-build-plan.png" alt="AI Build Plan" loading="lazy" /></div>
+            <p class="screenshot-caption">Build Plan</p>
+          </div>
+        </div>
+        <div class="track-fade"></div>
+      </div>
+    </div>
+
   </section>
 
   <section class="how-it-works">
@@ -1053,27 +1122,43 @@
   </footer>
 
   <script>
-    const screenshotItems = Array.from(document.querySelectorAll('.screenshots-track .screenshot-item'));
-    const modal = document.getElementById('screenshot-modal');
-    const modalImage = modal.querySelector('.modal-image');
+    // Each row is its own navigation scope — prev/next stays within the section.
+    const ROWS = [
+      { trackId: 'inputs-track',     items: [] },
+      { trackId: 'ballistics-track', items: [] },
+      { trackId: 'ai-track',         items: [] },
+    ];
+
+    ROWS.forEach(row => {
+      const track = document.getElementById(row.trackId);
+      if (!track) return;
+      row.items = Array.from(track.querySelectorAll('.screenshot-item'));
+      row.items.forEach((item, idx) => {
+        item.addEventListener('click', () => openModal(row, idx));
+      });
+    });
+
+    const modal        = document.getElementById('screenshot-modal');
+    const modalImage   = modal.querySelector('.modal-image');
     const modalCaption = modal.querySelector('.modal-caption');
-    const prevButton = modal.querySelector('.modal-prev');
-    const nextButton = modal.querySelector('.modal-next');
-    const closeButton = modal.querySelector('.modal-close');
+    const prevButton   = modal.querySelector('.modal-prev');
+    const nextButton   = modal.querySelector('.modal-next');
+    const closeButton  = modal.querySelector('.modal-close');
+    let activeRow   = null;
     let activeIndex = 0;
 
-    function updateModal(index) {
-      const item = screenshotItems[index];
-      const img = item.querySelector('img');
-      const caption = item.querySelector('.screenshot-caption').textContent;
-      modalImage.src = img.src;
-      modalImage.alt = img.alt;
-      modalCaption.textContent = caption;
-      activeIndex = index;
+    function updateModal() {
+      const item = activeRow.items[activeIndex];
+      const img  = item.querySelector('img');
+      modalImage.src         = img.src;
+      modalImage.alt         = img.alt;
+      modalCaption.textContent = item.querySelector('.screenshot-caption').textContent;
     }
 
-    function openModal(index) {
-      updateModal(index);
+    function openModal(row, index) {
+      activeRow   = row;
+      activeIndex = index;
+      updateModal();
       modal.classList.add('open');
       document.body.style.overflow = 'hidden';
       modal.setAttribute('aria-hidden', 'false');
@@ -1086,66 +1171,43 @@
     }
 
     function showPrevious() {
-      const nextIndex = (activeIndex - 1 + screenshotItems.length) % screenshotItems.length;
-      updateModal(nextIndex);
+      activeIndex = (activeIndex - 1 + activeRow.items.length) % activeRow.items.length;
+      updateModal();
     }
 
     function showNext() {
-      const nextIndex = (activeIndex + 1) % screenshotItems.length;
-      updateModal(nextIndex);
+      activeIndex = (activeIndex + 1) % activeRow.items.length;
+      updateModal();
     }
-
-    screenshotItems.forEach((item, index) => {
-      item.addEventListener('click', () => openModal(index));
-    });
 
     prevButton.addEventListener('click', showPrevious);
     nextButton.addEventListener('click', showNext);
     closeButton.addEventListener('click', closeModal);
-    modal.addEventListener('click', (event) => {
-      if (event.target === modal) {
-        closeModal();
-      }
-    });
+    modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
 
     const modalWrapper = modal.querySelector('.modal-image-wrapper');
-    let pointerStartX = null;
-    let pointerStartY = null;
-    let pointerActive = false;
+    let pStartX = null, pStartY = null, pActive = false;
 
-    modalWrapper.addEventListener('pointerdown', (event) => {
-      if (event.target.closest('button')) return;
-      pointerActive = true;
-      pointerStartX = event.clientX;
-      pointerStartY = event.clientY;
-      modalWrapper.setPointerCapture(event.pointerId);
+    modalWrapper.addEventListener('pointerdown', e => {
+      if (e.target.closest('button')) return;
+      pActive = true; pStartX = e.clientX; pStartY = e.clientY;
+      modalWrapper.setPointerCapture(e.pointerId);
     });
-
-    modalWrapper.addEventListener('pointerup', (event) => {
-      if (!pointerActive || pointerStartX === null) return;
-      const dx = event.clientX - pointerStartX;
-      const dy = event.clientY - pointerStartY;
-      pointerActive = false;
-      pointerStartX = null;
-      pointerStartY = null;
-
+    modalWrapper.addEventListener('pointerup', e => {
+      if (!pActive || pStartX === null) return;
+      const dx = e.clientX - pStartX, dy = e.clientY - pStartY;
+      pActive = false; pStartX = null; pStartY = null;
       if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) {
-        if (dx > 0) showPrevious();
-        else showNext();
+        dx > 0 ? showPrevious() : showNext();
       }
     });
+    modalWrapper.addEventListener('pointercancel', () => { pActive = false; pStartX = null; pStartY = null; });
 
-    modalWrapper.addEventListener('pointercancel', () => {
-      pointerActive = false;
-      pointerStartX = null;
-      pointerStartY = null;
-    });
-
-    document.addEventListener('keydown', (event) => {
+    document.addEventListener('keydown', e => {
       if (!modal.classList.contains('open')) return;
-      if (event.key === 'Escape') closeModal();
-      if (event.key === 'ArrowLeft') showPrevious();
-      if (event.key === 'ArrowRight') showNext();
+      if (e.key === 'Escape')     closeModal();
+      if (e.key === 'ArrowLeft')  showPrevious();
+      if (e.key === 'ArrowRight') showNext();
     });
   </script>
   <script>
