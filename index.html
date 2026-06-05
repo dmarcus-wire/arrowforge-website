@@ -277,17 +277,23 @@
       transition: transform 200ms ease;
     }
 
-    /* ── Feature Rows ── */
-    .feature-rows {
-      margin-top: 64px;
+    /* ── Feature Spotlights ── */
+    .feature-spotlights {
+      margin-top: 56px;
     }
-    .feature-row {
-      margin-bottom: 52px;
+    .spotlight-section {
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      padding: 72px 0 72px 64px;
+      border-top: 1px solid var(--border);
     }
-    .feature-row-header {
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 0 24px 18px;
+    .spotlight-inputs     { background: #fff; }
+    .spotlight-ballistics { background: #F0F9FF; }
+    .spotlight-ai         { background: #FFFBEB; }
+    .spotlight-text {
+      flex: 0 0 300px;
+      padding-right: 56px;
     }
     .row-badge {
       display: inline-flex;
@@ -298,31 +304,53 @@
       text-transform: uppercase;
       padding: 3px 10px;
       border-radius: 20px;
-      margin-bottom: 8px;
+      margin-bottom: 12px;
     }
-    .badge-free {
-      background: #D1FAE5;
-      color: var(--brand-dark);
-    }
-    .badge-ballistics {
-      background: #DBEAFE;
-      color: #1D4ED8;
-    }
-    .badge-pro {
-      background: #FFFBEB;
-      color: #92400E;
-    }
-    .row-title {
-      font-size: clamp(18px, 3vw, 22px);
+    .badge-free        { background: #D1FAE5; color: var(--brand-dark); }
+    .badge-ballistics  { background: #DBEAFE; color: #1D4ED8; }
+    .badge-pro         { background: #FFFBEB; color: #92400E; border: 1px solid #FCD34D; }
+    .spotlight-title {
+      font-size: clamp(26px, 3.5vw, 40px);
       font-weight: 800;
+      letter-spacing: -1px;
+      line-height: 1.05;
       color: var(--text);
-      letter-spacing: -0.3px;
-      margin-bottom: 4px;
+      margin-bottom: 14px;
     }
-    .row-sub {
+    .spotlight-sub {
       font-size: 14px;
       color: var(--muted);
-      line-height: 1.5;
+      line-height: 1.65;
+      margin-bottom: 20px;
+    }
+    .spotlight-bullets {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .spotlight-bullets li {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .spotlight-bullets li::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .spotlight-inputs     .spotlight-bullets li::before { background: var(--brand); }
+    .spotlight-ballistics .spotlight-bullets li::before { background: #3B82F6; }
+    .spotlight-ai         .spotlight-bullets li::before { background: #D97706; }
+    .spotlight-phones-col {
+      flex: 1;
+      min-width: 0;
+      position: relative;
     }
     .track-wrapper {
       position: relative;
@@ -333,9 +361,26 @@
       top: 0;
       bottom: 20px;
       width: 72px;
-      background: linear-gradient(to right, transparent, var(--bg));
       pointer-events: none;
       z-index: 1;
+    }
+    .spotlight-inputs     .track-fade { background: linear-gradient(to right, transparent, #fff); }
+    .spotlight-ballistics .track-fade { background: linear-gradient(to right, transparent, #F0F9FF); }
+    .spotlight-ai         .track-fade { background: linear-gradient(to right, transparent, #FFFBEB); }
+    @media (max-width: 820px) {
+      .spotlight-section {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 48px 0 0;
+        gap: 28px;
+      }
+      .spotlight-text {
+        flex: none;
+        width: 100%;
+        padding: 0 24px;
+      }
+      .spotlight-phones-col { width: 100%; }
+      .screenshots-track { padding-left: 24px; }
     }
 
     .modal-backdrop {
@@ -768,147 +813,171 @@
     </div>
   </section>
 
-  <section class="feature-rows">
+  <section class="feature-spotlights">
 
     <!-- ── Archer Input Tiles ── -->
-    <div class="feature-row">
-      <div class="feature-row-header">
+    <div class="spotlight-section spotlight-inputs">
+      <div class="spotlight-text">
         <span class="row-badge badge-free">Free · Offline</span>
-        <h2 class="row-title">Archer Input Tiles</h2>
-        <p class="row-sub">Everything about your setup — archer, bow, arrow, and sight — all in one place.</p>
+        <h2 class="spotlight-title">Archer Input<br>Tiles</h2>
+        <p class="spotlight-sub">Everything about your setup stored and ready — archer, bow, arrow, and sight.</p>
+        <ul class="spotlight-bullets">
+          <li>Archer profile &amp; discipline</li>
+          <li>Bow draw weight &amp; length</li>
+          <li>Arrow shaft, components &amp; FOC</li>
+          <li>Sight &amp; pin configuration</li>
+        </ul>
       </div>
-      <div class="track-wrapper">
-        <div class="screenshots-track" id="inputs-track">
-          <div class="screenshot-item">
-            <div class="screenshot-frame"><img src="screenshots/v3/00-my-builds.png" alt="My Builds screen" loading="lazy" /></div>
-            <p class="screenshot-caption">My Builds</p>
+      <div class="spotlight-phones-col">
+        <div class="track-wrapper">
+          <div class="screenshots-track" id="inputs-track">
+            <div class="screenshot-item">
+              <div class="screenshot-frame"><img src="screenshots/v3/00-my-builds.png" alt="My Builds screen" loading="lazy" /></div>
+              <p class="screenshot-caption">My Builds</p>
+            </div>
+            <div class="screenshot-item">
+              <div class="screenshot-frame"><img src="screenshots/v3/01-archer-details.png" alt="Archer Details" loading="lazy" /></div>
+              <p class="screenshot-caption">Archer Details</p>
+            </div>
+            <div class="screenshot-item">
+              <div class="screenshot-frame"><img src="screenshots/v3/02-bow-details.png" alt="Bow Details" loading="lazy" /></div>
+              <p class="screenshot-caption">Bow Details</p>
+            </div>
+            <div class="screenshot-item">
+              <div class="screenshot-frame"><img src="screenshots/v3/03-arrow-details.png" alt="Arrow Details" loading="lazy" /></div>
+              <p class="screenshot-caption">Arrow Details</p>
+            </div>
+            <div class="screenshot-item">
+              <div class="screenshot-frame"><img src="screenshots/v3/04-sight-details.png" alt="Sight Details" loading="lazy" /></div>
+              <p class="screenshot-caption">Sight Details</p>
+            </div>
+            <div class="screenshot-item">
+              <div class="screenshot-frame"><img src="screenshots/v3/05-review-inputs.png" alt="Review Inputs" loading="lazy" /></div>
+              <p class="screenshot-caption">Review Inputs</p>
+            </div>
+            <div class="screenshot-item">
+              <div class="screenshot-frame"><img src="screenshots/v3/15-profile.png" alt="Profile and preferences" loading="lazy" /></div>
+              <p class="screenshot-caption">Profile</p>
+            </div>
           </div>
-          <div class="screenshot-item">
-            <div class="screenshot-frame"><img src="screenshots/v3/01-archer-details.png" alt="Archer Details" loading="lazy" /></div>
-            <p class="screenshot-caption">Archer Details</p>
-          </div>
-          <div class="screenshot-item">
-            <div class="screenshot-frame"><img src="screenshots/v3/02-bow-details.png" alt="Bow Details" loading="lazy" /></div>
-            <p class="screenshot-caption">Bow Details</p>
-          </div>
-          <div class="screenshot-item">
-            <div class="screenshot-frame"><img src="screenshots/v3/03-arrow-details.png" alt="Arrow Details" loading="lazy" /></div>
-            <p class="screenshot-caption">Arrow Details</p>
-          </div>
-          <div class="screenshot-item">
-            <div class="screenshot-frame"><img src="screenshots/v3/04-sight-details.png" alt="Sight Details" loading="lazy" /></div>
-            <p class="screenshot-caption">Sight Details</p>
-          </div>
-          <div class="screenshot-item">
-            <div class="screenshot-frame"><img src="screenshots/v3/05-review-inputs.png" alt="Review Inputs" loading="lazy" /></div>
-            <p class="screenshot-caption">Review Inputs</p>
-          </div>
-          <div class="screenshot-item">
-            <div class="screenshot-frame"><img src="screenshots/v3/15-profile.png" alt="Profile and preferences" loading="lazy" /></div>
-            <p class="screenshot-caption">Profile</p>
-          </div>
+          <div class="track-fade"></div>
         </div>
-        <div class="track-fade"></div>
       </div>
     </div>
 
     <!-- ── Ballistics Tiles ── -->
-    <div class="feature-row">
-      <div class="feature-row-header">
+    <div class="spotlight-section spotlight-ballistics">
+      <div class="spotlight-text">
         <span class="row-badge badge-ballistics">Free · Offline</span>
-        <h2 class="row-title">Ballistics Tiles</h2>
-        <p class="row-sub">Scores, trajectories, and real-world performance dialed to your goal date and location.</p>
+        <h2 class="spotlight-title">Ballistics<br>Tiles</h2>
+        <p class="spotlight-sub">Scores, trajectories, and real-world performance dialed to your goal date and location.</p>
+        <ul class="spotlight-bullets">
+          <li>Build Match Score</li>
+          <li>Arrow performance &amp; spine</li>
+          <li>Trajectory &amp; sight pin data</li>
+          <li>Side-by-side build compare</li>
+        </ul>
       </div>
-      <div class="track-wrapper">
-        <div class="screenshots-track" id="ballistics-track">
-          <div class="screenshot-item">
-            <div class="screenshot-frame"><img src="screenshots/v3/06-goal-location.png" alt="Goal and Location" loading="lazy" /></div>
-            <p class="screenshot-caption">Goal &amp; Location</p>
+      <div class="spotlight-phones-col">
+        <div class="track-wrapper">
+          <div class="screenshots-track" id="ballistics-track">
+            <div class="screenshot-item">
+              <div class="screenshot-frame"><img src="screenshots/v3/06-goal-location.png" alt="Goal and Location" loading="lazy" /></div>
+              <p class="screenshot-caption">Goal &amp; Location</p>
+            </div>
+            <div class="screenshot-item">
+              <div class="screenshot-frame"><img src="screenshots/v3/07-build-score.png" alt="Build Score" loading="lazy" /></div>
+              <p class="screenshot-caption">Build Score</p>
+            </div>
+            <div class="screenshot-item">
+              <div class="screenshot-frame"><img src="screenshots/v3/08-arrow-perf.png" alt="Arrow Performance" loading="lazy" /></div>
+              <p class="screenshot-caption">Arrow Performance</p>
+            </div>
+            <div class="screenshot-item">
+              <div class="screenshot-frame"><img src="screenshots/v3/09-launch-impact.png" alt="Launch and Impact" loading="lazy" /></div>
+              <p class="screenshot-caption">Launch &amp; Impact</p>
+            </div>
+            <div class="screenshot-item">
+              <div class="screenshot-frame"><img src="screenshots/v3/10-max-range.png" alt="Max Range" loading="lazy" /></div>
+              <p class="screenshot-caption">Max Range</p>
+            </div>
+            <div class="screenshot-item">
+              <div class="screenshot-frame"><img src="screenshots/v3/11-sight-pin.png" alt="Sight Pins" loading="lazy" /></div>
+              <p class="screenshot-caption">Sight Pins</p>
+            </div>
+            <div class="screenshot-item">
+              <div class="screenshot-frame"><img src="screenshots/v3/12-trajectory.png" alt="Trajectory" loading="lazy" /></div>
+              <p class="screenshot-caption">Trajectory</p>
+            </div>
+            <div class="screenshot-item">
+              <div class="screenshot-frame"><img src="screenshots/v3/13-ballistics-review.png" alt="Ballistics Review" loading="lazy" /></div>
+              <p class="screenshot-caption">Ballistics Review</p>
+            </div>
+            <div class="screenshot-item">
+              <div class="screenshot-frame"><img src="screenshots/v3/14.compare.png" alt="Compare Builds" loading="lazy" /></div>
+              <p class="screenshot-caption">Compare Builds</p>
+            </div>
+            <div class="screenshot-item">
+              <div class="screenshot-frame"><img src="screenshots/v3/16-live-settings.png" alt="Live Settings" loading="lazy" /></div>
+              <p class="screenshot-caption">Live Settings</p>
+            </div>
           </div>
-          <div class="screenshot-item">
-            <div class="screenshot-frame"><img src="screenshots/v3/07-build-score.png" alt="Build Score" loading="lazy" /></div>
-            <p class="screenshot-caption">Build Score</p>
-          </div>
-          <div class="screenshot-item">
-            <div class="screenshot-frame"><img src="screenshots/v3/08-arrow-perf.png" alt="Arrow Performance" loading="lazy" /></div>
-            <p class="screenshot-caption">Arrow Performance</p>
-          </div>
-          <div class="screenshot-item">
-            <div class="screenshot-frame"><img src="screenshots/v3/09-launch-impact.png" alt="Launch and Impact" loading="lazy" /></div>
-            <p class="screenshot-caption">Launch &amp; Impact</p>
-          </div>
-          <div class="screenshot-item">
-            <div class="screenshot-frame"><img src="screenshots/v3/10-max-range.png" alt="Max Range" loading="lazy" /></div>
-            <p class="screenshot-caption">Max Range</p>
-          </div>
-          <div class="screenshot-item">
-            <div class="screenshot-frame"><img src="screenshots/v3/11-sight-pin.png" alt="Sight Pins" loading="lazy" /></div>
-            <p class="screenshot-caption">Sight Pins</p>
-          </div>
-          <div class="screenshot-item">
-            <div class="screenshot-frame"><img src="screenshots/v3/12-trajectory.png" alt="Trajectory" loading="lazy" /></div>
-            <p class="screenshot-caption">Trajectory</p>
-          </div>
-          <div class="screenshot-item">
-            <div class="screenshot-frame"><img src="screenshots/v3/13-ballistics-review.png" alt="Ballistics Review" loading="lazy" /></div>
-            <p class="screenshot-caption">Ballistics Review</p>
-          </div>
-          <div class="screenshot-item">
-            <div class="screenshot-frame"><img src="screenshots/v3/14.compare.png" alt="Compare Builds" loading="lazy" /></div>
-            <p class="screenshot-caption">Compare Builds</p>
-          </div>
-          <div class="screenshot-item">
-            <div class="screenshot-frame"><img src="screenshots/v3/16-live-settings.png" alt="Live Settings" loading="lazy" /></div>
-            <p class="screenshot-caption">Live Settings</p>
-          </div>
+          <div class="track-fade"></div>
         </div>
-        <div class="track-fade"></div>
       </div>
     </div>
 
     <!-- ── Pro AI Insights ── -->
-    <div class="feature-row">
-      <div class="feature-row-header">
+    <div class="spotlight-section spotlight-ai">
+      <div class="spotlight-text">
         <span class="row-badge badge-pro">Pro · Cloud</span>
-        <h2 class="row-title">Pro AI Insights</h2>
-        <p class="row-sub">AI-powered analysis and build recommendations — smarter tuning without the guesswork.</p>
+        <h2 class="spotlight-title">Pro AI<br>Insights</h2>
+        <p class="spotlight-sub">AI-powered analysis and build recommendations — smarter tuning without the guesswork.</p>
+        <ul class="spotlight-bullets">
+          <li>Arrow shaft recommendations</li>
+          <li>Build score deep dive</li>
+          <li>Tune sanity check</li>
+          <li>Lethality &amp; trajectory analysis</li>
+        </ul>
       </div>
-      <div class="track-wrapper">
-        <div class="screenshots-track" id="ai-track">
-          <div class="screenshot-item">
-            <div class="screenshot-frame"><img src="screenshots/v3/17-AI.png" alt="AI Overview" loading="lazy" /></div>
-            <p class="screenshot-caption">AI Overview</p>
+      <div class="spotlight-phones-col">
+        <div class="track-wrapper">
+          <div class="screenshots-track" id="ai-track">
+            <div class="screenshot-item">
+              <div class="screenshot-frame"><img src="screenshots/v3/17-AI.png" alt="AI Overview" loading="lazy" /></div>
+              <p class="screenshot-caption">AI Overview</p>
+            </div>
+            <div class="screenshot-item">
+              <div class="screenshot-frame"><img src="screenshots/v3/18-AI-arrows.png" alt="AI Arrow Selection" loading="lazy" /></div>
+              <p class="screenshot-caption">AI Arrow Selection</p>
+            </div>
+            <div class="screenshot-item">
+              <div class="screenshot-frame"><img src="screenshots/v3/19-ai-shaft-designer.png" alt="Shaft Designer" loading="lazy" /></div>
+              <p class="screenshot-caption">Shaft Designer</p>
+            </div>
+            <div class="screenshot-item">
+              <div class="screenshot-frame"><img src="screenshots/v3/20-ai-build-score-insight.png" alt="Build Score Insight" loading="lazy" /></div>
+              <p class="screenshot-caption">Build Score Insight</p>
+            </div>
+            <div class="screenshot-item">
+              <div class="screenshot-frame"><img src="screenshots/v3/21-ai-arrow-tune-sanity.png" alt="Arrow Tune Sanity Check" loading="lazy" /></div>
+              <p class="screenshot-caption">Tune Sanity Check</p>
+            </div>
+            <div class="screenshot-item">
+              <div class="screenshot-frame"><img src="screenshots/v3/22-ai-lethality.png" alt="Lethality Analysis" loading="lazy" /></div>
+              <p class="screenshot-caption">Lethality Analysis</p>
+            </div>
+            <div class="screenshot-item">
+              <div class="screenshot-frame"><img src="screenshots/v3/23-ai-traj.png" alt="AI Trajectory Analysis" loading="lazy" /></div>
+              <p class="screenshot-caption">Trajectory AI</p>
+            </div>
+            <div class="screenshot-item">
+              <div class="screenshot-frame"><img src="screenshots/v3/24-ai-build-plan.png" alt="AI Build Plan" loading="lazy" /></div>
+              <p class="screenshot-caption">Build Plan</p>
+            </div>
           </div>
-          <div class="screenshot-item">
-            <div class="screenshot-frame"><img src="screenshots/v3/18-AI-arrows.png" alt="AI Arrow Selection" loading="lazy" /></div>
-            <p class="screenshot-caption">AI Arrow Selection</p>
-          </div>
-          <div class="screenshot-item">
-            <div class="screenshot-frame"><img src="screenshots/v3/19-ai-shaft-designer.png" alt="Shaft Designer" loading="lazy" /></div>
-            <p class="screenshot-caption">Shaft Designer</p>
-          </div>
-          <div class="screenshot-item">
-            <div class="screenshot-frame"><img src="screenshots/v3/20-ai-build-score-insight.png" alt="Build Score Insight" loading="lazy" /></div>
-            <p class="screenshot-caption">Build Score Insight</p>
-          </div>
-          <div class="screenshot-item">
-            <div class="screenshot-frame"><img src="screenshots/v3/21-ai-arrow-tune-sanity.png" alt="Arrow Tune Sanity Check" loading="lazy" /></div>
-            <p class="screenshot-caption">Tune Sanity Check</p>
-          </div>
-          <div class="screenshot-item">
-            <div class="screenshot-frame"><img src="screenshots/v3/22-ai-lethality.png" alt="Lethality Analysis" loading="lazy" /></div>
-            <p class="screenshot-caption">Lethality Analysis</p>
-          </div>
-          <div class="screenshot-item">
-            <div class="screenshot-frame"><img src="screenshots/v3/23-ai-traj.png" alt="AI Trajectory Analysis" loading="lazy" /></div>
-            <p class="screenshot-caption">Trajectory AI</p>
-          </div>
-          <div class="screenshot-item">
-            <div class="screenshot-frame"><img src="screenshots/v3/24-ai-build-plan.png" alt="AI Build Plan" loading="lazy" /></div>
-            <p class="screenshot-caption">Build Plan</p>
-          </div>
+          <div class="track-fade"></div>
         </div>
-        <div class="track-fade"></div>
       </div>
     </div>
 
