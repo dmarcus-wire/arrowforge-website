@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How the Scoring Works — ArrowForge</title>
+  <meta name="description" content="ArrowForge scores every arrow build using a physics-based ballistics engine and a context-aware Build Match Score — explained in plain language." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --brand:        #2D6A4F;
+      --brand-light:  #52B788;
+      --bg:           #F9FAFB;
+      --surface:      #FFFFFF;
+      --text:         #111827;
+      --muted:        #6B7280;
+      --border:       #E5E7EB;
+      --accent-bg:    #F0FDF4;
+      --accent-border:#BBF7D0;
+    }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+    nav {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 0 24px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+    .nav-logo img {
+      height: 36px;
+      width: 36px;
+      display: block;
+      border-radius: 8px;
+    }
+    .nav-logo-text {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--text);
+      letter-spacing: -0.4px;
+    }
+    .nav-back {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--muted);
+      text-decoration: none;
+    }
+    .nav-back:hover { color: var(--brand); }
+    .hero {
+      background: var(--brand);
+      color: #fff;
+      padding: 56px 24px 48px;
+      text-align: center;
+    }
+    .hero h1 {
+      font-size: clamp(28px, 5vw, 44px);
+      font-weight: 800;
+      letter-spacing: -0.8px;
+      margin-bottom: 16px;
+    }
+    .hero p {
+      font-size: 18px;
+      opacity: 0.88;
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 48px 24px 80px;
+    }
+    h2 {
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: -0.3px;
+      color: var(--brand);
+      margin: 48px 0 12px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--accent-border);
+    }
+    h3 {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--text);
+      margin: 28px 0 8px;
+    }
+    p { margin-bottom: 16px; }
+    ul {
+      padding-left: 20px;
+      margin-bottom: 16px;
+    }
+    li { margin-bottom: 6px; }
+    .callout {
+      background: var(--accent-bg);
+      border: 1px solid var(--accent-border);
+      border-radius: 10px;
+      padding: 18px 20px;
+      margin: 24px 0;
+      font-size: 15px;
+    }
+    .callout strong { color: var(--brand); }
+    .score-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0 28px;
+      font-size: 14px;
+    }
+    .score-table th {
+      background: var(--accent-bg);
+      color: var(--brand);
+      font-weight: 700;
+      text-align: left;
+      padding: 10px 14px;
+      border: 1px solid var(--accent-border);
+    }
+    .score-table td {
+      padding: 9px 14px;
+      border: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .score-table tr:nth-child(even) td { background: #FAFAFA; }
+    .band {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+    }
+    .band-excellent { background: #D1FAE5; color: #065F46; }
+    .band-good      { background: #DBEAFE; color: #1E40AF; }
+    .band-fair      { background: #FEF3C7; color: #92400E; }
+    .band-low       { background: #FEE2E2; color: #991B1B; }
+    footer {
+      text-align: center;
+      padding: 32px 24px;
+      font-size: 13px;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+    }
+    footer a { color: var(--brand); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="/">
+    <img src="/icon.png" alt="ArrowForge" />
+    <span class="nav-logo-text">ArrowForge</span>
+  </a>
+  <a class="nav-back" href="/">← Back</a>
+</nav>
+
+<div class="hero">
+  <h1>How the Scoring Works</h1>
+  <p>ArrowForge uses a physics-based ballistics engine and a context-aware Build Match Score to evaluate every arrow build — no black boxes, no guesswork.</p>
+</div>
+
+<div class="container">
+
+  <h2>The core idea</h2>
+
+  <p>Most archery calculators show you a number — spine chart deflection, FOC percentage, kinetic energy — and leave you to interpret it. ArrowForge instead asks a harder question: <strong>how well does this specific build match this specific archer, bow, and goal?</strong></p>
+
+  <p>A 400-grain arrow flying at 310 fps is excellent for a 3D competitor shooting 50 yards in the open. It is a questionable choice for a bowhunter picking their way through timber at 25 yards after a 600-pound black bear. Same arrow, same bow, different score — because context changes everything.</p>
+
+  <p>The Build Match Score translates that context into a single 0–100 number with two clear sub-categories: <strong>Forgiveness</strong> and <strong>Tuning Match</strong>.</p>
+
+
+  <h2>Build Match Score — two categories, one number</h2>
+
+  <p>The overall score is a weighted average of Forgiveness and Tuning Match. The weights shift based on what the archer is working toward:</p>
+
+  <table class="score-table">
+    <thead>
+      <tr><th>Archer application</th><th>Forgiveness weight</th><th>Tuning weight</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Bowhunting</td><td>60%</td><td>40%</td></tr>
+      <tr><td>Competition / Target</td><td>35%</td><td>65%</td></tr>
+      <tr><td>Training / Other</td><td>50%</td><td>50%</td></tr>
+    </tbody>
+  </table>
+
+  <p>A hunter's score leans on forgiveness because a hunting shot is rarely from a bench — it involves adrenaline, an awkward angle, a hard hold at full draw. A target shooter's score leans on tuning because at 50 meters, a mismatched spine or poor FOC will show up in every arrow.</p>
+
+  <table class="score-table">
+    <thead>
+      <tr><th>Score</th><th>Band</th><th>What it means</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>85–100</td><td><span class="band band-excellent">Excellent</span></td><td>Build is well-matched; small gains possible but this setup is working</td></tr>
+      <tr><td>70–84</td><td><span class="band band-good">Good</span></td><td>Solid build with room to improve one or two factors</td></tr>
+      <tr><td>50–69</td><td><span class="band band-fair">Fair</span></td><td>Noticeable gaps — tuning changes would help meaningfully</td></tr>
+      <tr><td>0–49</td><td><span class="band band-low">Low</span></td><td>Build is mismatched for stated goal or bow; review recommended</td></tr>
+    </tbody>
+  </table>
+
+
+  <h2>Forgiveness — does this build work when it counts?</h2>
+
+  <p>Forgiveness measures how much margin for error is built into the setup. A forgiving build groups well even on a slightly off shot. An unforgiving build demands perfection every time.</p>
+
+  <p>Six factors contribute to the Forgiveness score. Their weights shift based on the archer's <strong>farthest practice distance</strong> and <strong>target species</strong> — because what matters at 20 yards in the timber is different from what matters at 70 yards in the open West.</p>
+
+  <div class="callout">
+    <strong>Why distance changes the weights:</strong> At close range, shot-angle forgiveness dominates — the arrow has less time to correct, and the encounter geometry is more variable. At long range, aerodynamic stability and flat flight become the limiting factors. ArrowForge shifts the formula automatically so the score reflects the archer's actual use case.
+  </div>
+
+  <h3>Grains per pound (GPP)</h3>
+  <p>GPP is total finished arrow weight divided by draw weight. It is the single best predictor of how the arrow will behave at the shot: too light and the bow works against itself (excess vibration, poor efficiency, hard on equipment); too heavy and the arrow loses speed and trajectory. Compound optimal range is 5.5–8.0 GPP; traditional bows run 7.5–9.5 GPP. GPP carries the most weight in short-range and big-game scoring where penetration and controlled energy delivery matter most.</p>
+
+  <h3>Group stability</h3>
+  <p>A composite check across three independent factors: arrow speed (does the build generate enough velocity to stabilize the shaft?), FOC (is the center of mass forward enough to keep the arrow nose-forward through the shot?), and GPI — grains per inch — (is the shaft heavy enough per unit length to resist wind deflection without being too stiff to tune?). All three must be in range for full marks; partial credit is awarded proportionally.</p>
+
+  <h3>Hold forgiveness</h3>
+  <p>For compounds: let-off percentage. A 90% let-off holds 10% of peak weight at full draw — a major factor for a bowhunter waiting for a shot opportunity. For recurves and traditional bows: bow length. A longer bow draws a shorter string angle at the fingers, reducing torque and improving consistency.</p>
+
+  <h3>Brace height</h3>
+  <p>The distance from the grip throat to the bowstring at rest. Shorter brace heights increase the power stroke and arrow speed — but the arrow stays on the string longer, meaning any hand movement during the shot is transmitted to the arrow. Most modern compound bowhunters favor 6.5 inches or more. Below 6.0 inches, the margin for error shrinks substantially.</p>
+
+  <h3>Flight profile</h3>
+  <p>Shaft diameter. Smaller-diameter arrows (4mm / 0.204") punch through air more cleanly and drift less in wind — meaningful at distance. At close range, this factor carries almost no weight in the score. At 60+ yards, it becomes significant. The scoring penalizes large-diameter shafts at long range because physics does.</p>
+
+  <h3>Arrow weight (dangerous game)</h3>
+  <p>For dangerous-game pursuits — brown bear, bison, cape buffalo — total finished arrow weight becomes a standalone factor. Heavy arrows carry momentum that light-and-fast setups cannot match at bone. This factor is inactive for most hunting and all target applications; it only enters the score when the target species demands it.</p>
+
+
+  <h2>Tuning Match — is the arrow actually matched to the bow?</h2>
+
+  <p>Tuning Match evaluates whether the arrow's dynamic spine, weight, and (when known) measured speed are correctly dialed for the specific bow.</p>
+
+  <h3>Spine consensus</h3>
+  <p>ArrowForge computes effective draw weight — the load the bow actually exerts on the shaft given draw length, point weight, and total arrow weight — and then checks whether the selected shaft's rated spine sits within the expected range. This is not a simple chart lookup: effective draw weight shifts 2.5 lbs per inch of draw length away from 28" and 0.15 lbs per grain of point weight away from 100 grains. Spine carries 50–62% of the Tuning Match score depending on whether a measured arrow speed is available.</p>
+
+  <h3>GPP as a tuning signal</h3>
+  <p>GPP appears in both Forgiveness and Tuning Match because it reflects two different things. In Forgiveness, it is about energy delivery and equipment stress. In Tuning Match, it is about whether the arrow's mass is in the range where the bow can efficiently transfer energy without oscillation. An arrow that is too light for the bow cycles poorly out of the shot; too heavy and it loses the energy advantage of the bow's draw weight.</p>
+
+  <h3>FPS efficiency (when a chronograph is available)</h3>
+  <p>If the archer enters a measured arrow speed, ArrowForge compares it to the expected velocity for that bow, draw length, and arrow weight. A well-tuned bow running within 25 fps of predicted velocity scores full marks. Larger gaps suggest a timing, cam, or limb issue — or that the entered specs don't match what's actually on the bow. This factor contributes 20% of Tuning Match when present.</p>
+
+
+  <h2>Ballistics — the physics underneath the score</h2>
+
+  <p>The Build Match Score is built on top of a deterministic ballistics engine that runs the same physics equations used in external ballistics, adapted for arrows.</p>
+
+  <h3>Kinetic energy and momentum</h3>
+  <p>KE (in foot-pounds) and momentum (slug·ft/s) are calculated at the muzzle and at the target using the arrow's measured or estimated velocity and weight. Momentum is the better predictor of penetration on large game — it measures how much the arrow resists being stopped — while KE is a better indicator of how much energy is available at impact. ArrowForge reports both and evaluates them against established thresholds for small game, deer, elk, and dangerous game.</p>
+
+  <h3>Velocity retention</h3>
+  <p>Arrows shed speed rapidly compared to bullets — a typical hunting arrow loses 15–25% of its velocity by 40 yards. ArrowForge models this with an exponential decay that accounts for arrow weight: heavier arrows carry their velocity better than light ones despite starting slower. The formula: <em>impact velocity = launch velocity × e^(−0.532 × range / weight)</em>. This constant was calibrated against published arrow flight data.</p>
+
+  <h3>Trajectory and flatness</h3>
+  <p>Drop is calculated using a time-of-flight model. ArrowForge measures the additional drop from 20 yards to 60 yards — the "extra" drop relative to the near pin — because this is what drives sight tape spacing and hold-over decisions in the field. Flatter trajectories reduce the cost of a range estimation error, which matters most at distance and least at close range.</p>
+
+  <h3>Air density correction</h3>
+  <p>Elevation changes air density, and air density changes how fast an arrow slows down and drops. ArrowForge corrects for elevation using a standard barometric formula accurate to within 1% up to 16,000 feet — relevant for bowhunters in the Rockies or high-desert hunts where a sea-level sight tape will print several inches low at distance.</p>
+
+
+  <h2>What ArrowForge does not do</h2>
+
+  <p>The score is a tool, not a verdict. ArrowForge will tell you that your brace height is below the preferred band — it will not tell you to change your bow. It will flag an underspined setup — it will not prescribe a specific shaft by brand. The recommendations point toward levers the archer controls: point weight, cut length, insert weight, draw length confirmation. Equipment decisions belong to the archer and their bow technician.</p>
+
+  <div class="callout">
+    <strong>A note on AI recommendations:</strong> ArrowForge Pro layers an AI coaching layer on top of the physics engine. The AI explains what the numbers mean in plain language, suggests which lever to pull first, and can design a build from scratch. The physics engine always runs first — the AI interprets it. Neither replaces a qualified bow technician for final setup and safety confirmation.
+  </div>
+
+</div>
+
+<footer>
+  <p>
+    <a href="/">ArrowForge</a> &nbsp;·&nbsp;
+    <a href="/privacy/">Privacy Policy</a> &nbsp;·&nbsp;
+    <a href="/terms/">Terms of Service</a>
+  </p>
+  <p style="margin-top:8px;">© 2026 Frontier Forge LLC. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
