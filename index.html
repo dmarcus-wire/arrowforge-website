@@ -147,64 +147,6 @@
     }
     .btn-secondary:hover { border-color: var(--brand); color: var(--brand); }
 
-    /* ── Features ── */
-    .features {
-      max-width: 900px;
-      margin: 80px auto 0;
-      padding: 0 24px;
-    }
-    .features-label {
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 0.8px;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 24px;
-      text-align: center;
-    }
-    .features-list {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 0 48px;
-    }
-    .feature-item {
-      display: flex;
-      gap: 14px;
-      padding: 16px 0;
-      border-bottom: 1px solid var(--border);
-    }
-    .features-list .feature-item:nth-last-child(-n+2) { border-bottom: none; }
-    .feature-check {
-      flex-shrink: 0;
-      width: 20px;
-      height: 20px;
-      background: var(--brand);
-      border-radius: 50%;
-      color: #fff;
-      font-size: 11px;
-      font-weight: 800;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-top: 2px;
-    }
-    .feature-item h3 {
-      font-size: 14px;
-      font-weight: 700;
-      color: var(--text);
-      margin-bottom: 4px;
-    }
-    .feature-item p {
-      font-size: 13px;
-      color: var(--muted);
-      line-height: 1.6;
-    }
-    @media (max-width: 600px) {
-      .features-list { grid-template-columns: 1fr; }
-      .features-list .feature-item:nth-last-child(-n+2) { border-bottom: 1px solid var(--border); }
-      .features-list .feature-item:last-child { border-bottom: none; }
-    }
-
     /* ── Screenshots ── */
     .screenshots-section {
       margin-top: 56px;
@@ -800,7 +742,7 @@
 
   <section class="hero">
     <img src="/icon.png" alt="ArrowForge" class="hero-icon" />
-    <span class="hero-eyebrow">Now on iOS</span>
+    <span class="hero-eyebrow">iOS &amp; Android · Testing June 2026</span>
     <h1>Your gear. Proven math. <span>Shoot with confidence.</span></h1>
     <p>Whether you're building your first setup or dialing in your fifth — know your ballistics before your goal date and minimize the margin.</p>
     <div class="cta-group">
@@ -811,6 +753,7 @@
       </a>
       <a id="email-cta" class="btn-secondary">Contact us</a>
     </div>
+    <p style="margin-top: 16px; font-size: 13px; color: var(--muted);">iOS and Android apps available for testing this June 2026 — <a id="email-beta" style="color: var(--brand); font-weight: 600; text-decoration: none;">get in touch to join</a>.</p>
   </section>
 
   <section class="feature-spotlights">
@@ -1116,54 +1059,6 @@
 
   </section>
 
-  <section class="features">
-    <p class="features-label">What's inside</p>
-    <div class="features-list">
-      <div class="feature-item">
-        <div class="feature-check">✓</div>
-        <div>
-          <h3>Goal countdown + coaching</h3>
-          <p>Set your hunt opener or competition date. ArrowForge counts down and tells you what to focus on — plenty of time, final stretch, or game week.</p>
-        </div>
-      </div>
-      <div class="feature-item">
-        <div class="feature-check">✓</div>
-        <div>
-          <h3>Training → Destination correction</h3>
-          <p>Practice at sea level, hunt at 9,000 ft. ArrowForge accounts for the air density shift so your numbers reflect where you actually shoot.</p>
-        </div>
-      </div>
-      <div class="feature-item">
-        <div class="feature-check">✓</div>
-        <div>
-          <h3>Build Match Score</h3>
-          <p>A weighted readiness score tuned to your application — lethality matters more for hunters, trajectory and tuning for competitors.</p>
-        </div>
-      </div>
-      <div class="feature-item">
-        <div class="feature-check">✓</div>
-        <div>
-          <h3>Transparent math</h3>
-          <p>Every number shows the formula behind it. Tap any result to see exactly how it was calculated — no black boxes.</p>
-        </div>
-      </div>
-      <div class="feature-item">
-        <div class="feature-check">✓</div>
-        <div>
-          <h3>Multiple builds</h3>
-          <p>Save and compare setups side by side. Switch between your hunting rig, target setup, and practice arrows in seconds.</p>
-        </div>
-      </div>
-      <div class="feature-item">
-        <div class="feature-check">✓</div>
-        <div>
-          <h3>Progressive ballistics</h3>
-          <p>Starts useful with just draw weight and arrow weight. Gets more accurate as you add diameter, FOC, and advanced data.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <div class="modal-backdrop" id="screenshot-modal" aria-hidden="true" role="dialog" aria-modal="true">
     <div class="modal-content">
       <div class="modal-image-wrapper">
@@ -1284,7 +1179,7 @@
       var u = atob('YXJyb3dmb3JnZWFwcA==');
       var d = atob('dHV0YS5pbw==');
       var m = 'mailto:' + u + '@' + d;
-      ['email-nav', 'email-cta', 'email-footer-support'].forEach(function(id) {
+      ['email-nav', 'email-cta', 'email-beta', 'email-footer-support'].forEach(function(id) {
         var el = document.getElementById(id);
         if (el) el.href = m;
       });
