@@ -138,6 +138,20 @@
     }
     .safety p:last-child { margin-bottom: 0; }
     .safety strong { color: #7F1D1D; }
+    .arbitration-box {
+      background: #EFF6FF;
+      border: 1px solid #BFDBFE;
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin: 24px 0;
+    }
+    .arbitration-box p {
+      margin: 0 0 10px;
+      font-size: 14px;
+      color: #1E3A5F;
+    }
+    .arbitration-box p:last-child { margin-bottom: 0; }
+    .arbitration-box strong { color: #1E40AF; }
     .toc {
       background: var(--surface);
       border: 1px solid var(--border);
@@ -173,16 +187,6 @@
       border-top: 1px solid var(--border);
       margin: 48px 0 0;
     }
-    .draft-banner {
-      background: #FEF3C7;
-      border: 1px solid #F59E0B;
-      border-radius: 8px;
-      padding: 12px 16px;
-      margin-bottom: 24px;
-      font-size: 13px;
-      color: #78350F;
-    }
-    .draft-banner strong { color: #78350F; }
   </style>
 </head>
 <body>
@@ -197,11 +201,7 @@
 
   <div class="content">
     <h1>Terms of Service</h1>
-    <p class="effective">Effective date: May 14, 2026 &nbsp;·&nbsp; Frontier Forge LLC</p>
-
-    <div class="draft-banner">
-      <strong>Note:</strong> This document is being reviewed by counsel. The version on this page may be updated before the App Store launch. Material changes will be noted on the effective date.
-    </div>
+    <p class="effective">Effective date: June 6, 2026 &nbsp;·&nbsp; Frontier Forge LLC</p>
 
     <p>These Terms of Service ("Terms") govern your access to and use of the ArrowForge mobile application and any related services (collectively, the "Service") provided by Frontier Forge LLC ("ArrowForge", "we", "us", or "our"). By installing, accessing, or using the Service, you agree to be bound by these Terms.</p>
 
@@ -220,10 +220,12 @@
         <li><a href="#third-party">Third-party services and content</a></li>
         <li><a href="#user-content">Your data and content</a></li>
         <li><a href="#termination">Termination</a></li>
+        <li><a href="#beta">Beta and testing releases</a></li>
         <li><a href="#disclaimer">Disclaimer of warranties</a></li>
         <li><a href="#liability">Limitation of liability</a></li>
         <li><a href="#indemnification">Indemnification</a></li>
-        <li><a href="#governing-law">Governing law and disputes</a></li>
+        <li><a href="#disputes">Dispute resolution and arbitration</a></li>
+        <li><a href="#general">General provisions</a></li>
         <li><a href="#changes">Changes to these Terms</a></li>
         <li><a href="#contact">Contact</a></li>
       </ol>
@@ -232,16 +234,21 @@
     <!-- 1 -->
     <h2 id="about">1. About the Service</h2>
     <p>ArrowForge is a planning and reference tool for archers and bowhunters. It helps you organise bow and arrow specifications, perform ballistics calculations, compare setups, and (with an optional Pro subscription) access AI-assisted recommendations. The Service runs primarily on your device. Optional account features sync your data to our cloud database.</p>
-    <p>ArrowForge is a <strong>reference and sanity-check tool</strong>, not a substitute for professional equipment setup, tuning, or training. See Section 5 for the full safety disclaimer.</p>
+    <p>ArrowForge is a <strong>reference and sanity-check tool</strong>, not a substitute for professional equipment setup, tuning, or training. Nothing in the Service constitutes professional archery, equipment, safety, or legal advice. See Section 5 for the full safety disclaimer.</p>
 
     <!-- 2 -->
     <h2 id="eligibility">2. Eligibility</h2>
     <p>You must be at least 13 years old to use the Service. If you are under 18, you must have permission from a parent or legal guardian, and they must read and agree to these Terms on your behalf. You may not use the Service if you are barred from doing so under applicable law.</p>
     <p>By using the Service you represent that the information you provide is accurate and that you have authority to enter into these Terms.</p>
+    <div class="safety">
+      <p><strong>Important — minors and archery safety:</strong> Archery and bowhunting equipment is dangerous for people of all ages, and particularly for younger or less experienced users. If you are under 18:</p>
+      <p>A parent or legal guardian must supervise your use of any archery equipment informed by this app. We strongly recommend that all users under 18 receive in-person instruction from a certified archery coach and that a parent or guardian reviews all equipment decisions with a qualified bow technician before any shooting takes place.</p>
+      <p>The Service is an informational planning tool. It is not a substitute for qualified, in-person supervision of a minor handling archery equipment.</p>
+    </div>
 
     <!-- 3 -->
     <h2 id="accounts">3. Accounts and security</h2>
-    <p>Most of the Service works without an account. An optional account, created with an email address and password or via Sign in with Apple, unlocks cloud sync and Pro features.</p>
+    <p>Most of the Service works without an account. An optional account, created with an email address and password, via Sign in with Apple, or via Sign in with Google (on Android), unlocks cloud sync and Pro features.</p>
     <p>You are responsible for:</p>
     <ul>
       <li>Keeping your password and account credentials secure</li>
@@ -275,23 +282,39 @@
       <p><strong>Archery and bowhunting equipment can cause serious injury or death if used improperly. ArrowForge is a planning tool, not a substitute for qualified hands-on equipment setup, tuning, or instruction.</strong></p>
       <p>Every recommendation, calculation, score, and AI insight produced by the Service is a <strong>sanity check</strong> — a starting point intended to spark conversation with a qualified bow tech, coach, or experienced bowhunter. The numbers are derived from generalised models and from inputs you provide; they cannot account for the specifics of your equipment, the condition of individual components, your form, or local conditions.</p>
       <p>The Service is particularly explicit about spine selection: an under-spined arrow at heavy draw weight can shatter on release and cause serious injury. <strong>Always verify your arrow spine against the manufacturer's published chart and have a qualified bow tech inspect your setup before shooting</strong>, especially when changing draw weight, draw length, arrow length, point weight, or shaft brand.</p>
+      <p>AI-generated recommendations (Pro features) are subject to the same limitations as all other outputs of the Service. <strong>AI outputs are not professional archery or equipment advice</strong> and may be incorrect, incomplete, or based on generalised models that do not reflect your specific equipment, form, or circumstances. Treat them as a starting point for discussion with a qualified bow technician, not as actionable instructions.</p>
     </div>
 
     <p>You agree that you are solely responsible for:</p>
     <ul>
       <li>Verifying any specification, calculation, or recommendation produced by the Service with the manufacturer of your equipment and with a qualified bow technician</li>
       <li>Following all applicable safety guidance from your equipment manufacturers and from your local archery range, hunting unit, or governing body</li>
+      <li>Ensuring your equipment setup complies with all applicable local, state, and federal regulations, including minimum draw weight, minimum arrow weight, and broadhead requirements for the species and jurisdiction in which you hunt</li>
       <li>Practising at your actual capable range, not your theoretical maximum range, and abiding by all applicable hunting regulations and ethical standards</li>
       <li>Inspecting your bow, arrows, and accessories before every shot for damage, wear, or improper assembly</li>
+      <li>If you are a parent or guardian of a user under 18: ensuring that the minor is under direct adult supervision whenever handling or shooting archery equipment, and that you have reviewed all outputs of the Service with a qualified bow technician before any equipment decisions are made on the minor's behalf</li>
     </ul>
+
+    <p>By using the Service, you expressly assume all risk of personal injury, death, equipment damage, and harm to third parties or wildlife arising from or related to the handling or use of archery and bowhunting equipment, whether or not such injury or damage results from your reliance on the Service.</p>
 
     <p>To the maximum extent permitted by applicable law, ArrowForge accepts no responsibility for personal injury, equipment damage, or harm to wildlife resulting from your use of, or reliance on, the Service.</p>
 
     <!-- 6 -->
     <h2 id="subscriptions">6. Subscriptions and billing</h2>
-    <p>Some features (including AI assistants such as bow autofill, arrow recommender, sanity check, and build plan synth) are available only with a Pro subscription. Subscriptions are sold through the Apple App Store and are governed by Apple's standard subscription terms.</p>
-    <p>By purchasing a subscription, you authorise Apple to charge the payment method on file and to renew the subscription automatically until you cancel. Renewal price, billing period, and management are handled through your Apple ID account.</p>
-    <p>To cancel, manage, or request a refund, use the subscription management tools in your Apple ID account settings or contact Apple Support. ArrowForge does not process payments and cannot issue refunds directly.</p>
+    <p>Some features (including AI assistants such as bow autofill, arrow recommender, sanity check, and build plan synth) are available only with a Pro subscription. Subscriptions are sold through the Apple App Store or the Google Play Store depending on your platform, and are governed by the respective platform's standard subscription terms.</p>
+
+    <h3>Apple App Store</h3>
+    <p>By purchasing a subscription through the App Store, you authorise Apple to charge the payment method on file and to renew the subscription automatically until you cancel. Renewal price, billing period, and management are handled through your Apple ID account. To cancel, manage, or request a refund, use the subscription management tools in your Apple ID account settings or contact Apple Support.</p>
+
+    <h3>Google Play Store</h3>
+    <p>By purchasing a subscription through Google Play, you authorise Google to charge the payment method on file and to renew the subscription automatically until you cancel. Renewal price, billing period, and management are handled through your Google account. To cancel, manage, or request a refund, use the subscription management tools in Google Play or contact Google Play Support.</p>
+
+    <p>ArrowForge does not process payments and cannot issue refunds directly for purchases made through either platform. Please contact Apple Support or Google Play Support as applicable.</p>
+
+    <h3>Price changes</h3>
+    <p>We reserve the right to change subscription prices at any time. Price changes take effect at the start of your next billing period following notice. We will notify you of material price changes by updating the pricing displayed in the App Store or Google Play Store listing. Your continued use of the Pro subscription after a price change takes effect constitutes acceptance of the new price. If you do not accept a price change, you must cancel your subscription before the change takes effect.</p>
+
+    <h3>Promotional codes</h3>
     <p>Promotional codes for Pro access (where available) are non-transferable, may be limited in number, and may expire. We may revoke promotional access if a code is used in violation of these Terms.</p>
 
     <!-- 7 -->
@@ -302,7 +325,7 @@
 
     <!-- 8 -->
     <h2 id="third-party">8. Third-party services and content</h2>
-    <p>The Service uses third-party services including (without limitation) Supabase for authentication and cloud storage, Nominatim and Open-Elevation for location and elevation lookups, Anthropic for AI features, and the Apple App Store for distribution and billing. Your use of these services is governed by their respective terms. We are not responsible for the practices of third parties.</p>
+    <p>The Service uses third-party services including (without limitation) Supabase for authentication and cloud storage, Nominatim and Open-Elevation for location and elevation lookups, Anthropic for AI features, and the Apple App Store and Google Play Store for distribution and billing. Your use of these services is governed by their respective terms. We are not responsible for the practices of third parties.</p>
     <p>Manufacturer names, model names, and product specifications referenced inside the Service belong to their respective owners. References are for compatibility and identification purposes only and do not imply endorsement.</p>
 
     <!-- 9 -->
@@ -311,44 +334,93 @@
     <p>We do not sell Your Content, do not use it for advertising, and do not use it to train machine-learning models. Our handling of Your Content is described in detail in the <a href="/privacy/">Privacy Policy</a>.</p>
     <p>You may export or delete Your Content at any time. Deleting your account removes all server-side copies of Your Content within 30 days; local copies on your device are removed when you uninstall the Service.</p>
 
+    <h3>Feedback licence</h3>
+    <p>Any feedback, suggestions, bug reports, ideas, or other communications you submit to us through the in-app feedback sheet, by email, or by any other means ("Feedback") are provided voluntarily. You grant Frontier Forge LLC a perpetual, irrevocable, worldwide, royalty-free licence to use, reproduce, modify, distribute, and incorporate your Feedback into the Service or any other product or service, without obligation or compensation to you. This licence does not affect your ownership of your Feedback or your rights to use it for any other purpose.</p>
+
     <!-- 10 -->
     <h2 id="termination">10. Termination</h2>
-    <p>You may stop using the Service at any time. You may delete your account by emailing <a href="mailto:arrowforgeapp@tuta.io">arrowforgeapp@tuta.io</a> with the subject line "Delete my account."</p>
+    <p>You may stop using the Service at any time. You may delete your account by emailing <a href="mailto:arrow-forge@frontierforgellc.com">arrow-forge@frontierforgellc.com</a> with the subject line "Delete my account."</p>
     <p>We may suspend or terminate your access to the Service, with or without notice, if we reasonably believe you have violated these Terms, are misusing the Service, or are placing the security or integrity of the Service or other users at risk.</p>
-    <p>Sections that by their nature should survive termination (including Acceptable Use, Safety Disclaimer, Intellectual Property, Disclaimer of Warranties, Limitation of Liability, Indemnification, and Governing Law) will continue to apply after termination.</p>
+    <p>Sections that by their nature should survive termination (including Acceptable Use, Safety Disclaimer, Intellectual Property, Feedback Licence, Beta Disclaimer, Disclaimer of Warranties, Limitation of Liability, Indemnification, Dispute Resolution, and General Provisions) will continue to apply after termination.</p>
 
     <!-- 11 -->
-    <h2 id="disclaimer">11. Disclaimer of warranties</h2>
+    <h2 id="beta">11. Beta and testing releases</h2>
+    <p>From time to time, we may make available versions of the Service designated as beta, preview, early access, or testing releases (each a "Beta Release"). If you access a Beta Release, the following additional terms apply.</p>
+    <ul>
+      <li>A Beta Release may be incomplete, unstable, contain bugs, or differ materially from the final release. Features may be added, changed, or removed without notice.</li>
+      <li>We do not guarantee that data you create or store during a Beta period will be preserved when the Beta Release is updated or when the Service exits beta. You should not rely on a Beta Release for production use or store data you cannot afford to lose.</li>
+      <li>We may discontinue a Beta Release at any time without notice and without liability.</li>
+      <li>Beta Releases are provided for testing and feedback purposes. Your participation does not create any right to a continued service or to any features shown during the beta period.</li>
+    </ul>
+    <p>All provisions of these Terms, including the disclaimer of warranties and limitation of liability, apply to Beta Releases with full force and without modification.</p>
+
+    <!-- 12 -->
+    <h2 id="disclaimer">12. Disclaimer of warranties</h2>
     <p>To the maximum extent permitted by applicable law, the Service is provided <strong>"as is"</strong> and <strong>"as available"</strong> without warranties of any kind, whether express, implied, statutory, or otherwise. We expressly disclaim all warranties of merchantability, fitness for a particular purpose, non-infringement, and any warranties arising out of course of dealing or usage of trade.</p>
     <p>We do not warrant that the Service will be uninterrupted, error-free, secure, or free from viruses or other harmful components. We do not warrant the accuracy, completeness, or reliability of any ballistics calculation, score, AI recommendation, or other output of the Service.</p>
 
-    <!-- 12 -->
-    <h2 id="liability">12. Limitation of liability</h2>
+    <!-- 13 -->
+    <h2 id="liability">13. Limitation of liability</h2>
     <p>To the maximum extent permitted by applicable law, in no event will Frontier Forge LLC or its officers, directors, employees, contractors, or affiliates be liable for any indirect, incidental, special, consequential, punitive, or exemplary damages (including damages for personal injury, loss of equipment, loss of profits, loss of data, or loss of goodwill) arising out of or relating to your use of, or inability to use, the Service, even if we have been advised of the possibility of such damages.</p>
     <p>To the maximum extent permitted by applicable law, our total aggregate liability arising out of or relating to the Service or these Terms will not exceed the greater of <strong>fifty United States dollars (US$50)</strong> or the amount you paid us for Pro subscriptions in the twelve months immediately preceding the claim.</p>
     <p>Some jurisdictions do not allow the exclusion or limitation of certain warranties or damages, so some of the limitations above may not apply to you. In those jurisdictions, our liability is limited to the maximum extent permitted by law.</p>
 
-    <!-- 13 -->
-    <h2 id="indemnification">13. Indemnification</h2>
-    <p>To the extent permitted by applicable law, you agree to indemnify and hold harmless Frontier Forge LLC and its officers, directors, employees, contractors, and affiliates from and against any claims, liabilities, damages, losses, costs, and expenses (including reasonable legal fees) arising out of or relating to: (a) your use of the Service; (b) your violation of these Terms; (c) your violation of any third-party right; or (d) your violation of any applicable law, including safety, hunting, or firearms regulation in your jurisdiction.</p>
-
     <!-- 14 -->
-    <h2 id="governing-law">14. Governing law and disputes</h2>
-    <p>These Terms are governed by the laws of the State of Colorado, United States, without regard to its conflict-of-laws rules. You agree that any dispute arising out of or relating to these Terms or the Service will be brought in the state or federal courts located in Denver County, Colorado, and you consent to the exclusive jurisdiction of those courts.</p>
-    <p>If any provision of these Terms is held to be unenforceable, the remaining provisions will continue in full force and effect.</p>
+    <h2 id="indemnification">14. Indemnification</h2>
+    <p>To the extent permitted by applicable law, you agree to indemnify and hold harmless Frontier Forge LLC and its officers, directors, employees, contractors, and affiliates from and against any claims, liabilities, damages, losses, costs, and expenses (including reasonable legal fees and court costs) arising out of or relating to: (a) your use of the Service; (b) your violation of these Terms; (c) your violation of any third-party right; or (d) your violation of any applicable law, including safety, hunting, or firearms regulation in your jurisdiction.</p>
 
     <!-- 15 -->
-    <h2 id="changes">15. Changes to these Terms</h2>
+    <h2 id="disputes">15. Dispute resolution and arbitration</h2>
+
+    <h3>Informal resolution first</h3>
+    <p>Before initiating any formal legal proceeding, the party asserting a claim must send written notice to the other party describing the claim and the relief sought. For claims against ArrowForge, send notice to <a href="mailto:arrow-forge@frontierforgellc.com">arrow-forge@frontierforgellc.com</a>. The parties will then attempt in good faith to resolve the claim informally for a period of 30 days from the date of receipt of the notice. Formal proceedings may not be commenced until the 30-day period has elapsed or either party has declared in writing that resolution is not possible.</p>
+
+    <div class="arbitration-box">
+      <p><strong>Please read this section carefully. It affects your legal rights.</strong></p>
+      <p><strong>Agreement to arbitrate.</strong> Except as stated below, you and Frontier Forge LLC agree that any dispute, claim, or controversy arising out of or relating to these Terms or the Service — including questions about the validity, interpretation, enforceability, or scope of this arbitration agreement — will be resolved through binding individual arbitration rather than in court. Arbitration is conducted by a neutral arbitrator, not a judge or jury. The arbitrator can award the same damages and individual relief that a court could award.</p>
+      <p><strong>CLASS ACTION WAIVER. YOU AND FRONTIER FORGE LLC AGREE THAT EACH MAY BRING CLAIMS AGAINST THE OTHER ONLY IN YOUR OR ITS INDIVIDUAL CAPACITY, AND NOT AS A PLAINTIFF OR CLASS MEMBER IN ANY PURPORTED CLASS, REPRESENTATIVE, OR COLLECTIVE PROCEEDING. THE ARBITRATOR MAY NOT CONSOLIDATE MORE THAN ONE PERSON'S CLAIMS AND MAY NOT PRESIDE OVER ANY CLASS OR REPRESENTATIVE PROCEEDING.</strong> If this class action waiver is found unenforceable as to a particular claim, that claim must proceed in court and any remaining claims must proceed in arbitration.</p>
+      <p><strong>Exceptions.</strong> Either party may bring an individual action in a small claims court of competent jurisdiction, provided the claim remains in that court and is not transferred to a court of general jurisdiction. Either party may seek emergency injunctive or other equitable relief in a court of competent jurisdiction solely to prevent actual or threatened infringement, misappropriation, or violation of intellectual property rights, pending the outcome of arbitration.</p>
+      <p><strong>Arbitration rules.</strong> Arbitration will be administered by the American Arbitration Association ("AAA") under its Consumer Arbitration Rules (available at adr.org or by calling 1-800-778-7879), which are incorporated by reference. Where the AAA rules conflict with these Terms, these Terms will govern. The arbitration will be conducted in Denver, Colorado, unless the parties agree otherwise. For claims of US$25,000 or less, the arbitration may be conducted solely by submitted documents, by telephone, or by video conference, as agreed by the parties or determined by the arbitrator. For claims over US$25,000, a hearing will be held unless the parties agree otherwise.</p>
+      <p><strong>Fees.</strong> Filing, administrative, and arbitrator fees will be governed by the AAA Consumer Arbitration Rules. If the arbitrator finds that a claim or the relief sought is frivolous or brought for an improper purpose, the arbitrator may allocate costs consistent with the AAA rules.</p>
+      <p><strong>Opt-out.</strong> If you are a new user, you may opt out of this arbitration agreement within 30 days of first accepting these Terms by sending a written opt-out notice to <a href="mailto:arrow-forge@frontierforgellc.com">arrow-forge@frontierforgellc.com</a> with the subject line "Arbitration Opt-Out." Opting out does not affect any other provision of these Terms.</p>
+    </div>
+
+    <h3>Governing law</h3>
+    <p>These Terms are governed by the laws of the State of Colorado, United States, without regard to its conflict-of-laws rules. For any dispute not subject to arbitration, you consent to the exclusive jurisdiction of the state and federal courts located in Denver County, Colorado. If any provision of these Terms is held to be unenforceable, the remaining provisions will continue in full force and effect.</p>
+
+    <!-- 16 -->
+    <h2 id="general">16. General provisions</h2>
+
+    <h3>Force majeure</h3>
+    <p>We are not liable for any failure or delay in performing our obligations under these Terms where such failure or delay results from any cause beyond our reasonable control, including without limitation: acts of God, fire, flood, earthquake, pandemic, epidemic, or other natural disaster; war, riot, civil disturbance, terrorism, or government action; internet outages, power failures, or failures of third-party services (including Supabase, AWS, Apple, Google, or Anthropic); or labour disputes. If such a circumstance continues for more than 60 consecutive days, either party may terminate these Terms by providing written notice to the other party.</p>
+
+    <h3>Assignment</h3>
+    <p>We may freely assign or transfer our rights and obligations under these Terms to any successor entity in connection with a merger, acquisition, reorganisation, or sale of all or substantially all of our assets, without notice to you. You may not assign or transfer your rights or obligations under these Terms without our prior written consent. Any attempted assignment by you in violation of this provision is void. These Terms are binding on and inure to the benefit of the parties and their respective permitted successors and assigns.</p>
+
+    <h3>Waiver</h3>
+    <p>Our failure to enforce any right or provision of these Terms does not constitute a waiver of that right or provision. Any waiver of a provision of these Terms must be in writing and signed by an authorised representative of Frontier Forge LLC to be effective. A waiver of any breach or default does not waive any subsequent breach or default.</p>
+
+    <h3>Entire agreement</h3>
+    <p>These Terms, together with the <a href="/privacy/">Privacy Policy</a> (incorporated by reference), constitute the entire agreement between you and Frontier Forge LLC regarding the Service and supersede all prior and contemporaneous agreements, representations, warranties, and understandings — oral or written — between the parties with respect to the same subject matter. No representation or promise made outside of these Terms shall have any legal effect unless expressly incorporated herein.</p>
+
+    <h3>Electronic acceptance</h3>
+    <p>By installing, accessing, or using the Service, you consent to receive communications from us electronically, and you agree that such electronic communications satisfy any requirement that communications be in writing. Your use of the Service constitutes your electronic signature and acceptance of these Terms, which has the same legal effect as a handwritten signature.</p>
+
+    <h3>Severability</h3>
+    <p>If any provision of these Terms is held by a court or arbitrator to be invalid, illegal, or unenforceable under applicable law, that provision will be modified to the minimum extent necessary to make it enforceable, or severed if modification is not possible. The remaining provisions of these Terms will continue in full force and effect.</p>
+
+    <!-- 17 -->
+    <h2 id="changes">17. Changes to these Terms</h2>
     <p>We may update these Terms from time to time as the Service evolves. When we make material changes, we will update the effective date at the top of this page and, where appropriate, notify signed-in users within the app. Continued use of the Service after the changes take effect constitutes acceptance of the updated Terms.</p>
     <p>If you do not agree to the updated Terms, your only remedy is to stop using the Service and, if you wish, to request deletion of your account as described in Section 10.</p>
 
     <hr class="divider" />
 
-    <!-- 16 -->
+    <!-- 18 -->
     <div class="contact-box">
-      <h2 id="contact" style="margin-top: 0;">16. Contact</h2>
-      <p>Questions about these Terms or about the Service — email us at <a href="mailto:arrowforgeapp@tuta.io">arrowforgeapp@tuta.io</a>. We aim to respond within 5 business days.</p>
-      <p style="margin-top: 10px; font-size: 14px; color: #6B7280;">Frontier Forge LLC &nbsp;·&nbsp; arrowforgeapp@tuta.io</p>
+      <h2 id="contact" style="margin-top: 0;">18. Contact</h2>
+      <p>Questions about these Terms or about the Service — email us at <a href="mailto:arrow-forge@frontierforgellc.com">arrow-forge@frontierforgellc.com</a>. We aim to respond within 5 business days.</p>
+      <p style="margin-top: 10px; font-size: 14px; color: #6B7280;">Frontier Forge LLC &nbsp;·&nbsp; arrow-forge@frontierforgellc.com</p>
     </div>
   </div>
 

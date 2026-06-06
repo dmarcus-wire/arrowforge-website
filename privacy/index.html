@@ -171,7 +171,7 @@
 
   <div class="content">
     <h1>Privacy Policy</h1>
-    <p class="effective">Effective date: May 14, 2026 &nbsp;·&nbsp; Frontier Forge LLC</p>
+    <p class="effective">Effective date: June 6, 2026 &nbsp;·&nbsp; Frontier Forge LLC</p>
 
     <p>ArrowForge ("we", "our", or "us") is developed and operated by Frontier Forge LLC. This Privacy Policy explains what information we collect, how we use it, who we share it with, and what choices you have — including how to delete your account and data.</p>
 
@@ -222,6 +222,9 @@
     </ul>
     <p>We receive only what Apple sends. Apple's identity token is verified server-side; we do not receive your Apple ID password or any payment information. Apple's data practices are governed by the <a href="https://www.apple.com/legal/privacy/" target="_blank">Apple Privacy Policy</a>.</p>
 
+    <h3>Sign in with Google</h3>
+    <p>If you choose Sign in with Google (available on Android), Google authenticates you and shares a unique identifier for your Google account and your email address. We receive only what Google sends; we do not receive your Google password or any payment information. Google's data practices are governed by the <a href="https://policies.google.com/privacy" target="_blank">Google Privacy Policy</a>.</p>
+
     <h3>When you use Pro AI features</h3>
     <p>If you have a Pro subscription and run one of the AI assistants (bow autofill, arrow autofill, arrow recommender, sanity check, launch &amp; impact insight, build score insight, or build plan), a subset of your build data is sent to our Supabase Edge Function, which forwards it to <strong>Anthropic's Claude API</strong> for processing.</p>
     <p>The payload typically includes the field values relevant to the request — bow specs, arrow specs, archer pursuit / farthest distance, computed ballistics (KE, momentum, drop, FOC, spine) and your current Live Settings (range, wind). For the Build Plan synth, it also includes the cached outputs of the other AI features. The payload does <strong>not</strong> include your email address, account identifier, payment information, or device identifiers.</p>
@@ -243,7 +246,7 @@
       <li>Analytics or behavioural tracking data</li>
       <li>Crash logs or diagnostics transmitted to us</li>
       <li>Camera, microphone, or contacts access</li>
-      <li>Payment card numbers or billing details (handled entirely by Apple App Store and, in future, RevenueCat)</li>
+      <li>Payment card numbers or billing details (handled entirely by Apple App Store or Google Play Store billing systems)</li>
     </ul>
 
     <!-- 2 -->
@@ -275,8 +278,11 @@
     <h3>Supabase</h3>
     <p>Supabase provides authentication (sign-up, sign-in, password reset, Apple Sign In verification) and cloud database storage for accounts. When you create an account, your email address, hashed password, and build data are stored on Supabase-managed infrastructure hosted on <strong>Amazon Web Services (AWS) in us-east-2 (Ohio, USA)</strong>. Supabase acts as a data processor on our behalf and is bound by a Data Processing Agreement. Governed by the <a href="https://supabase.com/privacy" target="_blank">Supabase Privacy Policy</a>.</p>
 
-    <h3>Apple (Sign in with Apple)</h3>
+    <h3>Apple (Sign in with Apple / App Store)</h3>
     <p>If you use Sign in with Apple, Apple authenticates your identity and passes a verified credential to our server. Apple may share your name and email address per your iOS privacy settings. We do not share any ArrowForge data back to Apple beyond standard App Store analytics that Apple collects from all apps. Governed by the <a href="https://www.apple.com/legal/privacy/" target="_blank">Apple Privacy Policy</a>.</p>
+
+    <h3>Google (Sign in with Google / Google Play)</h3>
+    <p>If you use Sign in with Google on Android, Google authenticates your identity and passes a verified credential to our server. Google shares your unique account identifier and email address. We do not share any ArrowForge data back to Google beyond standard Play Store analytics that Google collects from all apps. Governed by the <a href="https://policies.google.com/privacy" target="_blank">Google Privacy Policy</a>.</p>
 
     <h3>Anthropic (Claude API)</h3>
     <p>Anthropic powers all Pro AI features. When you trigger one of the assistants, our Supabase Edge Function forwards the request payload (the relevant subset of your build data — see Section 1 for what is included) to Anthropic's Claude API, which returns a response. Our Anthropic API key is held server-side only; it never ships in the app and the device never talks to Anthropic directly.</p>
@@ -289,10 +295,13 @@
     <h2 id="data-storage">4. Data storage and security</h2>
 
     <h3>On-device data</h3>
-    <p>Build data for users without an account is stored in AsyncStorage on your device. It is not encrypted at the application layer but is protected by iOS device encryption (when your device passcode is enabled). Uninstalling the app permanently removes all locally stored data.</p>
+    <p>Build data for users without an account is stored in AsyncStorage on your device. It is not encrypted at the application layer but is protected by your device's built-in encryption when a passcode, PIN, or biometric lock is enabled (iOS data protection on Apple devices; file-based encryption on Android devices). Uninstalling the app permanently removes all locally stored data.</p>
 
     <h3>Account data</h3>
-    <p>Account credentials (email and hashed password) and synced build data are stored on Supabase's PostgreSQL database hosted on AWS us-east-2. Data is encrypted in transit (TLS 1.2+) and at rest. Authentication session tokens are stored in your device's iOS Keychain via expo-secure-store, which provides hardware-backed secure storage.</p>
+    <p>Account credentials (email and hashed password) and synced build data are stored on Supabase's PostgreSQL database hosted on AWS us-east-2. Data is encrypted in transit (TLS 1.2+) and at rest. Authentication session tokens are stored in your device's secure storage via expo-secure-store — iOS Keychain on Apple devices and Android Keystore-backed storage on Android devices — which provides hardware-backed secure credential storage on both platforms.</p>
+
+    <h3>Security breach notification</h3>
+    <p>In the event of a security breach that compromises your personal data, we will notify you and any applicable regulatory authorities as required by applicable law. For Colorado residents, this means notification within 30 days of our becoming aware that a breach has occurred. Notification will be provided to the email address associated with your account. Where no account email is available, we will provide notice through a prominent posting in the app or on our website. Our notice will describe: the nature of the breach, the categories of data affected, the steps we are taking to address it, and the steps you can take to protect yourself.</p>
 
     <h3>What we do not do</h3>
     <ul>
@@ -318,7 +327,7 @@
     <h2 id="account-deletion">6. Account and data deletion</h2>
 
     <div class="callout">
-      <p><strong>To delete your account and all associated data:</strong> email <a href="mailto:arrowforgeapp@tuta.io" style="color:#92400E; font-weight:700;">arrowforgeapp@tuta.io</a> with the subject line <strong>"Delete my account"</strong>. Include the email address associated with your account. We will permanently delete your account and all server-side data within <strong>30 days</strong> and confirm by reply.</p>
+      <p><strong>To delete your account and all associated data:</strong> email <a href="mailto:arrow-forge@frontierforgellc.com" style="color:#92400E; font-weight:700;">arrow-forge@frontierforgellc.com</a> with the subject line <strong>"Delete my account"</strong>. Include the email address associated with your account. We will permanently delete your account and all server-side data within <strong>30 days</strong> and confirm by reply.</p>
     </div>
 
     <p>Account deletion removes:</p>
@@ -341,12 +350,30 @@
       <li><strong>Portability</strong> — request your build data in a structured, machine-readable format</li>
       <li><strong>Objection</strong> — object to certain processing of your data</li>
     </ul>
-    <p>To exercise any of these rights, email <a href="mailto:arrowforgeapp@tuta.io">arrowforgeapp@tuta.io</a>. We will respond within 30 days. We do not charge a fee for reasonable requests.</p>
-    <p>California residents: under the CCPA, you have the right to know what personal information is collected, to delete it, and to opt out of sale. We do not sell personal information.</p>
+    <p>To exercise any of these rights, email <a href="mailto:arrow-forge@frontierforgellc.com">arrow-forge@frontierforgellc.com</a>. We will respond within 30 days. We do not charge a fee for reasonable requests.</p>
+
+    <h3>California residents (CCPA)</h3>
+    <p>Under the California Consumer Privacy Act, California residents have the right to know what personal information is collected about them, to delete it, to correct it, and to opt out of the sale of personal information. We do not sell personal information. To exercise your rights, contact us at <a href="mailto:arrow-forge@frontierforgellc.com">arrow-forge@frontierforgellc.com</a>. We will not discriminate against you for exercising any CCPA rights.</p>
+
+    <h3>Colorado residents (Colorado Privacy Act)</h3>
+    <p>Under the Colorado Privacy Act (CPA), Colorado residents have the right to opt out of the processing of personal data for targeted advertising, the sale of personal data, and profiling in furtherance of decisions with legal or similarly significant effects. We do not engage in any of these activities. Colorado residents also have the right to appeal our response to a data rights request: if we deny your request, we will explain why in writing, and you may submit an appeal to <a href="mailto:arrow-forge@frontierforgellc.com">arrow-forge@frontierforgellc.com</a> within 30 days. If your appeal is denied, you may contact the Colorado Attorney General's office for further review.</p>
+
+    <h3>EEA, UK, and Switzerland (GDPR)</h3>
+    <p>If you access the Service from the European Economic Area, United Kingdom, or Switzerland, the GDPR or equivalent legislation may apply to our processing of your personal data. Our legal basis for processing is performance of a contract (to provide the Service you signed up for) and our legitimate interests (security, fraud prevention, and improving the Service). In addition to the rights listed above, you have the right to restrict processing of your personal data and the right to lodge a complaint with your local data protection supervisory authority.</p>
+    <p>When you use ArrowForge from the EEA, UK, or Switzerland, your personal data is transferred to and processed in the United States, which the European Commission has not found to offer equivalent data protection to the EEA. We rely on Standard Contractual Clauses (SCCs) adopted by the European Commission to provide appropriate safeguards for these transfers, including through our data processors (Supabase and Anthropic). For questions about cross-border transfers or to request a copy of the applicable transfer mechanisms, contact us at <a href="mailto:arrow-forge@frontierforgellc.com">arrow-forge@frontierforgellc.com</a>.</p>
 
     <!-- 8 -->
     <h2 id="childrens-privacy">8. Children's privacy</h2>
-    <p>ArrowForge is not directed at children under 13 years of age, and we do not knowingly collect personal information from children under 13. If you believe a child under 13 has created an account, please email <a href="mailto:arrowforgeapp@tuta.io">arrowforgeapp@tuta.io</a> and we will delete the account promptly.</p>
+    <p>ArrowForge is not directed at children under 13 years of age, and we do not knowingly collect personal information from children under 13. If you believe a child under 13 has created an account, please email <a href="mailto:arrow-forge@frontierforgellc.com">arrow-forge@frontierforgellc.com</a> and we will delete the account and all associated data promptly, without charge.</p>
+    <p><strong>Users aged 13–17:</strong> A parent or legal guardian must agree to these Terms and this Privacy Policy before a user under 18 may access the Service. We do not use personal information from users under 18 for any purpose beyond operating the Service — no advertising, no profiling, no sale to third parties. A parent or guardian may contact us at <a href="mailto:arrow-forge@frontierforgellc.com">arrow-forge@frontierforgellc.com</a> at any time to:</p>
+    <ul>
+      <li>Review the personal information we hold about their child</li>
+      <li>Request correction of inaccurate information</li>
+      <li>Request deletion of their child's account and all associated data</li>
+      <li>Withdraw consent for ongoing data collection</li>
+    </ul>
+    <p>We will respond to parental requests within 30 days and will not require a fee for reasonable requests.</p>
+    <p>Given that archery and bowhunting involve inherently dangerous equipment, we strongly encourage parents and guardians of users under 18 to actively participate in all equipment decisions informed by the app and to ensure appropriate adult supervision whenever their child handles archery equipment. The Service is an informational tool only — it is not a substitute for qualified, in-person adult supervision.</p>
 
     <!-- 9 -->
     <h2 id="policy-changes">9. Changes to this policy</h2>
@@ -358,8 +385,8 @@
     <!-- 10 -->
     <div class="contact-box">
       <h2 id="contact" style="margin-top: 0;">10. Contact</h2>
-      <p>Questions about this Privacy Policy, requests to access or delete your data, or any other privacy concern — email us at <a href="mailto:arrowforgeapp@tuta.io">arrowforgeapp@tuta.io</a>. We aim to respond within 5 business days.</p>
-      <p style="margin-top: 10px; font-size: 14px; color: #6B7280;">Frontier Forge LLC &nbsp;·&nbsp; arrowforgeapp@tuta.io</p>
+      <p>Questions about this Privacy Policy, requests to access or delete your data, or any other privacy concern — email us at <a href="mailto:arrow-forge@frontierforgellc.com">arrow-forge@frontierforgellc.com</a>. We aim to respond within 5 business days.</p>
+      <p style="margin-top: 10px; font-size: 14px; color: #6B7280;">Frontier Forge LLC &nbsp;·&nbsp; arrow-forge@frontierforgellc.com</p>
     </div>
   </div>
 
