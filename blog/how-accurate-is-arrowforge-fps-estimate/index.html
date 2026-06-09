@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How accurate is ArrowForge's FPS estimate? I tested it. — ArrowForge</title>
+  <meta name="description" content="3 builds, a Garmin Xero chronograph, zero wind. Real-world FPS accuracy test results and what we changed in the app as a result." />
+  <style>
+    @font-face {
+      font-family: 'Inter';
+      font-style: normal;
+      font-weight: 100 900;
+      font-display: swap;
+      src: url('/fonts/inter-latin-ext.woff2') format('woff2');
+      unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+    }
+    @font-face {
+      font-family: 'Inter';
+      font-style: normal;
+      font-weight: 100 900;
+      font-display: swap;
+      src: url('/fonts/inter-latin.woff2') format('woff2');
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+  </style>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --brand:         #2D6A4F;
+      --bg:            #F9FAFB;
+      --surface:       #FFFFFF;
+      --text:          #111827;
+      --muted:         #6B7280;
+      --border:        #E5E7EB;
+      --accent-bg:     #ECFDF5;
+      --accent-border: #A7F3D0;
+    }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+    nav {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 0 24px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+    .nav-logo img {
+      height: 36px;
+      width: 36px;
+      display: block;
+      border-radius: 8px;
+    }
+    .nav-logo-text {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--text);
+      letter-spacing: -0.4px;
+    }
+    .nav-back {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--muted);
+      text-decoration: none;
+    }
+    .nav-back:hover { color: var(--brand); }
+
+    .content {
+      max-width: 720px;
+      margin: 60px auto 100px;
+      padding: 0 24px;
+    }
+    .eyebrow {
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color: var(--brand);
+      margin-bottom: 12px;
+    }
+    h1 {
+      font-size: 38px;
+      font-weight: 800;
+      letter-spacing: -0.6px;
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+    .subtitle {
+      font-size: 17px;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 12px;
+    }
+    .meta {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 40px;
+    }
+    h2 {
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: -0.3px;
+      margin: 44px 0 12px;
+    }
+    p {
+      font-size: 16px;
+      color: #374151;
+      line-height: 1.75;
+      margin-bottom: 16px;
+    }
+    blockquote {
+      margin: 28px 0;
+      padding: 18px 22px;
+      border-left: 4px solid var(--brand);
+      background: var(--accent-bg);
+      border-radius: 0 10px 10px 0;
+    }
+    blockquote p {
+      margin: 0;
+      font-size: 16px;
+      font-style: italic;
+      color: #064E3B;
+    }
+    a { color: var(--brand); font-weight: 600; }
+    a:hover { text-decoration: underline; }
+
+    .table-wrapper {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      margin: 28px 0;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 15px;
+    }
+    th {
+      text-align: left;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--muted);
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--border);
+      background: var(--bg);
+    }
+    td {
+      padding: 13px 16px;
+      border-bottom: 1px solid var(--border);
+      color: #374151;
+      vertical-align: middle;
+    }
+    tr:last-child td { border-bottom: none; }
+    .td-build { font-weight: 700; color: var(--text); }
+    .td-good { color: #065F46; font-weight: 600; }
+    .td-ok { color: #92400E; font-weight: 600; }
+
+    .spec-block {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 22px 24px;
+      margin: 28px 0;
+    }
+    .spec-block h3 {
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+    .spec-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 15px;
+      padding: 6px 0;
+      border-bottom: 1px solid var(--border);
+      color: #374151;
+    }
+    .spec-row:last-child { border-bottom: none; }
+    .spec-label { color: var(--muted); }
+    .spec-value { font-weight: 600; color: var(--text); }
+
+    .formula-block {
+      background: #F0FDF4;
+      border: 1px solid var(--accent-border);
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin: 28px 0;
+      font-family: 'Inter', monospace;
+      font-size: 14px;
+      color: #064E3B;
+      line-height: 1.8;
+    }
+
+    .cta-row {
+      margin-top: 52px;
+      padding: 28px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      text-align: center;
+    }
+    .cta-row p {
+      margin: 0 0 18px;
+      font-size: 15px;
+      color: var(--muted);
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 22px;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 700;
+      text-decoration: none;
+      letter-spacing: 0.2px;
+    }
+    .btn-primary {
+      background: var(--brand);
+      color: #fff;
+    }
+    .btn-primary:hover { background: #245741; text-decoration: none; }
+
+    footer {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      padding: 30px 24px;
+      text-align: center;
+    }
+    footer p {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+    footer a { color: var(--brand); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+    .footer-links {
+      margin-top: 10px;
+      display: flex;
+      gap: 18px;
+      justify-content: center;
+    }
+    .footer-links a {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--muted);
+    }
+    .footer-links a:hover { color: var(--brand); }
+
+    @media (max-width: 600px) {
+      h1 { font-size: 28px; }
+      nav { height: auto; flex-direction: column; align-items: flex-start; padding: 12px 24px; gap: 8px; }
+      .nav-back { padding-left: 2px; }
+      th, td { padding: 10px 12px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="/" class="nav-logo">
+      <img src="/icon.png" alt="ArrowForge icon" />
+      <span class="nav-logo-text">ArrowForge</span>
+    </a>
+    <a href="/blog/" class="nav-back">← Field Notes</a>
+  </nav>
+
+  <div class="content">
+    <p class="eyebrow">Field Notes</p>
+    <h1>How accurate is ArrowForge's FPS estimate? I tested it.</h1>
+    <p class="subtitle">3 builds, a Garmin Xero, zero wind. Here's what the numbers say — and what we updated as a result.</p>
+    <p class="meta">David Marcus &middot; June 2026</p>
+
+    <p>Every trajectory, kinetic energy, and sight pin calculation in ArrowForge starts from one number: your arrow's velocity. If you've shot through a chronograph, you can enter that exact reading. But if you haven't — which covers a lot of people — the app estimates FPS from your bow's IBO speed and a few setup parameters.</p>
+
+    <p>I wanted to know how good that estimate really was. Not "good enough for a spreadsheet" good — actually good. So I set up a controlled test and ran three of my builds through a Garmin Xero S1 chronograph.</p>
+
+    <h2>How the estimate works</h2>
+
+    <p>ArrowForge uses an ATA-derived formula — the same framework bow manufacturers use when they publish IBO ratings. You enter your bow's manufacturer-rated IBO speed, and the app adjusts from there:</p>
+
+    <div class="formula-block">
+      <strong>Estimated FPS =</strong><br />
+      &nbsp;&nbsp;( IBO speed<br />
+      &nbsp;&nbsp;+ (draw length − 30") × 5 fps/in<br />
+      &nbsp;&nbsp;− (arrow weight − 350 gr) × 0.2 fps/gr<br />
+      &nbsp;&nbsp;− string accessory weight × 0.1 fps/gr )<br />
+      &nbsp;&nbsp;× real-world efficiency factor
+    </div>
+
+    <p>The efficiency factor accounts for the gap between a perfectly controlled lab environment and a real bow in someone's hands. The IBO standard measures speed at 70 lbs, 30" draw, with a 350 gr arrow and nothing on the string. Most hunting setups deviate from all of those conditions.</p>
+
+    <h2>Test conditions</h2>
+
+    <div class="spec-block">
+      <h3>Bow</h3>
+      <div class="spec-row"><span class="spec-label">Model</span><span class="spec-value">Hoyt Carbon RX-9 2025</span></div>
+      <div class="spec-row"><span class="spec-label">IBO speed</span><span class="spec-value">342 fps</span></div>
+      <div class="spec-row"><span class="spec-label">Draw weight</span><span class="spec-value">80 lb</span></div>
+      <div class="spec-row"><span class="spec-label">Draw length</span><span class="spec-value">28"</span></div>
+      <div class="spec-row"><span class="spec-label">String accessories</span><span class="spec-value">31 gr (peep + D-loop + silencers)</span></div>
+      <div class="spec-row"><span class="spec-label">Chronograph</span><span class="spec-value">Garmin Xero S1</span></div>
+      <div class="spec-row"><span class="spec-label">Wind</span><span class="spec-value">0 mph</span></div>
+    </div>
+
+    <p>I tested three builds — each one a real hunting build I've been shooting. Three shots per build at identical conditions. I used the average of all three shots as the reference speed.</p>
+
+    <h2>Results</h2>
+
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Build</th>
+            <th>Arrow Weight</th>
+            <th>App Estimate</th>
+            <th>Chrono Avg</th>
+            <th>Error</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="td-build">Freight Train</td>
+            <td>466 gr</td>
+            <td>297 fps</td>
+            <td>302.5 fps</td>
+            <td class="td-ok">−5.5 fps (−1.8%)</td>
+          </tr>
+          <tr>
+            <td class="td-build">Hornet</td>
+            <td>515.5 gr</td>
+            <td>287 fps</td>
+            <td>288.7 fps</td>
+            <td class="td-good">−1.8 fps (−0.6%)</td>
+          </tr>
+          <tr>
+            <td class="td-build">Bonecrusher</td>
+            <td>547.6 gr</td>
+            <td>281 fps</td>
+            <td>282.7 fps</td>
+            <td class="td-good">−2.0 fps (−0.7%)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>Two of three builds land within 2 fps of the actual reading. For a formula working entirely from published specs with no bow-specific tuning data, that's solid. The Hornet and Bonecrusher — both heavier arrows in the 515–548 gr range — came in within 2 fps. The Freight Train, with a 466 gr arrow, showed a larger gap.</p>
+
+    <p>One thing stands out across all three: every error is negative. The app consistently underestimates. That's actually the direction you want for a conservative tool — your real-world performance meets or exceeds the app's predictions, rather than falling short of them.</p>
+
+    <h2>What we changed</h2>
+
+    <p>The efficiency factor in the formula was set at 0.97 — meaning the formula assumed 3% energy loss versus the IBO lab condition. The chrono data implied the real-world efficiency was closer to 0.977–0.978 for the heavier builds.</p>
+
+    <p>We bumped the factor from <strong>0.97 to 0.975</strong>. For the Hornet and Bonecrusher this closes the gap to under half an fps. The Freight Train improves too — from −5.5 fps to about −4.4 fps — but that residual gap reflects something the formula doesn't fully model yet.</p>
+
+    <blockquote>
+      <p>The estimate is conservative by design. A few fps low is far better than a few fps high — it means your trajectory math and KE numbers are working with real-world margins, not optimistic ones.</p>
+    </blockquote>
+
+    <h2>Why the lightest build is harder to nail</h2>
+
+    <p>The Freight Train's larger error likely reflects a real gap in the formula: the current model doesn't include a draw weight adjustment for compound bows. IBO speed is measured at 70 lbs — this bow runs at 80 lbs, which stores more energy. The formula's efficiency factor absorbs some of that difference, but not all of it.</p>
+
+    <p>Adding a draw-weight term is the logical next step. The data I have doesn't let me calibrate it — all three tests were shot at the same poundage. To isolate the draw-weight effect cleanly, I need chrono tests at a second draw weight on the same bow. That's on the list.</p>
+
+    <h2>Limitations of this data</h2>
+
+    <p>Three builds. One bow. One draw weight. One draw length. This is a calibration baseline, not a statistically robust study. The formula update improves accuracy for setups similar to this test: modern compound, 27–29" draw, 70–85 lb draw weight, heavier hunting arrows in the 480–560 gr range.</p>
+
+    <p>If your setup is meaningfully different — especially if you're shooting a lighter arrow under 450 gr, or a much higher or lower draw weight — I'd encourage you to shoot through a chrono and enter the measured number directly. ArrowForge's Live Settings panel accepts a chronograph reading and uses it as the authoritative FPS source instead of the estimate.</p>
+
+    <p>If you've run your own chrono tests and want to share the data, reach out. More data points at different draw weights and bow types will let us keep tightening this up.</p>
+
+    <div class="cta-row">
+      <p>Try the FPS estimator — or enter your own chrono reading — in ArrowForge.</p>
+      <a class="btn btn-primary" href="/">Get ArrowForge →</a>
+    </div>
+  </div>
+
+  <footer>
+    <p>Built for bowhunters and competitive archers by <strong>Frontier Forge LLC</strong></p>
+    <p><a id="email-footer-addr"></a></p>
+    <div class="footer-links">
+      <a href="/">Home</a>
+      <a href="/blog/">Field Notes</a>
+      <a href="/how-it-works/">How It Works</a>
+      <a href="/privacy/">Privacy Policy</a>
+      <a id="email-footer-support">Support</a>
+    </div>
+    <p style="margin-top: 16px; font-size: 12px;">© 2026 Frontier Forge LLC. All rights reserved.</p>
+  </footer>
+
+  <script>
+    (function() {
+      var u = atob('YXJyb3ctZm9yZ2U=');
+      var d = atob('ZnJvbnRpZXJmb3JnZWxsYy5jb20=');
+      var m = 'mailto:' + u + '@' + d;
+      ['email-footer-support'].forEach(function(id) {
+        var el = document.getElementById(id);
+        if (el) el.href = m;
+      });
+      var fa = document.getElementById('email-footer-addr');
+      if (fa) { fa.href = m; fa.textContent = u + '@' + d; }
+    })();
+  </script>
+</body>
+</html>
