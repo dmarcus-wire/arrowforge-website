@@ -729,6 +729,95 @@
       }
     }
 
+    /* ── Blog preview ── */
+    .blog-preview {
+      max-width: 960px;
+      margin: 80px auto 0;
+      padding: 0 24px;
+    }
+    .blog-preview-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 28px;
+    }
+    .blog-preview-label {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+    .blog-preview-title {
+      font-size: clamp(22px, 4vw, 32px);
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      color: var(--text);
+    }
+    .blog-preview-all {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--brand);
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .blog-preview-all:hover { text-decoration: underline; }
+    .blog-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .blog-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 24px 24px 20px;
+      transition: border-color 0.15s;
+      display: flex;
+      flex-direction: column;
+    }
+    .blog-card:hover { border-color: var(--brand); }
+    .blog-card a {
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+    .blog-card-eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--brand);
+      margin-bottom: 10px;
+    }
+    .blog-card-title {
+      font-size: 17px;
+      font-weight: 800;
+      letter-spacing: -0.2px;
+      line-height: 1.35;
+      color: var(--text);
+      margin-bottom: 10px;
+    }
+    .blog-card-excerpt {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.6;
+      flex: 1;
+      margin-bottom: 16px;
+    }
+    .blog-card-read-more {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--brand);
+    }
+    @media (max-width: 700px) {
+      .blog-cards { grid-template-columns: 1fr; }
+      .blog-preview-header { flex-direction: column; gap: 8px; }
+    }
+
     /* ── Footer ── */
     footer {
       margin-top: 100px;
@@ -1137,6 +1226,26 @@
     </div>
   </div>
 
+  <section class="blog-preview">
+    <div class="blog-preview-header">
+      <div>
+        <p class="blog-preview-label">Field Notes</p>
+        <h2 class="blog-preview-title">From the range and the codebase</h2>
+      </div>
+      <a href="/blog/" class="blog-preview-all">All posts →</a>
+    </div>
+    <div class="blog-cards">
+      <div class="blog-card">
+        <a href="/blog/how-accurate-is-arrowforge-fps-estimate/">
+          <p class="blog-card-eyebrow">Field Notes &middot; June 2026</p>
+          <h3 class="blog-card-title">How accurate is ArrowForge's FPS estimate? I tested it.</h3>
+          <p class="blog-card-excerpt">3 builds, a Garmin Xero, zero wind. Here's what the numbers say — and what we updated as a result.</p>
+          <span class="blog-card-read-more">Read the post →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
   <footer>
     <p>Built for bowhunters and competitive archers by <strong>Frontier Forge LLC</strong></p>
     <p><a id="email-footer-addr"></a></p>
@@ -1153,6 +1262,7 @@
     <div class="footer-links">
       <a href="/about/">About</a>
       <a href="/how-it-works/">How It Works</a>
+      <a href="/blog/">Blog</a>
       <a href="/privacy/">Privacy Policy</a>
       <a href="/terms/">Terms of Service</a>
       <a id="email-footer-support">Support</a>
