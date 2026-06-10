@@ -233,10 +233,10 @@
 
   <p>Forgiveness measures how much margin for error is built into the setup. A forgiving build groups well even on a slightly off shot. An unforgiving build demands perfection every time.</p>
 
-  <p>Six factors contribute to the Forgiveness score. Their weights shift based on the archer's <strong>farthest practice distance</strong> and <strong>target species</strong> — because what matters at 20 yards in the timber is different from what matters at 70 yards in the open West.</p>
+  <p>Up to seven factors contribute to the Forgiveness score. Their weights shift based on the archer's <strong>farthest practice distance</strong> and <strong>target species</strong> — because what matters at 20 yards in the timber is different from what matters at 70 yards in the open West. Two factors are context-specific: flatness only activates at mid and long range; arrow weight only activates for dangerous-game pursuits.</p>
 
   <div class="callout">
-    <strong>Why distance changes the weights:</strong> At close range, shot-angle forgiveness dominates — the arrow has less time to correct, and the encounter geometry is more variable. At long range, aerodynamic stability and flat flight become the limiting factors. ArrowForge shifts the formula automatically so the score reflects the archer's actual use case.
+    <strong>Why distance changes the weights:</strong> At close range, shot-angle forgiveness dominates — GPP and hold stability carry the most weight. At long range, aerodynamic stability, shaft diameter, and trajectory flatness become the limiting factors — these are what protect against yardage-estimation errors and wind drift. ArrowForge shifts the formula automatically so the score reflects the archer's actual use case.
   </div>
 
   <h3>Grains per pound (GPP)</h3>
@@ -253,6 +253,9 @@
 
   <h3>Flight profile</h3>
   <p>Shaft diameter. Smaller-diameter arrows (4mm / 0.204") punch through air more cleanly and drift less in wind — meaningful at distance. At close range, this factor carries almost no weight in the score. At 60+ yards, it becomes significant. The scoring penalizes large-diameter shafts at long range because physics does.</p>
+
+  <h3>Flatness — range-estimation forgiveness</h3>
+  <p>At mid and long range, the cost of misjudging distance depends almost entirely on how flat the arrow flies. A flatter trajectory means a smaller drop difference between, say, 55 and 60 yards — so a range-estimation error costs less. ArrowForge measures the extra drop from 20 to 60 yards and scores it against a physics-matched baseline for the bow type (compound anchor: 4.0 ft; recurve anchor: 10.0 ft). This factor carries 10% weight at mid range and 20% at long range. At short range the drop differential is too small to matter, so the factor is inactive and its weight redistributes to the other five.</p>
 
   <h3>Arrow weight (dangerous game)</h3>
   <p>For dangerous-game pursuits — brown bear, bison, cape buffalo — total finished arrow weight becomes a standalone factor. Heavy arrows carry momentum that light-and-fast setups cannot match at bone. This factor is inactive for most hunting and all target applications; it only enters the score when the target species demands it.</p>
@@ -283,7 +286,8 @@
   <p>Arrows shed speed rapidly compared to bullets — a typical hunting arrow loses 15–25% of its velocity by 40 yards. ArrowForge models this with an exponential decay that accounts for arrow weight: heavier arrows carry their velocity better than light ones despite starting slower. The formula: <em>impact velocity = launch velocity × e^(−0.532 × range / weight)</em>. This constant was calibrated against published arrow flight data.</p>
 
   <h3>Trajectory and flatness</h3>
-  <p>Drop is calculated using a time-of-flight model. ArrowForge measures the additional drop from 20 yards to 60 yards — the "extra" drop relative to the near pin — because this is what drives sight tape spacing and hold-over decisions in the field. Flatter trajectories reduce the cost of a range estimation error, which matters most at distance and least at close range.</p>
+  <p>Drop is calculated using a time-of-flight model. ArrowForge measures the additional drop from 20 yards to 60 yards — the extra drop relative to the near pin — because this is what drives sight tape spacing and hold-over decisions in the field. Flatter trajectories reduce the cost of a range estimation error, which matters most at distance and least at close range.</p>
+  <p>This flatness measurement also feeds directly into the Forgiveness score at mid and long range. It is how ArrowForge quantifies range-estimation-error forgiveness as a scored build attribute: a build that prints a 4.0 ft extra drop forgives yardage miscalls that would cost 8.0 ft of drop on a slower setup. The Trajectory tile displays the standalone flatness verdict; the Forgiveness score weights it alongside the other active factors for the archer's distance and pursuit context.</p>
 
   <h3>Air density correction</h3>
   <p>Elevation changes air density, and air density changes how fast an arrow slows down and drops. ArrowForge corrects for elevation using a standard barometric formula accurate to within 1% up to 16,000 feet — relevant for bowhunters in the Rockies or high-desert hunts where a sea-level sight tape will print several inches low at distance.</p>
