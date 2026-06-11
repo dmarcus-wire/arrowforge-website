@@ -187,7 +187,7 @@
 
   <div class="content">
     <h1>Privacy Policy</h1>
-    <p class="effective">Effective date: June 6, 2026 &nbsp;·&nbsp; Frontier Forge LLC</p>
+    <p class="effective">Effective date: June 11, 2026 &nbsp;·&nbsp; Frontier Forge LLC</p>
 
     <p>ArrowForge ("we", "our", or "us") is developed and operated by Frontier Forge LLC. This Privacy Policy explains what information we collect, how we use it, who we share it with, and what choices you have — including how to delete your account and data.</p>
 
@@ -218,7 +218,7 @@
       <li><strong>Build data</strong> — your bow, arrow, archer, and sight setup details (draw weight, arrow weight, spine, goal date, elevation, etc.) are stored locally on your device using AsyncStorage. This data does not leave your device except through the location and elevation lookups described below.</li>
       <li><strong>Location data</strong> — if you use the training location or destination search, your search query and approximate coordinates may be sent to Nominatim (OpenStreetMap) for geocoding and to the Open-Elevation API for elevation lookup. These are one-time lookups triggered by your action; we do not store or log your location independently.</li>
     </ul>
-    <p>No account information, no email address, and no personal identifiers are collected when you use ArrowForge without signing in.</p>
+    <p>No account information, no email address, and no personal identifiers are collected when you use ArrowForge without signing in. The only data that leaves your device in this mode is the location/elevation lookups above and the <a href="#consent-records">consent record</a> described below — which uses a random per-install identifier, not your identity.</p>
 
     <h3>With an optional account</h3>
     <p>If you choose to create an account, we collect:</p>
@@ -228,6 +228,17 @@
       <li><strong>Build data (server copy)</strong> — when signed in, your build data is synced to Supabase so it can be restored if you lose or replace your device. This data includes all bow, arrow, archer, and sight fields you have entered. It does not include your GPS coordinates or device identifiers.</li>
       <li><strong>Account metadata</strong> — date your account was created, date of last sign-in, and your account tier (free / Pro). This is used to manage your subscription and support requests.</li>
     </ul>
+
+    <h3 id="consent-records">Consent records (with or without an account)</h3>
+    <p>When you accept our Terms of Service and Privacy Policy, we store a record of that acceptance so we can demonstrate, if ever required, that consent was given. This applies whether or not you have an account. Each record contains:</p>
+    <ul>
+      <li>A <strong>random per-install identifier</strong> we generate (a UUID stored on your device) — this is not your name, email, or a hardware/advertising identifier (IDFA/IDFV), and it cannot be used to identify you personally</li>
+      <li>The <strong>versions</strong> of the Terms and Privacy Policy you accepted, and the links to those documents</li>
+      <li>The <strong>date and time</strong> of acceptance (recorded by our server)</li>
+      <li>Your device <strong>platform, OS version, and the app version</strong></li>
+      <li>Your <strong>account identifier</strong>, only if you are signed in at the time</li>
+    </ul>
+    <p>We deliberately do <strong>not</strong> store your IP address or any browsing/usage activity in these consent records. They are kept as an append-only log for legal compliance and are not used for analytics, profiling, or advertising.</p>
 
     <h3>Sign in with Apple</h3>
     <p>If you choose Sign in with Apple, Apple authenticates you and may share:</p>
@@ -394,7 +405,7 @@
     <!-- 9 -->
     <h2 id="policy-changes">9. Changes to this policy</h2>
     <p>We may update this Privacy Policy as the app evolves — for example, when we add new features, integrations, or subscription tiers. When we make material changes, we will update the effective date at the top of this page and, where appropriate, notify signed-in users within the app. Continued use of ArrowForge after changes take effect constitutes acceptance of the updated policy.</p>
-    <p>The previous version of this policy (effective May 6, 2026) is available on request.</p>
+    <p>The previous version of this policy (effective June 6, 2026) is available on request.</p>
 
     <hr class="divider" />
 

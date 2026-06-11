@@ -1,7 +1,7 @@
 {
   "applinks": {
     "details": [{
-      "appID": "56GV3BZDL5.com.dmarcus.arrowforge",
+      "appID": "27JWTL8RF5.com.frontierforge.arrowforge",
       "paths": ["/reset-password", "/reset-password/*"]
     }]
   }
