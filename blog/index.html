@@ -115,8 +115,10 @@
       border: 1px solid var(--border);
       border-radius: 14px;
       padding: 28px 28px 24px;
+      margin-bottom: 20px;
       transition: border-color 0.15s;
     }
+    .post-card:last-child { margin-bottom: 0; }
     .post-card:hover { border-color: var(--brand); }
     .post-card a { text-decoration: none; color: inherit; display: block; }
     .post-eyebrow {
@@ -194,6 +196,15 @@
     <p class="eyebrow">Field Notes</p>
     <h1>Notes from the range and the codebase.</h1>
     <p class="subtitle">Real-world testing, formula calibration, and the physics behind bowhunting. Written by the people building ArrowForge.</p>
+
+    <div class="post-card">
+      <a href="/blog/draw-weight-isnt-what-the-limbs-say/">
+        <p class="post-eyebrow">Field Notes &middot; June 2026</p>
+        <h2 class="post-title">Your draw weight isn't what the limbs say — and it moved my FPS estimate.</h2>
+        <p class="post-excerpt">My limbs are labeled 80 lb. A scale said 84.6. Here's how that 4.6 lb let us add a draw-weight term and put two builds within 0.3 fps of the chrono.</p>
+        <span class="post-read-more">Read the post →</span>
+      </a>
+    </div>
 
     <div class="post-card">
       <a href="/blog/how-accurate-is-arrowforge-fps-estimate/">

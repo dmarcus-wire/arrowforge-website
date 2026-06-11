@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your draw weight isn't what the limbs say — and it moved my FPS estimate — ArrowForge</title>
+  <meta name="description" content="My limbs are labeled 80 lb. A scale said 84.6. Here's how measuring true peak weight let us add a draw-weight term to the FPS estimate and put two builds within 0.3 fps of the chrono." />
+  <style>
+    @font-face {
+      font-family: 'Inter';
+      font-style: normal;
+      font-weight: 100 900;
+      font-display: swap;
+      src: url('/fonts/inter-latin-ext.woff2') format('woff2');
+      unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+    }
+    @font-face {
+      font-family: 'Inter';
+      font-style: normal;
+      font-weight: 100 900;
+      font-display: swap;
+      src: url('/fonts/inter-latin.woff2') format('woff2');
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+  </style>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --brand:         #2D6A4F;
+      --bg:            #F9FAFB;
+      --surface:       #FFFFFF;
+      --text:          #111827;
+      --muted:         #6B7280;
+      --border:        #E5E7EB;
+      --accent-bg:     #ECFDF5;
+      --accent-border: #A7F3D0;
+    }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+    nav {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 0 24px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+    .nav-logo img {
+      height: 36px;
+      width: 36px;
+      display: block;
+      border-radius: 8px;
+    }
+    .nav-logo-text {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--text);
+      letter-spacing: -0.4px;
+    }
+    .nav-back {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--muted);
+      text-decoration: none;
+    }
+    .nav-back:hover { color: var(--brand); }
+
+    .content {
+      max-width: 720px;
+      margin: 60px auto 100px;
+      padding: 0 24px;
+    }
+    .eyebrow {
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color: var(--brand);
+      margin-bottom: 12px;
+    }
+    h1 {
+      font-size: 38px;
+      font-weight: 800;
+      letter-spacing: -0.6px;
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+    .subtitle {
+      font-size: 17px;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 12px;
+    }
+    .meta {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 40px;
+    }
+    h2 {
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: -0.3px;
+      margin: 44px 0 12px;
+    }
+    p {
+      font-size: 16px;
+      color: #374151;
+      line-height: 1.75;
+      margin-bottom: 16px;
+    }
+    blockquote {
+      margin: 28px 0;
+      padding: 18px 22px;
+      border-left: 4px solid var(--brand);
+      background: var(--accent-bg);
+      border-radius: 0 10px 10px 0;
+    }
+    blockquote p {
+      margin: 0;
+      font-size: 16px;
+      font-style: italic;
+      color: #064E3B;
+    }
+    a { color: var(--brand); font-weight: 600; }
+    a:hover { text-decoration: underline; }
+
+    .table-wrapper {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      margin: 28px 0;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 15px;
+    }
+    th {
+      text-align: left;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--muted);
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--border);
+      background: var(--bg);
+    }
+    td {
+      padding: 13px 16px;
+      border-bottom: 1px solid var(--border);
+      color: #374151;
+      vertical-align: middle;
+    }
+    tr:last-child td { border-bottom: none; }
+    .td-build { font-weight: 700; color: var(--text); }
+    .td-good { color: #065F46; font-weight: 600; }
+    .td-ok { color: #92400E; font-weight: 600; }
+
+    .spec-block {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 22px 24px;
+      margin: 28px 0;
+    }
+    .spec-block h3 {
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+    .spec-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 15px;
+      padding: 6px 0;
+      border-bottom: 1px solid var(--border);
+      color: #374151;
+    }
+    .spec-row:last-child { border-bottom: none; }
+    .spec-label { color: var(--muted); }
+    .spec-value { font-weight: 600; color: var(--text); }
+
+    .formula-block {
+      background: #F0FDF4;
+      border: 1px solid var(--accent-border);
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin: 28px 0;
+      font-family: 'Inter', monospace;
+      font-size: 14px;
+      color: #064E3B;
+      line-height: 1.8;
+    }
+
+    .cta-row {
+      margin-top: 52px;
+      padding: 28px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      text-align: center;
+    }
+    .cta-row p {
+      margin: 0 0 18px;
+      font-size: 15px;
+      color: var(--muted);
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 22px;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 700;
+      text-decoration: none;
+      letter-spacing: 0.2px;
+    }
+    .btn-primary {
+      background: var(--brand);
+      color: #fff;
+    }
+    .btn-primary:hover { background: #245741; text-decoration: none; }
+
+    .prev-post {
+      margin: 36px 0 8px;
+      padding: 16px 20px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+    .prev-post a { font-weight: 700; }
+
+    footer {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      padding: 30px 24px;
+      text-align: center;
+    }
+    footer p {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+    footer a { color: var(--brand); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+    .footer-links {
+      margin-top: 10px;
+      display: flex;
+      gap: 18px;
+      justify-content: center;
+    }
+    .footer-links a {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--muted);
+    }
+    .footer-links a:hover { color: var(--brand); }
+
+    @media (max-width: 600px) {
+      h1 { font-size: 28px; }
+      nav { height: auto; flex-direction: column; align-items: flex-start; padding: 12px 24px; gap: 8px; }
+      .nav-back { padding-left: 2px; }
+      th, td { padding: 10px 12px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="/" class="nav-logo">
+      <img src="/icon.png" alt="ArrowForge icon" />
+      <span class="nav-logo-text">ArrowForge</span>
+    </a>
+    <a href="/blog/" class="nav-back">← Field Notes</a>
+  </nav>
+
+  <div class="content">
+    <p class="eyebrow">Field Notes</p>
+    <h1>Your draw weight isn't what the limbs say — and it moved my FPS estimate.</h1>
+    <p class="subtitle">My limbs are labeled 80 lb. A scale said 84.6. Here's how that 4.6 lb let us add a draw-weight term and put two builds within 0.3 fps of the chrono.</p>
+    <p class="meta">David Marcus &middot; June 2026</p>
+
+    <p>A few weeks ago I <a href="/blog/how-accurate-is-arrowforge-fps-estimate/">chrono'd three of my builds</a> to see how close ArrowForge's estimated FPS came to reality. The heavier builds landed within about 2 fps, the lightest a bit further off, and every error pointed the same direction — the app was reading low. I bumped one efficiency constant, closed most of the gap, and flagged a draw-weight term as future work.</p>
+
+    <p>This is that follow-up. And it started with a number I'd been wrong about for months.</p>
+
+    <h2>The limbs lied. Sort of.</h2>
+
+    <p>My bow wears a set of limbs stamped <strong>80 lb</strong>. That's the number I'd entered in the app, the number I'd have told you at the range, the number I trusted. So before doing any more formula work, I did the thing I should have done first: I put a draw-weight scale on the string and pulled it back to the wall.</p>
+
+    <div class="spec-block">
+      <h3>Measured on the scale</h3>
+      <div class="spec-row"><span class="spec-label">Peak draw weight</span><span class="spec-value">84.6 lb</span></div>
+      <div class="spec-row"><span class="spec-label">Holding weight</span><span class="spec-value">12.6 lb</span></div>
+      <div class="spec-row"><span class="spec-label">Let-off</span><span class="spec-value">85.1%</span></div>
+      <div class="spec-row"><span class="spec-label">Limb sticker</span><span class="spec-value">80 lb</span></div>
+    </div>
+
+    <p>Peak weight came up <strong>84.6 lb</strong> — 4.6 lb over the sticker. That's not a defect. Limb ratings describe a nominal maximum, and where you actually land depends on limb-bolt position, the specific limbs, manufacturing tolerance, and how the cams time out on your bow. A few pounds either way is completely normal. The point is simply this: the printed number is a starting estimate, not a measurement.</p>
+
+    <p>And 4.6 lb is real energy. A heavier peak weight stores more energy in the limbs, and a bow that stores more energy throws the same arrow faster. If the app thinks I'm pulling 80 when I'm really pulling 84.6, it's working from a bow that's quietly weaker than mine. That's exactly the kind of error that reads as "the estimate is a little low across the board."</p>
+
+    <h2>Adding a draw-weight term</h2>
+
+    <p>The IBO speed rating manufacturers publish is measured under a fixed standard: 70 lb draw weight, 30" draw length, a 350 gr arrow, bare string. Every setup deviates from that, and the formula already corrected for draw length, arrow weight, and string accessories. It just didn't correct for draw weight — because IBO is rated at 70 lb and most of us pull more.</p>
+
+    <p>So I added the term the formula was missing. The industry rule of thumb is roughly <strong>2 fps per pound</strong> of draw weight above or below the 70 lb IBO standard:</p>
+
+    <div class="formula-block">
+      <strong>Estimated FPS =</strong><br />
+      &nbsp;&nbsp;( IBO speed<br />
+      &nbsp;&nbsp;+ (draw weight − 70 lb) × 2 fps/lb&nbsp;&nbsp;<em>← new</em><br />
+      &nbsp;&nbsp;+ (draw length − 30") × 5 fps/in<br />
+      &nbsp;&nbsp;− (arrow weight − 350 gr) × 0.2 fps/gr<br />
+      &nbsp;&nbsp;− string accessory weight × 0.1 fps/gr )<br />
+      &nbsp;&nbsp;× real-world efficiency factor
+    </div>
+
+    <p>At my measured 84.6 lb, that term adds <strong>(84.6 − 70) × 2 = +29 fps</strong> before the efficiency factor. That's a big swing — which is the whole point. Pulling nearly 15 lb over the IBO standard should add real speed, and now the formula says so.</p>
+
+    <h2>Re-tuning the efficiency factor</h2>
+
+    <p>Adding +29 fps means the old efficiency factor (0.975) no longer fits — leave it there and every estimate jumps 8 fps high. So the factor and the draw-weight term get calibrated together against the chrono data. Fitting my two most consistent builds, the factor lands at <strong>0.888</strong>.</p>
+
+    <p>That number looks alarmingly low — it reads like the bow is bleeding 11% of its energy somewhere. It isn't. The efficiency factor stopped being a pure physical "efficiency" the moment it started sharing the work with a +29 fps draw-weight term. The two only mean something together: the term credits the poundage, the factor pulls the total back down to what the chronograph actually recorded. Read either one alone and you'll draw the wrong conclusion.</p>
+
+    <blockquote>
+      <p>The draw-weight term and the efficiency factor are two halves of one calibration. Adding speed for poundage, then scaling back to measured reality — that's the trade that keeps the output honest.</p>
+    </blockquote>
+
+    <h2>The results</h2>
+
+    <p>Same three builds, same Garmin Xero averages, zero wind. "Before" is the old model reading my bow as 80 lb with no draw-weight term. "After" is the new model with my measured 84.6 lb and the draw-weight term.</p>
+
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Build</th>
+            <th>Arrow</th>
+            <th>Before</th>
+            <th>After</th>
+            <th>Chrono</th>
+            <th>New Error</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="td-build">Freight Train</td>
+            <td>466 gr</td>
+            <td>297 fps</td>
+            <td>297 fps</td>
+            <td>302.5 fps</td>
+            <td class="td-ok">−5.5 fps</td>
+          </tr>
+          <tr>
+            <td class="td-build">Hornet</td>
+            <td>515.5 gr</td>
+            <td>287 fps</td>
+            <td>289 fps</td>
+            <td>288.7 fps</td>
+            <td class="td-good">+0.3 fps</td>
+          </tr>
+          <tr>
+            <td class="td-build">Bonecrusher</td>
+            <td>547.6 gr</td>
+            <td>281 fps</td>
+            <td>283 fps</td>
+            <td>282.7 fps</td>
+            <td class="td-good">+0.3 fps</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>The two heavier builds — Hornet and Bonecrusher, my most repeatable data — went from roughly −2 fps to <strong>+0.3 fps</strong>. That's about as tight as a specs-only estimate gets, and it came directly from feeding the formula a measured draw weight instead of a sticker.</p>
+
+    <h2>The lightest build still won't behave</h2>
+
+    <p>Freight Train, my 466 gr arrow, sat at −5.5 fps before and stayed at −5.5 fps after. The draw-weight term didn't touch it — and that's informative. If the residual were a draw-weight problem, it would have moved with the other two. It didn't, which tells me the lightest arrow's gap lives somewhere else: most likely the arrow-weight penalty (0.2 fps per grain) being a touch too steep for lighter shafts.</p>
+
+    <p>That's the next thread to pull. But I'm not going to guess at it — I'll chrono more builds across a wider arrow-weight range and let the data set the number, the same way it set this one.</p>
+
+    <h2>What this means for you</h2>
+
+    <p>If you've never put a scale on your string, the draw weight in your profile is a guess wearing a sticker's authority. A draw-weight scale is cheap, and the measurement takes thirty seconds. Enter your <em>measured</em> peak weight, not the limb rating — for me that one change was worth a couple of fps on every build, and it's the difference between an estimate that drifts and one that lands.</p>
+
+    <p>And the standing advice hasn't changed: if you own a chronograph, a measured FPS reading always beats any estimate. ArrowForge's Live Settings panel takes a chrono number directly and treats it as the source of truth. The estimate is for everyone who hasn't shot through one yet — and it's a little sharper this week than it was last week.</p>
+
+    <h2>Honest limitations</h2>
+
+    <p>This is still one bow, one draw length, one draw weight. The 2 fps/lb draw-weight coefficient is an industry rule of thumb, not something I've yet validated against my own data — to do that cleanly I need chrono readings at a second poundage on the same bow, so I can isolate the draw-weight effect from everything else. Until then, the term and the efficiency factor are co-calibrated on a single setup. They're honest for setups like mine; I'll keep tightening them as more data comes in.</p>
+
+    <p>If you've run your own chrono numbers — especially at different draw weights or with lighter arrows — I'd genuinely like to see them. More data is exactly what turns a rule of thumb into a calibrated constant.</p>
+
+    <div class="cta-row">
+      <p>Enter your measured draw weight — or your own chrono reading — and see your numbers in ArrowForge.</p>
+      <a class="btn btn-primary" href="/">Get ArrowForge →</a>
+    </div>
+
+    <div class="prev-post">
+      Start of the series: <a href="/blog/how-accurate-is-arrowforge-fps-estimate/">How accurate is ArrowForge's FPS estimate? I tested it. →</a>
+    </div>
+  </div>
+
+  <footer>
+    <p>Built for bowhunters and competitive archers by <strong>Frontier Forge LLC</strong></p>
+    <p><a id="email-footer-addr"></a></p>
+    <div class="footer-links">
+      <a href="/">Home</a>
+      <a href="/blog/">Field Notes</a>
+      <a href="/how-it-works/">How It Works</a>
+      <a href="/privacy/">Privacy Policy</a>
+      <a id="email-footer-support">Support</a>
+    </div>
+    <p style="margin-top: 16px; font-size: 12px;">© 2026 Frontier Forge LLC. All rights reserved.</p>
+  </footer>
+
+  <script>
+    (function() {
+      var u = atob('YXJyb3ctZm9yZ2U=');
+      var d = atob('ZnJvbnRpZXJmb3JnZWxsYy5jb20=');
+      var m = 'mailto:' + u + '@' + d;
+      ['email-footer-support'].forEach(function(id) {
+        var el = document.getElementById(id);
+        if (el) el.href = m;
+      });
+      var fa = document.getElementById('email-footer-addr');
+      if (fa) { fa.href = m; fa.textContent = u + '@' + d; }
+    })();
+  </script>
+</body>
+</html>
