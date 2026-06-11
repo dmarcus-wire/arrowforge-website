@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Your draw weight isn't what the limbs say — and it moved my FPS estimate — ArrowForge</title>
-  <meta name="description" content="My limbs are labeled 80 lb. A scale said 84.6. Here's how measuring true peak weight let us add a draw-weight term to the FPS estimate and put two builds within 0.3 fps of the chrono." />
+  <title>Your bow is an energy source. What four chrono sessions taught the formula. — ArrowForge</title>
+  <meta name="description" content="A new 454-grain build read 8.5 fps low on a freshly calibrated formula. The fix wasn't a new constant — it was a new model. How ArrowForge's FPS estimate became energy-based." />
   <style>
     @font-face {
       font-family: 'Inter';
@@ -294,65 +294,48 @@
 
   <div class="content">
     <p class="eyebrow">Field Notes</p>
-    <h1>Your draw weight isn't what the limbs say — and it moved my FPS estimate.</h1>
-    <p class="subtitle">My limbs are labeled 80 lb. A scale said 84.6. Here's how that 4.6 lb let us add a draw-weight term and put two builds within 0.3 fps of the chrono.</p>
+    <h1>Your bow is an energy source. What four chrono sessions taught the formula.</h1>
+    <p class="subtitle">A new 454-grain build read 8.5 fps low on a freshly calibrated formula. The fix wasn't a new constant — it was a new model.</p>
     <p class="meta">David Marcus &middot; June 2026</p>
 
-    <blockquote>
-      <p>Update (June 2026): a fourth chrono session replaced this post's linear model with an energy-based one — read <a href="/blog/your-bow-is-an-energy-source/">Your bow is an energy source →</a></p>
-    </blockquote>
+    <p>After the <a href="/blog/draw-weight-isnt-what-the-limbs-say/">draw-weight recalibration</a>, I thought the FPS estimate was about done. My two heaviest builds were landing within 0.3 fps of the chronograph — about as tight as a specs-only formula gets. Then I finished a new, lighter build and put it through the Garmin Xero.</p>
 
-    <p>A few weeks ago I <a href="/blog/how-accurate-is-arrowforge-fps-estimate/">chrono'd three of my builds</a> to see how close ArrowForge's estimated FPS came to reality. The heavier builds landed within about 2 fps, the lightest a bit further off, and every error pointed the same direction — the app was reading low. I bumped one efficiency constant, closed most of the gap, and flagged a draw-weight term as future work.</p>
+    <p>Flatline — a 454.6-grain build — chrono'd at <strong>306.5 fps</strong>. The app estimated <strong>298</strong>. That's −8.5 fps, the worst error I'd recorded, on a formula I had calibrated <em>days earlier</em>.</p>
 
-    <p>This is that follow-up. And it started with a number I'd been wrong about for months.</p>
+    <p>And here's the part that mattered: lined up light-to-heavy, the errors across all four builds weren't noise. They were a curve — −8.5, −6.6, −1.1, −0.7. A straight-line formula can't produce a curved residual. The constants weren't wrong. The <em>model</em> was.</p>
 
-    <h2>The limbs lied. Sort of.</h2>
+    <h2>What the chronograph was actually saying</h2>
 
-    <p>My bow wears a set of limbs stamped <strong>80 lb</strong>. That's the number I'd entered in the app, the number I'd have told you at the range, the number I trusted. So before doing any more formula work, I did the thing I should have done first: I put a draw-weight scale on the string and pulled it back to the wall.</p>
+    <p>Every speed formula I'd used treated arrow weight as a linear penalty: so many fps lost per grain. But when I put the four sessions side by side and looked at <em>kinetic energy</em> instead of speed, the pattern jumped out:</p>
 
     <div class="spec-block">
-      <h3>Measured on the scale</h3>
-      <div class="spec-row"><span class="spec-label">Peak draw weight</span><span class="spec-value">84.6 lb</span></div>
-      <div class="spec-row"><span class="spec-label">Holding weight</span><span class="spec-value">12.6 lb</span></div>
-      <div class="spec-row"><span class="spec-label">Let-off</span><span class="spec-value">85.1%</span></div>
-      <div class="spec-row"><span class="spec-label">Limb sticker</span><span class="spec-value">80 lb</span></div>
+      <h3>Four Garmin Xero sessions — same bow, four arrow weights</h3>
+      <div class="spec-row"><span class="spec-label">Flatline — 454.6 gr</span><span class="spec-value">306.5 fps &middot; 94.8 ft·lb</span></div>
+      <div class="spec-row"><span class="spec-label">Freight Train — 466.6 gr</span><span class="spec-value">302.6 fps &middot; 94.8 ft·lb</span></div>
+      <div class="spec-row"><span class="spec-label">Hornet — 515.4 gr</span><span class="spec-value">289.1 fps &middot; 95.6 ft·lb</span></div>
+      <div class="spec-row"><span class="spec-label">Bonecrusher — 547.6 gr</span><span class="spec-value">282.7 fps &middot; 97.2 ft·lb</span></div>
     </div>
 
-    <p>Peak weight came up <strong>84.6 lb</strong> — 4.6 lb over the sticker. That's not a defect. Limb ratings describe a nominal maximum, and where you actually land depends on limb-bolt position, the specific limbs, manufacturing tolerance, and how the cams time out on your bow. A few pounds either way is completely normal. The point is simply this: the printed number is a starting estimate, not a measurement.</p>
-
-    <p>And 4.6 lb is real energy. A heavier peak weight stores more energy in the limbs, and a bow that stores more energy throws the same arrow faster. If the app thinks I'm pulling 80 when I'm really pulling 84.6, it's working from a bow that's quietly weaker than mine. That's exactly the kind of error that reads as "the estimate is a little low across the board."</p>
-
-    <h2>Adding a draw-weight term</h2>
-
-    <p>The IBO speed rating manufacturers publish is measured under a fixed standard: 70 lb draw weight, 30" draw length, a 350 gr arrow, bare string. Every setup deviates from that, and the formula already corrected for draw length, arrow weight, and string accessories. It just didn't correct for draw weight — because IBO is rated at 70 lb and most of us pull more.</p>
-
-    <p>So I added the term the formula was missing. The industry rule of thumb is roughly <strong>2 fps per pound</strong> of draw weight above or below the 70 lb IBO standard:</p>
-
-    <div class="formula-block">
-      <strong>Estimated FPS =</strong><br />
-      &nbsp;&nbsp;( IBO speed<br />
-      &nbsp;&nbsp;+ (draw weight − 70 lb) × 2 fps/lb&nbsp;&nbsp;<em>← new</em><br />
-      &nbsp;&nbsp;+ (draw length − 30") × 5 fps/in<br />
-      &nbsp;&nbsp;− (arrow weight − 350 gr) × 0.2 fps/gr<br />
-      &nbsp;&nbsp;− string accessory weight × 0.1 fps/gr )<br />
-      &nbsp;&nbsp;× real-world efficiency factor
-    </div>
-
-    <p>At my measured 84.6 lb, that term adds <strong>(84.6 − 70) × 2 = +29 fps</strong> before the efficiency factor. That's a big swing — which is the whole point. Pulling nearly 15 lb over the IBO standard should add real speed, and now the formula says so.</p>
-
-    <h2>Re-tuning the efficiency factor</h2>
-
-    <p>Adding +29 fps means the old efficiency factor (0.975) no longer fits — leave it there and every estimate jumps 8 fps high. So the factor and the draw-weight term get calibrated together against the chrono data. Fitting my two most consistent builds, the factor lands at <strong>0.888</strong>.</p>
-
-    <p>That number looks alarmingly low — it reads like the bow is bleeding 11% of its energy somewhere. It isn't. The efficiency factor stopped being a pure physical "efficiency" the moment it started sharing the work with a +29 fps draw-weight term. The two only mean something together: the term credits the poundage, the factor pulls the total back down to what the chronograph actually recorded. Read either one alone and you'll draw the wrong conclusion.</p>
+    <p>Across a 93-grain spread, speed drops 24 fps — but energy barely moves. The bow doesn't deliver speed. It delivers <strong>energy</strong>, roughly the same amount every shot, and speed simply falls out of the physics: v&nbsp;=&nbsp;√(E/m). Cut the mass, the speed climbs along a square-root curve. Speed-per-grain is a line; physics is a curve. That's why the linear formula tracked the heavy builds and drifted further off the lighter the arrow got.</p>
 
     <blockquote>
-      <p>The draw-weight term and the efficiency factor are two halves of one calibration. Adding speed for poundage, then scaling back to measured reality — that's the trade that keeps the output honest.</p>
+      <p>Look closer and there's a second signal: energy creeps <em>up</em> with arrow weight — 94.8 to 97.2 ft·lb. Heavier arrows extract more from the bow, because they keep the limbs loaded longer through the power stroke. The chronograph data shows it directly.</p>
     </blockquote>
 
-    <h2>The results</h2>
+    <h2>The new model</h2>
 
-    <p>Same three builds, same Garmin Xero averages, zero wind. "Before" is the old model reading my bow as 80 lb with no draw-weight term. "After" is the new model with my measured 84.6 lb and the draw-weight term.</p>
+    <p>So the formula was rebuilt around energy. It still starts from the same published inputs — IBO speed, draw weight, draw length, string accessories — but instead of marching fps up and down a line, it estimates how much energy the bow delivers and converts that to speed at your actual arrow weight:</p>
+
+    <div class="formula-block">
+      <strong>Step 1</strong>&nbsp; v_IBO = IBO + (DW − 70)×2 + (DL − 30)×5 − string×0.1<br />
+      <strong>Step 2</strong>&nbsp; KE@350 = 350 × v_IBO² ÷ 450,240 × 0.93<br />
+      <strong>Step 3</strong>&nbsp; KE = KE@350 + 0.024 × (weight − 350)<br />
+      <strong>Step 4</strong>&nbsp; FPS = √( 450,240 × KE ÷ weight )
+    </div>
+
+    <p>In plain English: estimate the bow's IBO-condition speed for your setup (step 1), convert it to the energy a real bow actually delivers with a 350-grain arrow — 93% of the lab-ideal number (step 2), credit heavier arrows the extra energy they extract at 0.024 ft·lb per grain (step 3), and convert energy back to speed at your arrow's weight (step 4).</p>
+
+    <h2>The results</h2>
 
     <div class="table-wrapper">
       <table>
@@ -360,68 +343,66 @@
           <tr>
             <th>Build</th>
             <th>Arrow</th>
-            <th>Before</th>
-            <th>After</th>
             <th>Chrono</th>
-            <th>New Error</th>
+            <th>Linear model</th>
+            <th>Energy model</th>
           </tr>
         </thead>
         <tbody>
           <tr>
+            <td class="td-build">Flatline</td>
+            <td>454.6 gr</td>
+            <td>306.5 fps</td>
+            <td class="td-ok">298 (−8.5)</td>
+            <td class="td-good">306 (−0.5)</td>
+          </tr>
+          <tr>
             <td class="td-build">Freight Train</td>
-            <td>466 gr</td>
-            <td>297 fps</td>
-            <td>297 fps</td>
-            <td>302.5 fps</td>
-            <td class="td-ok">−5.5 fps</td>
+            <td>466.6 gr</td>
+            <td>302.6 fps</td>
+            <td class="td-ok">296 (−6.6)</td>
+            <td class="td-good">303 (+0.4)</td>
           </tr>
           <tr>
             <td class="td-build">Hornet</td>
-            <td>515.5 gr</td>
-            <td>287 fps</td>
-            <td>289 fps</td>
-            <td>288.7 fps</td>
-            <td class="td-good">+0.3 fps</td>
+            <td>515.4 gr</td>
+            <td>289.1 fps</td>
+            <td class="td-good">288 (−1.1)</td>
+            <td class="td-good">290 (+0.9)</td>
           </tr>
           <tr>
             <td class="td-build">Bonecrusher</td>
             <td>547.6 gr</td>
-            <td>281 fps</td>
-            <td>283 fps</td>
             <td>282.7 fps</td>
-            <td class="td-good">+0.3 fps</td>
+            <td class="td-good">282 (−0.7)</td>
+            <td class="td-good">282 (−0.7)</td>
           </tr>
         </tbody>
       </table>
     </div>
 
-    <p>The two heavier builds — Hornet and Bonecrusher, my most repeatable data — went from roughly −2 fps to <strong>+0.3 fps</strong>. That's about as tight as a specs-only estimate gets, and it came directly from feeding the formula a measured draw weight instead of a sticker.</p>
+    <p>All four builds inside ±0.9 fps. The lightest build — the one that broke the old model — went from −8.5 to −0.5. And because the curve is now the right <em>shape</em>, the formula degrades gracefully outside the tested range instead of drifting further with every grain.</p>
 
-    <h2>The lightest build still won't behave</h2>
+    <h2>A satisfying cross-check</h2>
 
-    <p>Freight Train, my 466 gr arrow, sat at −5.5 fps before and stayed at −5.5 fps after. The draw-weight term didn't touch it — and that's informative. If the residual were a draw-weight problem, it would have moved with the other two. It didn't, which tells me the lightest arrow's gap lives somewhere else: most likely the arrow-weight penalty (0.2 fps per grain) being a touch too steep for lighter shafts.</p>
+    <p>One more thing the Garmin data confirmed: ArrowForge's kinetic-energy math is exact. The app computes KE as weight × speed² ÷ 450,240 — plug in shot #1 of the Flatline session (454.6 gr at 306.0 fps) and you get 94.5 ft·lb, which is precisely what the Xero displayed for that shot. Same number, to the decimal.</p>
 
-    <p>That's the next thread to pull. But I'm not going to guess at it — I'll chrono more builds across a wider arrow-weight range and let the data set the number, the same way it set this one.</p>
-
-    <h2>What this means for you</h2>
-
-    <p>If you've never put a scale on your string, the draw weight in your profile is a guess wearing a sticker's authority. A draw-weight scale is cheap, and the measurement takes thirty seconds. Enter your <em>measured</em> peak weight, not the limb rating — for me that one change was worth a couple of fps on every build, and it's the difference between an estimate that drifts and one that lands.</p>
-
-    <p>And the standing advice hasn't changed: if you own a chronograph, a measured FPS reading always beats any estimate. ArrowForge's Live Settings panel takes a chrono number directly and treats it as the source of truth. The estimate is for everyone who hasn't shot through one yet — and it's a little sharper this week than it was last week.</p>
+    <p>If you've wondered about the Xero's "power factor" column: it's momentum wearing different units — weight × speed ÷ 1,000, in kilograin-feet per second. ArrowForge reports momentum in slug·ft/s (the unit the game-class penetration thresholds use); multiply by 225.4 and you get the Garmin number. The app's momentum popup now shows the Garmin-style power factor alongside, so you can cross-check your chrono screen directly.</p>
 
     <h2>Honest limitations</h2>
 
-    <p>This is still one bow, one draw length, one draw weight. The 2 fps/lb draw-weight coefficient is an industry rule of thumb, not something I've yet validated against my own data — to do that cleanly I need chrono readings at a second poundage on the same bow, so I can isolate the draw-weight effect from everything else. Until then, the term and the efficiency factor are co-calibrated on a single setup. They're honest for setups like mine; I'll keep tightening them as more data comes in.</p>
+    <p>Still one bow, one draw weight, and arrows spanning 455–548 grains. The 0.93 energy efficiency and the 0.024 ft·lb-per-grain slope are fit to this bow; other cam systems will land somewhat differently. The draw-weight term (2 fps per pound) remains the industry rule of thumb — isolating it cleanly still needs chrono sessions at a second poundage, and that's still on the list. And arrows lighter than ~450 grains are extrapolation: the curve now bends the way physics says it should, but I haven't shot it yet.</p>
 
-    <p>If you've run your own chrono numbers — especially at different draw weights or with lighter arrows — I'd genuinely like to see them. More data is exactly what turns a rule of thumb into a calibrated constant.</p>
+    <p>That's the pattern of this whole series, though: shoot, measure, find where the formula disagrees with the chronograph, and let the data decide. Three posts in, the estimate has gone from −5.5 fps on a good day to ±0.9 across everything I can throw at it.</p>
 
     <div class="cta-row">
-      <p>Enter your measured draw weight — or your own chrono reading — and see your numbers in ArrowForge.</p>
+      <p>Enter your bow's specs — or your own chrono reading — and see your numbers in ArrowForge.</p>
       <a class="btn btn-primary" href="/">Get ArrowForge →</a>
     </div>
 
     <div class="prev-post">
-      Start of the series: <a href="/blog/how-accurate-is-arrowforge-fps-estimate/">How accurate is ArrowForge's FPS estimate? I tested it. →</a>
+      Earlier in this series: <a href="/blog/draw-weight-isnt-what-the-limbs-say/">Your draw weight isn't what the limbs say →</a><br />
+      Where it started: <a href="/blog/how-accurate-is-arrowforge-fps-estimate/">How accurate is ArrowForge's FPS estimate? I tested it. →</a>
     </div>
   </div>
 
