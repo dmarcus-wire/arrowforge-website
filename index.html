@@ -1281,7 +1281,7 @@
       <a href="/blog/">Blog</a>
       <a href="/privacy/">Privacy Policy</a>
       <a href="/terms/">Terms of Service</a>
-      <a id="email-footer-support">Support</a>
+      <a href="/support">Support</a>
     </div>
     <p style="margin-top: 16px; font-size: 12px;">© 2026 Frontier Forge LLC. All rights reserved.</p>
   </footer>
@@ -1380,7 +1380,7 @@
       var u = atob('YXJyb3ctZm9yZ2U=');
       var d = atob('ZnJvbnRpZXJmb3JnZWxsYy5jb20=');
       var m = 'mailto:' + u + '@' + d;
-      ['email-nav', 'email-cta', 'email-beta', 'email-footer-support'].forEach(function(id) {
+      ['email-nav', 'email-cta', 'email-beta'].forEach(function(id) {
         var el = document.getElementById(id);
         if (el) el.href = m;
       });
