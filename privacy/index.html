@@ -187,7 +187,7 @@
 
   <div class="content">
     <h1>Privacy Policy</h1>
-    <p class="effective">Effective date: June 11, 2026 &nbsp;·&nbsp; Frontier Forge LLC</p>
+    <p class="effective">Effective date: June 14, 2026 &nbsp;·&nbsp; Frontier Forge LLC</p>
 
     <p>ArrowForge ("we", "our", or "us") is developed and operated by Frontier Forge LLC. This Privacy Policy explains what information we collect, how we use it, who we share it with, and what choices you have — including how to delete your account and data.</p>
 
@@ -227,6 +227,7 @@
       <li><strong>Password</strong> — stored as a salted, hashed credential via Supabase Auth. We never store or have access to your plain-text password.</li>
       <li><strong>Build data (server copy)</strong> — when signed in, your build data is synced to Supabase so it can be restored if you lose or replace your device. This data includes all bow, arrow, archer, and sight fields you have entered. It does not include your GPS coordinates or device identifiers.</li>
       <li><strong>Account metadata</strong> — date your account was created, date of last sign-in, and your account tier (free / Pro). This is used to manage your subscription and support requests.</li>
+      <li><strong>Subscription and purchase status</strong> — if you subscribe to ArrowForge Pro, we and our subscription provider (RevenueCat) record your subscription status, plan, and renewal/expiry date, keyed to your ArrowForge account identifier, so we can unlock Pro features and restore them across your devices. The actual payment (Apple Account billing) is processed entirely by Apple — we never see or store your payment card details.</li>
     </ul>
 
     <h3 id="consent-records">Consent records (with or without an account)</h3>
@@ -315,8 +316,11 @@
     <p>Anthropic powers all Pro AI features. When you trigger one of the assistants, our Supabase Edge Function forwards the request payload (the relevant subset of your build data — see Section 1 for what is included) to Anthropic's Claude API, which returns a response. Our Anthropic API key is held server-side only; it never ships in the app and the device never talks to Anthropic directly.</p>
     <p>Per Anthropic's commercial API terms, customer inputs and outputs are not used to train Anthropic's models by default. Anthropic processes data in the United States; their handling is governed by the <a href="https://www.anthropic.com/legal/privacy" target="_blank">Anthropic Privacy Policy</a> and the <a href="https://www.anthropic.com/legal/commercial-terms" target="_blank">Anthropic Commercial Terms</a>.</p>
 
-    <h3>No other third-party network requests are made by the app.</h3>
-    <p>All ballistics calculations run entirely on-device. No usage analytics, crash reporters, ad networks, or social SDKs are embedded in ArrowForge.</p>
+    <h3>RevenueCat</h3>
+    <p>RevenueCat manages ArrowForge Pro subscriptions. When you view or purchase a subscription, the RevenueCat SDK in the app communicates with RevenueCat's servers to fetch subscription offerings and to validate and track your entitlement. RevenueCat is provided with your ArrowForge account identifier (used as its app user ID) and the subscription/transaction details returned by the App Store; it is <strong>not</strong> given your email, build data, or payment card details. RevenueCat processes data in the United States; their handling is governed by the <a href="https://www.revenuecat.com/privacy" target="_blank">RevenueCat Privacy Policy</a>.</p>
+
+    <h3>Embedded SDKs and other network requests</h3>
+    <p>All ballistics calculations run entirely on-device. The only embedded third-party SDK that makes network requests is RevenueCat (subscription management, described above). No usage analytics, crash reporters, ad networks, or social SDKs are embedded in ArrowForge.</p>
 
     <!-- 4 -->
     <h2 id="data-storage">4. Data storage and security</h2>
