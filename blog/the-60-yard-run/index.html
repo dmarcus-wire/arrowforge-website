@@ -169,6 +169,14 @@
     .td-build { font-weight: 700; color: var(--text); }
     .td-good { color: #065F46; font-weight: 600; }
     .td-ok { color: #92400E; font-weight: 600; }
+    .table-title {
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--muted);
+      margin: 28px 0 -18px;
+    }
 
     .spec-block {
       background: var(--surface);
@@ -306,28 +314,70 @@
 
     <p>Calibrating a model on one arrow and confirming it on the same arrow proves less than it seems to. So day two led with the Easton 5.0 — fatter shaft, different insert, a build the drag model played no part in tuning. Shot fresh, 20 through 50 yards, its measured speed decay agreed with the model's prediction to <strong>about a tenth of a percent</strong>. Here's the app's full prediction chain against the Garmin at every distance:</p>
 
+    <p class="table-title">Velocity — fps</p>
     <div class="table-wrapper">
       <table>
         <thead>
           <tr>
             <th>Distance</th>
-            <th>App fps</th>
-            <th>Garmin fps</th>
-            <th>App KE</th>
-            <th>Garmin KE</th>
+            <th>App</th>
+            <th>Garmin</th>
+            <th>Δ (app − chrono)</th>
           </tr>
         </thead>
         <tbody>
-          <tr><td class="td-build">20 yd</td><td>295.2</td><td>296.4</td><td>89.8</td><td>90.5</td></tr>
-          <tr><td class="td-build">30 yd</td><td>291.9</td><td>293.9</td><td>87.8</td><td>89.0</td></tr>
-          <tr><td class="td-build">40 yd</td><td>288.6</td><td>290.8</td><td>85.8</td><td>87.1</td></tr>
-          <tr><td class="td-build">50 yd</td><td>285.4</td><td>286.9</td><td>83.9</td><td>84.8</td></tr>
-          <tr><td class="td-build">60 yd</td><td>282.1</td><td>280.9</td><td>82.0</td><td>81.3</td></tr>
+          <tr><td class="td-build">20 yd</td><td>295.2</td><td>296.4</td><td class="td-good">−1.2</td></tr>
+          <tr><td class="td-build">30 yd</td><td>291.9</td><td>293.9</td><td class="td-good">−2.0</td></tr>
+          <tr><td class="td-build">40 yd</td><td>288.6</td><td>290.8</td><td class="td-good">−2.2</td></tr>
+          <tr><td class="td-build">50 yd</td><td>285.4</td><td>286.9</td><td class="td-good">−1.5</td></tr>
+          <tr><td class="td-build">60 yd</td><td>282.1</td><td>280.9</td><td class="td-good">+1.2</td></tr>
         </tbody>
       </table>
     </div>
 
-    <p>Velocity within ±2.2 fps. Kinetic energy within 1.3 ft·lb — under 1.5% — at every distance. Momentum (the Garmin reports it as power factor) within 0.9%. And because KE scales with speed squared and momentum scales with speed, getting velocity right downrange is the whole game: the energy and momentum columns are accurate <em>because</em> the speed column is.</p>
+    <p class="table-title">Kinetic energy — ft·lb</p>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Distance</th>
+            <th>App</th>
+            <th>Garmin</th>
+            <th>Δ (app − chrono)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="td-build">20 yd</td><td>89.8</td><td>90.5</td><td class="td-good">−0.7</td></tr>
+          <tr><td class="td-build">30 yd</td><td>87.8</td><td>89.0</td><td class="td-good">−1.2</td></tr>
+          <tr><td class="td-build">40 yd</td><td>85.8</td><td>87.1</td><td class="td-good">−1.3</td></tr>
+          <tr><td class="td-build">50 yd</td><td>83.9</td><td>84.8</td><td class="td-good">−0.9</td></tr>
+          <tr><td class="td-build">60 yd</td><td>82.0</td><td>81.3</td><td class="td-good">+0.7</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="table-title">Momentum — slug·ft/s</p>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Distance</th>
+            <th>App</th>
+            <th>Garmin</th>
+            <th>Δ (app − chrono)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="td-build">20 yd</td><td>0.608</td><td>0.610</td><td class="td-good">−0.002</td></tr>
+          <tr><td class="td-build">30 yd</td><td>0.601</td><td>0.605</td><td class="td-good">−0.004</td></tr>
+          <tr><td class="td-build">40 yd</td><td>0.594</td><td>0.599</td><td class="td-good">−0.005</td></tr>
+          <tr><td class="td-build">50 yd</td><td>0.587</td><td>0.591</td><td class="td-good">−0.004</td></tr>
+          <tr><td class="td-build">60 yd</td><td>0.581</td><td>0.578</td><td class="td-good">+0.003</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>Velocity within ±2.2 fps. Kinetic energy within 1.3 ft·lb — under 1.5% — at every distance. Momentum within 0.9% (the Garmin displays power factor; the momentum column converts its measured speed and arrow weight with the same formula the app uses, so the comparison is apples to apples). And because KE scales with speed squared and momentum scales with speed, getting velocity right downrange is the whole game: the energy and momentum tables are accurate <em>because</em> the speed table is.</p>
 
     <p>One more check that costs nothing and proves a lot: run the model backwards. Take each downrange reading and ask what launch speed it implies. For the 523-grain arrow, day one's sessions implied a launch of 286 fps. Day two's sessions — different morning, different light, twenty-some shots into the session — implied 285 to 287. Two days, one number. That's what a model that has the decay curve right looks like.</p>
 
