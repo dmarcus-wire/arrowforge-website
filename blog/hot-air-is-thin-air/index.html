@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hot air is thin air. What a 79° morning taught the drag model. — ArrowForge</title>
+  <meta name="description" content="A new 4-fletch build, the series' first true launch reading, and app-vs-Garmin agreement within 2 fps again — plus the discovery that the drag model has been quietly assuming a 59°F day, and what that means for hot-weather practice." />
+  <style>
+    @font-face {
+      font-family: 'Inter';
+      font-style: normal;
+      font-weight: 100 900;
+      font-display: swap;
+      src: url('/fonts/inter-latin-ext.woff2') format('woff2');
+      unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+    }
+    @font-face {
+      font-family: 'Inter';
+      font-style: normal;
+      font-weight: 100 900;
+      font-display: swap;
+      src: url('/fonts/inter-latin.woff2') format('woff2');
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+  </style>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --brand:         #2D6A4F;
+      --bg:            #F9FAFB;
+      --surface:       #FFFFFF;
+      --text:          #111827;
+      --muted:         #6B7280;
+      --border:        #E5E7EB;
+      --accent-bg:     #ECFDF5;
+      --accent-border: #A7F3D0;
+    }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+    nav {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 0 24px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+    .nav-logo img {
+      height: 36px;
+      width: 36px;
+      display: block;
+      border-radius: 8px;
+    }
+    .nav-logo-text {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--text);
+      letter-spacing: -0.4px;
+    }
+    .nav-back {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--muted);
+      text-decoration: none;
+    }
+    .nav-back:hover { color: var(--brand); }
+
+    .content {
+      max-width: 720px;
+      margin: 60px auto 100px;
+      padding: 0 24px;
+    }
+    .eyebrow {
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color: var(--brand);
+      margin-bottom: 12px;
+    }
+    h1 {
+      font-size: 38px;
+      font-weight: 800;
+      letter-spacing: -0.6px;
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+    .subtitle {
+      font-size: 17px;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 12px;
+    }
+    .meta {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 40px;
+    }
+    h2 {
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: -0.3px;
+      margin: 44px 0 12px;
+    }
+    p {
+      font-size: 16px;
+      color: #374151;
+      line-height: 1.75;
+      margin-bottom: 16px;
+    }
+    blockquote {
+      margin: 28px 0;
+      padding: 18px 22px;
+      border-left: 4px solid var(--brand);
+      background: var(--accent-bg);
+      border-radius: 0 10px 10px 0;
+    }
+    blockquote p {
+      margin: 0;
+      font-size: 16px;
+      font-style: italic;
+      color: #064E3B;
+    }
+    a { color: var(--brand); font-weight: 600; }
+    a:hover { text-decoration: underline; }
+
+    .table-wrapper {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow-x: auto;
+      margin: 28px 0;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 15px;
+    }
+    th {
+      text-align: left;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--muted);
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--border);
+      background: var(--bg);
+      white-space: nowrap;
+    }
+    td {
+      padding: 13px 14px;
+      border-bottom: 1px solid var(--border);
+      color: #374151;
+      vertical-align: middle;
+      white-space: nowrap;
+    }
+    tr:last-child td { border-bottom: none; }
+    .td-build { font-weight: 700; color: var(--text); }
+    .td-good { color: #065F46; font-weight: 600; }
+    .td-ok { color: #92400E; font-weight: 600; }
+    .table-title {
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--muted);
+      margin: 28px 0 -18px;
+    }
+
+    .spec-block {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 22px 24px;
+      margin: 28px 0;
+    }
+    .spec-block h3 {
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+    .spec-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 15px;
+      padding: 6px 0;
+      border-bottom: 1px solid var(--border);
+      color: #374151;
+    }
+    .spec-row:last-child { border-bottom: none; }
+    .spec-label { color: var(--muted); }
+    .spec-value { font-weight: 600; color: var(--text); }
+
+    .cta-row {
+      margin-top: 52px;
+      padding: 28px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      text-align: center;
+    }
+    .cta-row p {
+      margin: 0 0 18px;
+      font-size: 15px;
+      color: var(--muted);
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 22px;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 700;
+      text-decoration: none;
+      letter-spacing: 0.2px;
+    }
+    .btn-primary {
+      background: var(--brand);
+      color: #fff;
+    }
+    .btn-primary:hover { background: #245741; text-decoration: none; }
+
+    .prev-post {
+      margin: 36px 0 8px;
+      padding: 16px 20px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+    .prev-post a { font-weight: 700; }
+
+    footer {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      padding: 30px 24px;
+      text-align: center;
+    }
+    footer p {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+    footer a { color: var(--brand); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+    .footer-links {
+      margin-top: 10px;
+      display: flex;
+      gap: 18px;
+      justify-content: center;
+    }
+    .footer-links a {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--muted);
+    }
+    .footer-links a:hover { color: var(--brand); }
+
+    @media (max-width: 600px) {
+      h1 { font-size: 28px; }
+      nav { height: auto; flex-direction: column; align-items: flex-start; padding: 12px 24px; gap: 8px; }
+      .nav-back { padding-left: 2px; }
+      th, td { padding: 10px 12px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="/" class="nav-logo">
+      <img src="/icon.png" alt="ArrowForge icon" />
+      <span class="nav-logo-text">ArrowForge</span>
+    </a>
+    <a href="/blog/" class="nav-back">← Field Notes</a>
+  </nav>
+
+  <div class="content">
+    <p class="eyebrow">Field Notes</p>
+    <h1>Hot air is thin air. What a 79° morning taught the drag model.</h1>
+    <p class="subtitle">A new 4-fletch build, the series' first true launch reading, and agreement within 2 fps again — plus the discovery that the model has been quietly assuming a 59° day.</p>
+    <p class="meta">David Marcus &middot; July 2026</p>
+
+    <p>After <a href="/blog/the-60-yard-run/">the 60-yard run</a> confirmed the drag model on three arrows, I built a fourth one to try to surprise it: "Granite Fist," a 526-grain Victory HLR with <strong>four</strong> low-profile AAE AIRAZR vanes instead of three, 226 grains up front. New fletching geometry, new front stack — and this time I fixed the protocol gap from the earlier sessions by chronographing <em>launch speed first</em>, at the bow, before walking anything downrange.</p>
+
+    <h2>The setup, spelled out</h2>
+
+    <p>The Garmin Xero C1 sat in one fixed spot, <strong>10 yards in front of the target</strong> — close enough to the bale for safe arrow retrieval, far enough that a low miss doesn't hit a $600 radar. The distances below are <strong>shooter-to-Garmin flight distances</strong>: a "20-yard" reading is the arrow's speed after 20 yards of flight (the arrow then flew 10 more yards into a 30-yard target), and the "40-yard" reading flew 40 yards to the chrono and impacted at 50. That's the right comparison, because speed-after-N-yards-of-flight is exactly what the app's Launch &amp; Impact tile predicts.</p>
+
+    <p>I also logged the weather, which turns out to be the most interesting part of this post:</p>
+
+    <div class="spec-block">
+      <h3>Conditions — July 20, morning session</h3>
+      <div class="spec-row"><span class="spec-label">Range elevation</span><span class="spec-value">6,189 ft</span></div>
+      <div class="spec-row"><span class="spec-label">Temperature</span><span class="spec-value">79 °F (by 8:35 AM)</span></div>
+      <div class="spec-row"><span class="spec-label">Humidity</span><span class="spec-value">35%</span></div>
+      <div class="spec-row"><span class="spec-label">Pressure (altimeter)</span><span class="spec-value">30.15 inHg</span></div>
+      <div class="spec-row"><span class="spec-label">Arrow</span><span class="spec-value">526 gr · 250 spine · 4 × AAE AIRAZR · 226 gr up front</span></div>
+      <div class="spec-row"><span class="spec-label">Bow</span><span class="spec-value">Hoyt Carbon RX-9 · 84 lb (measured) · 28″</span></div>
+    </div>
+
+    <h2>The data — three sessions, all three numbers</h2>
+
+    <p>Every metric the Garmin reports, against every metric the app predicts. Momentum is converted from the Garmin's measured speed and the 526-grain weight with the same formula the app uses (the Xero natively displays power factor), so the comparison is apples to apples.</p>
+
+    <p class="table-title">Launch — Garmin at the bow (5 shots, σ 1.0 fps)</p>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Metric</th>
+            <th>App</th>
+            <th>Garmin</th>
+            <th>Δ (app − chrono)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="td-build">Speed (fps)</td><td>286</td><td>284.0</td><td class="td-good">+2.0</td></tr>
+          <tr><td class="td-build">Kinetic energy (ft·lb)</td><td>95.6</td><td>94.2</td><td class="td-good">+1.4</td></tr>
+          <tr><td class="td-build">Momentum (slug·ft/s)</td><td>0.668</td><td>0.663</td><td class="td-good">+0.005</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="table-title">20 yards of flight (5 shots, σ 0.7 fps)</p>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Metric</th>
+            <th>App</th>
+            <th>Garmin</th>
+            <th>Δ (app − chrono)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="td-build">Speed (fps)</td><td>279</td><td>278.8</td><td class="td-good">+0.2</td></tr>
+          <tr><td class="td-build">Kinetic energy (ft·lb)</td><td>91.3</td><td>90.7</td><td class="td-good">+0.6</td></tr>
+          <tr><td class="td-build">Momentum (slug·ft/s)</td><td>0.652</td><td>0.651</td><td class="td-good">+0.001</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="table-title">40 yards of flight (17 shots; 15 used, 2 flyers trimmed)</p>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Metric</th>
+            <th>App</th>
+            <th>Garmin</th>
+            <th>Δ (app − chrono)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="td-build">Speed (fps)</td><td>273</td><td>274.0</td><td class="td-good">−1.0</td></tr>
+          <tr><td class="td-build">Kinetic energy (ft·lb)</td><td>87.3</td><td>87.7</td><td class="td-good">−0.4</td></tr>
+          <tr><td class="td-build">Momentum (slug·ft/s)</td><td>0.638</td><td>0.639</td><td class="td-good">−0.001</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>Two shots in the 40-yard session read +12.3 and +6.5 fps above the session average — far outside the ±1 fps consistency of every other session — and were trimmed as flyers. Untrimmed, the 40-yard average is 275.2 fps and the app's delta grows to −2.2; either way it's inside a couple fps. Trimming is shown, not hidden, so you can disagree with it.</p>
+
+    <h2>Lesson 1: blank fields have defaults, and defaults have opinions</h2>
+
+    <p>My first pass at the numbers said the model over-predicted drag for this arrow by nearly 20%. The culprit wasn't the physics — it was a blank field. I never entered a vane height, so the app assumed a standard 0.5″ vane. The AIRAZR is a low-profile 0.38″. Four tall vanes is a lot of brake; four short ones is not. With the real vane height and the real air density, the model's predicted decay lands at 9.2 per ten-thousand per yard against a measured 9.0–9.2 — dead center, and the first time the model has been validated on a <em>four</em>-fletch.</p>
+
+    <p>A tidbit worth stealing for your own builds: a low-profile 4-fletch drags almost exactly like a standard 3-fletch. You buy the extra steering for a fixed blade at nearly zero downrange cost — but only if the vanes are actually low-profile, which is why the field is worth filling in.</p>
+
+    <h2>Lesson 2: the model has been quietly assuming 59 °F</h2>
+
+    <p>Here's the discovery that came out of logging the weather. The app corrects air density for elevation, and that correction has matched every session in this series — all shot on cool 60–70° Colorado mornings. Digging into <em>why</em> it matched so well revealed the formula's hidden assumption: it uses standard-atmosphere pressure with a standard 59 °F temperature baked in. On a 79° morning, the real air at my range was <strong>7.6% thinner</strong> than the app modeled it (0.941 vs 1.012 kg/m³) — about half from the heat, and half from a stale entry on my side: the build's training elevation still said Denver, 5,279 ft, while the range sits at 6,189.</p>
+
+    <blockquote>
+      <p>The app's totals were still within 2 fps — but partly because two small errors leaned on each other. Two errors canceling is not the same as two errors that don't exist, and the only way to catch that kind of luck is to log the conditions and do the arithmetic.</p>
+    </blockquote>
+
+    <p>Hot air is thin air: density drops about 1% for every 5–6 °F of warming. Between a 40° elk dawn and a 90° August practice session, that's a bigger swing in air density than moving your range a thousand feet in elevation. At hunting distances the velocity effect stays small — a couple fps at 60 yards — which is why the model has held within ±2 fps all summer. But small isn't zero, and it's measurable.</p>
+
+    <h2>What's next</h2>
+
+    <p>Temperature and pressure inputs are on the roadmap for a future version — properly engineered, not bolted on, so the trajectory, energy, and drop numbers all inherit real air instead of standard-day air. Until then, know the model's calibration honestly: it's tuned to cool-morning conditions, it has now been validated on four arrows, three shaft models, both 3- and 4-fletch, out to 60 yards of flight, and its end-to-end error has never exceeded a couple fps — about the same as shot-to-shot variation from my own release.</p>
+
+    <div class="spec-block">
+      <h3>Session scorecard — app vs. Garmin Xero C1</h3>
+      <div class="spec-row"><span class="spec-label">Launch speed</span><span class="spec-value">+2.0 fps</span></div>
+      <div class="spec-row"><span class="spec-label">Speed after 20 yd</span><span class="spec-value">+0.2 fps</span></div>
+      <div class="spec-row"><span class="spec-label">Speed after 40 yd</span><span class="spec-value">−1.0 fps</span></div>
+      <div class="spec-row"><span class="spec-label">KE, all sessions</span><span class="spec-value">within 1.4 ft·lb</span></div>
+      <div class="spec-row"><span class="spec-label">Momentum, all sessions</span><span class="spec-value">within 0.005 slug·ft/s</span></div>
+      <div class="spec-row"><span class="spec-label">First 4-fletch validation</span><span class="spec-value">decay within ~2% of model</span></div>
+    </div>
+
+    <p>Same pattern as every post in this series: shoot it, measure it, log the conditions, and let the data grade the model. This session's grade came with homework — and the homework is weather.</p>
+
+    <div class="cta-row">
+      <p>Enter your build — vane height included — and see the downrange numbers these sessions keep validating.</p>
+      <a class="btn btn-primary" href="/">Get ArrowForge →</a>
+    </div>
+
+    <div class="prev-post">
+      Earlier in this series: <a href="/blog/the-60-yard-run/">We walked the chrono out to 60 yards →</a><br />
+      And: <a href="/blog/your-fletching-is-a-brake/">Your fletching is a brake →</a><br />
+      Where it started: <a href="/blog/how-accurate-is-arrowforge-fps-estimate/">How accurate is ArrowForge's FPS estimate? I tested it. →</a>
+    </div>
+  </div>
+
+  <footer>
+    <p>Built for bowhunters and competitive archers by <strong>Frontier Forge LLC</strong></p>
+    <p><a id="email-footer-addr"></a></p>
+    <div class="footer-links">
+      <a href="/">Home</a>
+      <a href="/blog/">Field Notes</a>
+      <a href="/how-it-works/">How It Works</a>
+      <a href="/privacy/">Privacy Policy</a>
+      <a id="email-footer-support">Support</a>
+    </div>
+    <p style="margin-top: 16px; font-size: 12px;">© 2026 Frontier Forge LLC. All rights reserved.</p>
+  </footer>
+
+  <script>
+    (function() {
+      var u = atob('YXJyb3ctZm9yZ2U=');
+      var d = atob('ZnJvbnRpZXJmb3JnZWxsYy5jb20=');
+      var m = 'mailto:' + u + '@' + d;
+      ['email-footer-support'].forEach(function(id) {
+        var el = document.getElementById(id);
+        if (el) el.href = m;
+      });
+      var fa = document.getElementById('email-footer-addr');
+      if (fa) { fa.href = m; fa.textContent = u + '@' + d; }
+    })();
+  </script>
+</body>
+</html>
